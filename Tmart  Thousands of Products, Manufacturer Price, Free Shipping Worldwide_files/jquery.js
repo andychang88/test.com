@@ -1,0 +1,14 @@
+jQuery.extend({countDownTime:function(set){$(set).each(function(index,divElement){var startTime=$(this).attr('start_time');var endTime=$(this).attr('end_time');var show_method=$(this).attr('show_day');var margin={margin_01:$(this).attr('margin_01'),margin_02:$(this).attr('margin_02'),margin_03:$(this).attr('margin_03'),margin_04:$(this).attr('margin_04'),};setInterval(function(){showCountDownTime(startTime,endTime,divElement,show_method,margin);},"1000");});}});function showCountDownTime(start_time,end_time,divElement,show_method,margin){var now=new Date();var diff=now.getTimezoneOffset()*60*1000;start_time=start_time.replace(/-/g,'/');startDate=new Date(start_time);start=startDate.getTime();end_time=end_time.replace(/-/g,'/');endDate=new Date(end_time);end=endDate.getTime();var serviceTime=now.getTime()-(5*60*60*1000- diff);var leftTime=endDate.getTime()- serviceTime;var leftsecond=parseInt(leftTime/1000);var day=Math.floor(leftsecond/(60*60*24));var hour=Math.floor((leftsecond- day*24*60*60)/ 3600); 
+if(hour<=0){hour=0;}
+var minute=Math.floor((leftsecond- day*24*60*60- hour*3600)/ 60); 
+var second=Math.floor(leftsecond- day*24*60*60- hour*3600- minute*60);var margin_01="";var margin_02="";var margin_03="";var margin_04="";var show_day="1";if(margin.margin_01){var margin_01=margin.margin_01;}
+if(margin.margin_02){var margin_02=margin.margin_02;}
+if(margin.margin_03){var margin_03=margin.margin_03;}
+if(margin.margin_04){var margin_04=margin.margin_04;}
+if(show_method){var show_day=show_method;}
+if(day<10&&day>0){var day="0"+ day;}else if(day=='0'){var day="00";}
+if(hour<10&&hour>0){var hour="0"+ hour;}else if(hour=='0'){var hour="00";}
+if(minute<10&&minute>0){var minute="0"+ minute;}else if(minute=='0'){var minute="00";}
+if(second<10&&second>0){var second="0"+ second;}else if(second=='0'){var second='00';}
+var margin_left_01="<span style='margin-left:"+ margin_01+"px'>";var margin_left_02="<span style='margin-left:"+ margin_02+"px'>";var margin_left_03="<span style='margin-left:"+ margin_03+"px'>";var margin_left_04="<span style='margin-left:"+ margin_04+"px'>";var margin_end="</span>";if((start<serviceTime)&&(serviceTime<end)){if(show_day=="1"||(show_day=="2"&&day>1)){divElement.innerHTML=margin_left_01+ day+ margin_end+ margin_left_02+ hour+ margin_end+ margin_left_03+ minute+ margin_end+ margin_left_04+ second+ margin_end;}else if(show_day=="2"&&day<1){divElement.innerHTML=margin_left_02+ hour+ margin_end+ margin_left_03+ minute+ margin_end+ margin_left_04+ second+ margin_end;}}
+else if(serviceTime>=end){if(show_day=="1"){divElement.innerHTML=margin_left_01+"00"+ margin_end+ margin_left_02+"00"+ margin_end+ margin_left_03+"00"+ margin_end+ margin_left_04+"00"+ margin_end;}else if(show_day=="2"){divElement.innerHTML=margin_left_02+"00"+ margin_end+ margin_left_03+"00"+ margin_end+ margin_left_04+"00"+ margin_end;}}}

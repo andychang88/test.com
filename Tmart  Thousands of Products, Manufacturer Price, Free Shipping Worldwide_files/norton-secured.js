@@ -1,0 +1,2 @@
+function getseal(lang,dn){if(lang==''||lang==undefined){lang='en';}
+window.open('https://trustsealinfo.websecurity.norton.com/splash?form_file=fdf/splash.fdf&dn=www.tmart.com&lang='+lang,'VRSN_Splash','location=yes,status=yes,resizable=yes,scrollbars=yes,width=560,height=500');}
