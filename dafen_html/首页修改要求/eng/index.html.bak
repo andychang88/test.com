@@ -14,9 +14,7 @@
 		<!--[if lt IE 9]>
       <script src="js/respond.src.js"></script>
            <!--<![endif]-->
-          <style type="">
-.container{width:1002px;}
-		  </style>
+          
 	</head>
 	<body>
 		<div class="head container clearfix">

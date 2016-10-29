@@ -1,0 +1,312 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: Administrator
+ * Date: 2016/7/27
+ * Time: 14:16
+ */
+error_reporting(E_ALL);
+
+header( 'Content-Type:text/html; charset=utf-8');
+
+$accountDate = array(
+    'UserId'=>'public1',
+    'UserPassword'=> '123456',
+    'userToken'=>'0ee02d147f1e4cbc882e3fd42e826f2c'
+);
+
+$content="
+<document>
+	<createOrder>
+	  <userToken>8a3ddab172a74ad887be919a2aa41641</userToken>
+		<createOrderRequest>  //创建订单请求
+		  <orderNo/>
+		  <trackingNo/>
+		  <cargoCode>W</cargoCode>
+		  <transportWayCode>SGPOSTG</transportWayCode>
+		  <goodsCategory>G</goodsCategory>
+		  <goodsDescription>bag</goodsDescription>
+		  <insured>N</insured>
+		  <pieces>1</pieces>
+		  <weight>0.386</weight>
+		  <originCountryCode>CN</originCountryCode>
+		  <destinationCountryCode>AU</destinationCountryCode>
+		  <consigneeCompanyName>XXX company</consigneeCompanyName>
+		  <consigneeName>Bruce Lee</consigneeName>
+		  <consigneeTelephone>01088223345</consigneeTelephone>
+		  <consigneeMobile>13688888888</consigneeMobile>
+		  <street>Lipovaja 2345 Orenburg</street>
+		  <city>Orenburg</city>
+		  <province>Russia</province>
+		  <consigneePostcode>10001</consigneePostcode >
+		  <shipperAddress>xxx street</shipperAddress>
+		  <shipperCompanyName>Hlt limit comany</shipperCompanyName>
+		  <shipperName>Zhangsan</shipperName>
+		  <shipperPostcode>518000</shipperPostcode>
+		  <shipperTelephone>07558888888</shipperTelephone>
+		  <shipperMobile>13132222222</shipperMobile>
+		  <memo></memo>
+			<declareItems>        //订单详情
+			  <name>Canvas bag</name>
+			  <cnName>帆布袋</cnName>
+			  <pieces>1</pieces>
+			  <netWeight>0.683</netWeight>
+			  <unitPrice>8.6</unitPrice>
+			  <productMemo>库位：A010102  SKU：P03231 品名：帆布包 颜色：红色 数量：1</productMemo >
+              <customsNo>6104220010</customsNo >
+              <rebate>N</rebate>
+			  <commodityNum> CPD2014061800000002</commodityNum >
+		  </declareItems>
+			<declareItems>//申报明细列表
+			  <name>Paper bag</name>
+			  <pieces>10</pieces>
+			  <netWeight>0.123</netWeight>
+			  <unitPrice>1.2</unitPrice>
+		  </declareItems>
+		</createOrderRequest>
+	</createOrder>
+
+//创建订单响应
+	<createOrderResponse>
+		<return>
+		  <id>2000429973</id>
+		  <success>true</success>
+	  </return>
+  </createOrderResponse>
+
+//预报订单
+	<auditOrder>
+	  <userToken>8a3ddab172a74ad887be919a2aa41641</userToken>
+	  <orderId>2000429973</orderId>
+  </auditOrder>
+//预报订单响应
+	<auditOrderResponse>
+		<return>
+		  <success>true</success>
+		  <trackingNo>RU465555773CH</trackingNo>
+	  </return>
+  </auditOrderResponse>
+
+//删除订单
+	<deleteOrder>
+	  <userToken>8a3ddab172a74ad887be919a2aa41641</userToken>
+	  <orderId>2000429973</orderId>
+  </deleteOrder>
+//预报订单响应
+	<deleteOrderResponse>
+		<return>
+		  <errorCode>0</errorCode>
+		  <errorInfo />
+		  <solution />
+	  </return>
+  </deleteOrderResponse>
+//打印订单
+	<printOrder>
+         <userToken> 0ee02d147f1e4cbc882e3fd42e826f2c</userToken>
+         <printOrderRequest>
+            <downloadPdf>0</downloadPdf>
+            <oid></oid>
+            <orderNo></orderNo>
+            <pageSizeCode>6</pageSizeCode>
+            <printSelect>3</printSelect>
+            <showCnoBarcode></showCnoBarcode>
+            <trackingNo>994007381311,RT213373528HK</trackingNo>
+         </printOrderRequest>
+      </printOrder>
+//创建订单请求
+  <printOrderResponse>
+         <return>
+            <success>true</success>
+           <url> http://kd.szice.net:8086/xms/client/order_online!buildpdf.action?oid=2010951193,2010951192&amp;pageSizeCode=6&amp;printSelect=3&amp;showCnoBarcode=?&amp;downloadPdf=0
+</url>
+           </return>
+   </printOrderResponse>
+
+//获取所有运输方式
+	<getTransportWayList>
+  	<userToken>8a3ddab172a74ad887be919a2aa41641</userToken>
+  </getTransportWayList>
+//获取所有运输方式的响应
+  <getTransportWayListResponse>
+	  <return>
+		  <success>true</success>
+		  <transportWays>//运输方式
+			  <code> HKPOSTTH </code>
+			  <name>香港小包挂号</name>
+			  <used>Y</used>
+			  <autoFetchTrackingNo>Y</autoFetchTrackingNo>
+			  <trackingNoRuleRegex>^[a-zA-Z]{2}[0-9]{9}HK$</trackingNoRuleRegex>
+			  <trackingNoRuleMemo>2位字母+9位数字+字母“SG”</trackingNoRuleMemo>
+		  </transportWays>
+		  <transportWays>
+			  <code>HKPOSTG2</code>
+			  <name>HKPOST双挂号</name>
+			  <used>Y</used>
+			  <autoFetchTrackingNo>Y</autoFetchTrackingNo>
+			  <trackingNoRuleRegex>^[a-zA-Z]{2}[0-9]{9}HK$</trackingNoRuleRegex>
+			  <trackingNoRuleMemo></trackingNoRuleMemo>
+		  </transportWays>
+		  <transportWays>
+			  <code>HKPOSTP</code>
+			  <name>HKPOST平邮</name>
+			  <used>Y</used>
+			  <autoFetchTrackingNo>N</autoFetchTrackingNo>
+			  <trackingNoRuleRegex></trackingNoRuleRegex>
+			  <trackingNoRuleMemo></trackingNoRuleMemo>
+		  </transportWays>
+		  <transportWays>
+			  <code>HKDHL</code>
+			  <name>香港DHL代理价</name>
+			  <used>Y</used>
+			  <autoFetchTrackingNo>N</autoFetchTrackingNo>
+			  <trackingNoRuleMemo></trackingNoRuleMemo>
+			  <trackingNoRuleMemo>10位数字</trackingNoRuleMemo>
+		  </transportWays>
+  	</return>
+  </getTransportWayListResponse>
+//请求
+      <calculateCharge>
+         <userToken>8a3ddab172a74ad887be919a2aa41641</userToken>
+         <calculateChargeRequest>   //运费试算请求
+            <countryCode>SG</countryCode>
+            <weight>0.567</weight>
+			<!-- 以下是可选属性 -->
+            <transportWayCode>GDEMS</transportWayCode>
+            <transportWayCode>SZEMS</transportWayCode>
+            <length>55.5</length>
+			<width>50</width>
+            <height>30.5</height>
+           <postcode>10001</postcode>
+        </calculateChargeRequest>
+      </calculateCharge>
+//运费试算的响应
+      <calculateChargeResponse>
+         <return>
+            <success>true</success>
+            <transportFee>
+               <currency>CNY</currency>
+               <deliveryPeriod>3-8工作日</deliveryPeriod>
+               <description>
+                  /* 温馨提示：
+                  1.广东EMS到朝鲜(北韩)、哈萨克斯坦的邮件需要计泡,计泡公式为：泡重(kg)=长(cm)*宽(cm)*高(cm)/8000,计费重取实重材积重的大值;
+                  2.没有上网就丢失的按照申报价值赔偿并且退运费，但是最高不超过100USD。
+                  3.一旦发生交易，即表示贵司已详细阅读过我司的相关条款，同时充分理解各条款所表述的含义，并同意接受各条款的约束.互联易保留所有条款的最终解释权.
+                  */
+               </description>
+               <discount>0.49</discount>
+               <formula>((190.0+((bw-0.5)/0.5)*45.0)*0.49+ (0))*(1.0) + (4)</formula>
+               <freight>119.15</freight>
+               <freightFuel>0.0</freightFuel>
+               <tracking>Y</tracking>
+               <transportWayCName>广东EMS</transportWayCName>
+               <transportWayCode>GDEMS</transportWayCode>
+               <transportWayEName/>
+            </transportFee>
+            <transportFee>
+               <currency>CNY</currency>
+               <deliveryPeriod>3-8工作日</deliveryPeriod>
+               <description>
+                   /*温馨提示：
+                  1.深圳EMS到朝鲜(北韩)、哈萨克斯坦的邮件需要计泡,计泡公式为：泡重(kg)=长(cm)*宽(cm)*高(cm)/8000,计费重取实重材积重的大值;
+                  2.没有上网就丢失的按照申报价值赔偿并且退运费，但是最高不超过100USD。
+                  3.一旦发生交易，即表示贵司已详细阅读过我司的相关条款，同时充分理解各条款所表述的含义，并同意接受各条款的约束.互联易保留所有条款的最终解释权.
+                  */
+               </description>
+               <discount>0.49</discount>
+               <formula>((190.0+((bw-0.5)/0.5)*45.0)*0.49+ (0))*(1.0) + (4)</formula>
+               <freight>119.15</freight>
+               <freightFuel>0.0</freightFuel>
+               <tracking>Y</tracking>
+               <transportWayCName>深圳EMS</transportWayCName>
+               <transportWayCode>SZEMS</transportWayCode>
+               <transportWayEName/>
+            </transportFee>
+         </return>
+      </calculateChargeResponse>
+//查找订单
+	<lookupOrder>
+	  <userToken>8a3ddab172a74ad887be919a2aa41641</userToken>
+		<lookupOrderRequest>
+            <orderId></orderId>
+            <orderNo> RS150206300 </orderNo>
+            <trackingNo></trackingNo>
+		</lookupOrderRequest>
+	</lookupOrder>
+
+//查找订单响应
+	<lookupOrderResponse>
+		<return>
+            <order>
+               <transportWayCode>RSPOSTGH</transportWayCode>
+               <transportWayName>瑞士小包挂号</transportWayName >
+               <orderId>2009984734</orderId>
+               <orderNo>RS150206300</orderNo>
+               <trackingNo>RS150130329CH</trackingNo>
+               <hawbCode>RS150130888CH</hawbCode>
+               <cargoCode>W</cargoCode>
+               <insured>Y</insured>
+               <originCountryCode/>
+               <shipperAddress/>
+               <shipperCompanyName/>
+               <shipperMobile/>
+               <shipperName/>
+               <shipperPostcode/>
+               <shipperTelephone/>
+               <destinationCountryCode>PN</destinationCountryCode>
+               <consigneeCompanyName/>
+               <consigneeMobile/>
+               <consigneeName>Alice Xu</consigneeName>
+               <consigneePostcode>10001</consigneePostcode>
+               <consigneeTelephone/>
+               <street>Street Rose 666.</street >
+               <city>Ct</city >
+               <province>Pro</province >
+               <goodsCategory>G</goodsCategory>
+               <goodsDescription/>
+               <weight>0.0</weight>
+               <realWeight>1.0</realWeight>
+               <realVolWeight>0.0</realVolWeight>
+               <balanceWeight>1.0</balanceWeight>
+               <transportFee>110.0</transportFee>
+               <otherFee>0.0</otherFee>
+               <totalFee>110.0</totalFee>
+               <currency>CNY</currency>
+               <createTime>2015-02-1 09:40:47</createTime>
+               <auditTime>2015-02-1 11:36:22</auditTime>
+               <receiveTime>2015-02-1 11:42:51</receiveTime>
+               <shipTime></shipTime>
+               <status>LOCKED</status>
+               <statusDescription>您的账号余额不足</statusDescription>
+               <declareItems>
+                  <cnName>彩纸</cnName>
+                  <name>Paper</name>
+                  <netWeight>0.356</netWeight>
+                  <productMemo>红色彩纸</productMemo>
+                  <unitPrice>5.6</unitPrice>
+               </declareItems>
+            </order>
+            <success>true</success> 	  </return>
+  </lookupOrderResponse >
+
+</document>";
+
+
+//echo $content;exit;
+
+$url = 'http://api.goto56.com:8086/apic/services/order?wsdl';
+//echo $url;exit;
+$header= array("Content-type: text/xml");//定义content-type为xml
+$ch=curl_init();
+curl_setopt($ch, CURLOPT_URL, $url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $content);
+$response = curl_exec($ch);echo $response;exit;
+if(curl_errno($ch))
+{
+    print curl_error($ch);
+}
+curl_close($ch);
+
+?>
