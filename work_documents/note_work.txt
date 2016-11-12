@@ -1,0 +1,432 @@
+
+
+
+
+
+[Mon Oct 31 10:47:20 2016] [error] [client 10.169.101.133] File does not exist: /var/www/html/erp/http:, referer: http://120.24.100.157:72/admin/order/pick_manage/scan_list_mutil?pick_id=177025-1
+
+
+
+
+
+
+查询物流优先级
+SELECT `shipmentID` , shipmentTitle
+FROM erp_shipment
+WHERE shipmentID >0
+AND shipmentEnable =1
+AND shipment_warehouse_id =1000
+AND shipmentRate <10
+ORDER BY shipmentRate
+LIMIT 0 , 30
+
+
+
+ var cfg=
+	{
+			"_id" : 3,
+			"name" : "us.img.moonarstore.com:27017",
+			"health" : 0,
+			"state" : 8,
+			"stateStr" : "(not reachable/healthy)",
+			"uptime" : 0,
+			"optime" : Timestamp(0, 0),
+			"optimeDate" : ISODate("1970-01-01T00:00:00Z"),
+			"lastHeartbeat" : ISODate("2016-04-13T06:46:50.674Z"),
+			"lastHeartbeatRecv" : ISODate("2016-04-13T06:46:52.209Z"),
+			"configVersion" : -1
+		}
+
+ var cfg=
+	{
+			"_id" : 3,
+			"name" : "us.img.moonarstore.com:27017",
+			"health" : 0,
+			"state" : 8,
+			"stateStr" : "(not reachable/healthy)",
+			"uptime" : 0,
+			"optime" : Timestamp(0, 0),
+			"optimeDate" : ISODate("1970-01-01T00:00:00Z"),
+			"lastHeartbeat" : ISODate("2016-04-13T06:46:50.674Z"),
+			"lastHeartbeatRecv" : ISODate("2016-04-13T06:46:52.209Z"),
+			"configVersion" : -1
+		}
+
+
+
+
+
+
+
+
+
+
+
+ SELECT m.name FROM erp_manages m LEFT JOIN erp_suppliers s ON m.id=s.user_id WHERE suppliers_id='114 
+ select * from erp_products_data where productsIsActive = 1 and (products_father_sku = '' or products
+select sum(p.item_count) as co from erp_orders_products p 
+        left join erp_orders o using(erp
+
+
+
+
+
+
+
+
+/var/www/image-server/routes/upload-handler.js:115
+            if (!fields.sku || !fields.sku.length) {
+                       ^
+TypeError: Cannot read property 'sku' of undefined
+    at /var/www/image-server/routes/upload-handler.js:115:24
+    at /var/www/image-server/node_modules/multiparty/index.js:116:9
+    at /var/www/image-server/node_modules/multiparty/index.js:108:9
+    at process._tickCallback (node.js:442:13)
+
+
+
+
+//订单状态由6修改为5
+update erp_orders set orders_status=5 where erp_orders_id = 18322397;
+
+
+
+慢查询sql 解析总行数: 19405065:
+select o.* , p.* from erp_orders_products p left join erp_orders o on p.erp_orders_id = o.erp_orders_id where orders_is_join = :1 and orders_export_time >= :2 and orders_export_time < :3 and p.orders_sku = :4 and orders_type = :5 group by o.erp_orders_id order by orders_export_time desc limit :6 , :7
+
+解析总行数: 10410967
+select * from erp_orders where orders_is_join = :1 and orders_export_time < :2 and orders_is_backorder = :3 and orders_status != :4 and orders_type = :5 order by orders_export_time limit :6 , :7
+
+解析总行数: 427824
+select count ( * ) as geshu from erp_orders where orders_is_join = :1 and orders_export_time >= :2 and orders_export_time < :3 and orders_status = :4 and orders_type = :5
+
+	
+
+解析总行数: 6316748
+select count ( * ) as geshu from erp_orders where orders_is_join = :1 and buyer_country_code like :2 and orders_is_backorder = :3 and orders_type = :4
+
+
+解析总行数: 19382485
+select * from erp_orders where orders_is_join = :1 and sales_account = :2 and orders_status = :3 order by orders_export_time desc limit :4 , :5
+
+
+
+
+解析总行数: 802694
+select count ( * ) as geshu from erp_orders where orders_is_join = :1 and orders_status = :2 and shipmentautomatched > :3 and ( erp_orders_id in ( select * from ( select operatekey from erp_operate_log where operatetype = :4 ) as t ) ) and orders_type = :5
+
+
+解析总行数: 6316623
+select count ( * ) as geshu from erp_orders where orders_is_join = :1 and orders_export_time >= :2 and orders_export_time < :3 and orders_type = :4
+
+
+
+
+select o.erp_orders_id, op.orders_sku as sku,sum(op.item_count) as co 
+        from erp_orders as o,erp_orders_products as op
+        where o.orders_is_backorder = 1 and 
+        o.orders_is_join = 0 and 
+        o.orders_status <> 6 and 
+        o.erp_orders_id = op.erp_orders_id and 
+        op.orders_sku = 'MHM073'
+        group by op.erp_orders_id,op.orders_sku 
+
+
+
+SELECT * FROM erp_orders WHERE shipmentAutoMatched =345 AND orders_old_shipping_code = 'WDJT000535480' AND erp_orders_id >20076470
+
+SELECT products_sort,count(products_sku) as num from  erp_products_data  WHERE  products_father_sku = '' or products_father_sku is null GROUP BY products_sort
+
+
+
+
+ SELECT `erp_orders_id`  
+FROM erp_orders o USE INDEX(IDX_STATUS_JOIN_ORDERID)
+WHERE o.orders_status=3
+  AND o.orders_is_join = 0
+  AND o.orders_export_time >= (now() + interval -(62) DAY)
+ORDER BY `erp_orders_id` 
+LIMIT 1
+
+
+select * from erp_products_data a LEFT JOIN erp_suppliers b on FIND_IN_SET(b.suppliers_id, a.products_suppliers_ids)  where productsIsActive = 1 and b.user_id=565  and ( products_father_sku is NULL or products_father_sku ='' )   order by products_alert asc  LIMIT 0, 3
+
+
+
+
+
+
+
+常见问题：
+1.wish刊登图片不显示
+登录到服务器 198.11.183.226 重启mongod服务   service mongod restart
+
+
+问题已通过(2天以上不欠货)
+筛选条件为：已通过状态的订单，最近一次 有货时间超过2天 还没打印的订单 
+
+
+订单是否欠货逻辑：
+购买sku的数量是否 大于 (实际库存 减去 占用的库存), 如果是，就表示欠货； 
+其中，已经占用的库存数量包括 已录入状态 + 已通过状态 +已打印状态 
+其中，已通过状态占用的库存等于 该欠货订单之前(根据订单付款时间)的已通过(不管是否是缺货)订单占用的库存
+
+
+mongod (pid 2982) is running...
+mongod dead but subsys locked
+
+
+SELECT pp . *
+FROM erp_pick_product pp
+LEFT JOIN erp_pick p ON p.id = pp.pick_id
+WHERE p.create_time >=1458516776
+AND p.create_time <=1458527576
+
+
+发货数量统计:发货人为空修复
+update erp_pick_product set ship_uid=scan_uid , result=concat(result,'ship_uid from scan_id')  where scan_time>=1458576000 and scan_time<1458630600 and status=4 and isnull(ship_uid) and not isnull(scan_uid);
+
+采购单修改仓库为义乌仓
+update erp_procurement set procurement_warehouse_id=1025  where po_id=150440;
+
+
+访问这个撤单： http://erp.moonarstore.com/all_orders_manage_reVoke.php?oID=32505118
+
+ 
+添加一个wish账号
+INSERT INTO `wish_user_tokens` ( `account_name`, `wish_key`, `photo_url`, `publish_code`, `client_id`, `client_secret`, `code`, `grant_type`, `redirect_uri`, `access_token`, `refresh_token`, `expiry_time`, `status`, `account_code`, `sku_num`, `sku_type`, `choose_code`, `proxy_address`) VALUES('Lancefr',NULL,'Lancefr.info','[LAFR]','56dd3c0ae0a23416b446c3bf','0530705713ed46c7ad63f9d9d3d66157','823f9dae1aee4505b0ac8ce37fa715b9','authorization_code','https://120.24.100.157','80eec933991041cb8cc98539b222cf56','8089ef6df4504e7ba65f8b2eeae9af6f','1459957402','1','','3','1','L-LC-68','120.25.244.68');
+
+速卖通添加销售人员
+INSERT INTO `erp_smt_user_sale_code`( `user_id`,`sale_code`)VALUES (403, 'CX'); 
+
+出一份供应商的数据给我，要包含供应商“编号”、“供应商名称”、“采购”这三项内容
+SELECT s.suppliers_id as '供应商编号', s.suppliers_company as '供应商公司', s.suppliers_name as '供应商联系人', m.name as '采购负责人' FROM `erp_suppliers` s left join erp_manages m on s.user_id=m.id WHERE 1
+
+速卖通订单每个sku昨天的销量
+SELECT p.orders_sku,sum(p.item_count) FROM erp_orders_products p left join `erp_orders` o using(erp_orders_id) where o.orders_export_time>='2016-03-30' and o.orders_export_time <'2016-03-31' and orders_type =6 group by p.orders_sku
+
+find  /mnt/moonar/httpd -ctime +10 -name "*log*"  -exec rm -rf {} \;
+find /var/log/nginx/ -ctime +7 -name "*.gz"  -exec rm -rf {} \;
+/var/log/mongodb/mongod.log /root/sendMessage.log  周二删除一次
+rm -f  /var/log/slme/*.log
+rm -f /home/imgsync/imgsync.log
+rm -f /var/spool/postfix/maildrop/*
+
+
+
+
+
+------------------------------------------
+1.按文件名特征查找文件，然后删除
+find -name "*.txt"  -exec rm -rf {} \;
+
+2.将/usr/local/backups目录下所有10天前带"."的文件删除
+find /var/spool/postfix/maildrop/ -mtime +5 -name "*" -exec rm -rf {} \;
+find /mnt/moonar/httpd -mtime +5 -name "*" -exec rm -rf {} \;
+find /var/log/nginx -mtime +5 -name "*" -exec rm -rf {} \;
+find /var/log/nginx -mtime +5 -name "*.gz" -exec ls -lh  {} \;
+
+rm -f erp_access_log-* erp-error_log-* erp-uat-error_log-* hwc-error_log-* ssl_access_log-* ssl_error_log-* ssl_request_log-*
+------------------------------------------
+
+
+需要优化：
+
+
+使用国家代码查询订单
+ select * from erp_orders  where  orders_is_join = 0 and orders_warehouse_id = 1000 and orders_status = 3  and buyer_country_code like 'PR%' and orders_is_backorder = 0  and orders_total >= 10  order by orders_export_time desc limit 0,10
+
+
+
+
+
+
+
+
+
+
+旧sku库存,储位号导出
+SELECT a.old_sku as '旧sku',a.new_sku as '新sku', b.products_location as '旧sku储位号',c.actual_stock as '旧sku实际库存' FROM erp_old_sku_new_sku a 
+        left join erp_products_data b on a.old_sku=b.products_sku 
+        left join erp_stock_detail c on a.old_sku=c.products_sku  
+where c.actual_stock >0 and b.products_location  REGEXP  '[[:alpha:]][[:digit:]]{2}-[[:digit:]]{2}-[[:digit:]]{2}[[:>:]]'
+
+
+
+
+E:\htdocs\erp\gettotals.php 323 行
+sql:
+SELECT SUM(`p`.`item_count`)   AS `sum(p.item_count)`, `p`.`orders_sku` AS `orders_sku` 
+    			FROM ((`erp_orders_view` `o` 
+    			INNER JOIN `erp_orders_products` `p` ON ((`o`.`erp_orders_id` = `p`.`erp_orders_id`))) 
+    			INNER JOIN `erp_shipment` `c` ON ((`o`.`shipmentAutoMatched` = `c`.`shipmentID`))) 
+    			WHERE ((`c`.`shipmentScanLocal` = 1) AND orders_print_time >= '2016-02-09'
+    			AND (`o`.`orders_status` = 4)
+    			AND (`o`.`orders_type` <= 7 or `o`.`orders_type` = 11)) 
+    			GROUP BY `p`.`orders_sku` 
+UNION
+SELECT SUM(`p`.`item_count`)   AS `sum(p.item_count)`, `p`.`orders_sku` AS `orders_sku` 
+    			FROM ((`erp_orders_view` `o` 
+    			INNER JOIN `erp_orders_products` `p` ON ((`o`.`erp_orders_id` = `p`.`erp_orders_id`))) 
+    			INNER JOIN `erp_shipment` `c` ON ((`o`.`shipmentAutoMatched` = `c`.`shipmentID`))) 
+    			WHERE ((`c`.`shipmentScanLocal` = 1) AND orders_print_time >= '2016-02-09'
+    			AND (`o`.`orders_status` = 5)
+    			AND (`o`.`orders_type` <= 7 or `o`.`orders_type` = 11)) 
+    			GROUP BY `p`.`orders_sku` 
+
+
+
+
+
+
+
+
+
+
+zip -r v2-erp.zip ./ -x ./default/logs/\* ./attachments/\*
+rsync -ravt --progress --log-file=/home/imgsync/imgsync.log /mnt/moonar/html/erp/imgServer/upload/SMT/DA0110 imgsync@198.11.183.226:/mnt/data/html/imgurl/upload/wish
+
+
+-------------------
+批量杀死sql特征进程
+mysqladmin  --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSBSg2un processlist|awk -F "|" '{if($9 ~ /operateTime,products_status_2/) print $2}'|xargs -n 1 mysqladmin   --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSBSg2un  kill
+查找时间段内的文件删除
+find /mnt/moonar/html/erp/imgServer/upload/SMT/autoWish/ -name '*.jpg'  -newermt '2016-02-04 00:00:00' ! -newermt '2016-02-04 23:59:00' | xargs rm -f
+-----------------------
+磁盘空间满了删除目录下的文件
+/var/log/slme
+
+
+
+ CREATE TABLE `erp_orders_auto_canceled` (
+  `id` int(12) NOT NULL AUTO_INCREMENT,
+  `erp_orders_id` int(12) NOT NULL,
+  `orders_export_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `add_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8
+
+
+
+-------------
+orders_is_backorder 欠货订单：0表示不欠货，1表示欠货
+orders_ship_fee  运费
+orders_is_split=1， 订单拆分
+orders_is_join = 8   1.该订单是拆分订单的主订单 , 等于0表示普通订单
+isMixed    订单是否是混合订单（订单中sku类数大于1）
+orders_type 订单类型   1表示ebay订单
+orders_total   订单总金额
+ebayStatusIsMarked=1  速卖通或者ebay订单是否标记发货
+orders_shipping_code  订单追踪号
+cnz_code       自动生成跟踪号中的虚拟跟踪号  平邮查询网站挂号码
+case_result   订单添加case是否成功 参考 E:\htdocs\erp\addDisputeSingle.php 168行
+old_erp_orders_id  子订单信息中，拆分订单的主订单号
+orders_is_split     该订单是否是拆分出来的订单
+orders_warehouse_id  订单仓库id
+matching_warehouse_time 订单匹配仓库时间
+ShippingServiceSelected  客户选择的物流
+sales_account   销售账号
+
+----------------
+订单状态 
+1新录入 
+2不通过 
+3已通过 
+
+4.已打印 
+
+5已发货 
+
+6已撤单 
+7未付款 
+8已发货[FBA] 
+9预打印  
+
+仓库类型
+深圳仓 1000
+义乌仓 1025
+
+
+订单类型 
+1eBay 
+2B2C商城 
+3线下交易 
+4阿里巴巴 
+5补货 
+6速卖通 
+7AMZ订单 
+8FBA头程 
+9淘宝仓订单 
+10海外仓头程 
+11新蛋网订单 
+12德国共享仓 
+13wish 
+17 cD 
+
+
+----------
+
+DUKE.NS.CLOUDFLARE.COM
+ROXY.NS.CLOUDFLARE.COM
+
+
+
+1.空运运费预测值：为空，该值自动更新
+
+添加一个cd api账号
+insert `erp_cdiscount_token`(`sales_account`,`pw`,`token_id`,`responsible`,`currency_type`,`currency_type_cn`,`account`,`create_time`,`modify_time`,`expires_in`) values('sellmore-api','sellmore2016*','0',0,'EUR','欧元','sellmore','2016-02-01 10:18:16','2016-02-01 10:18:25',0);
+
+
+update erp_orders set orders_status=3,orders_shipping_code='' where  erp_orders_id IN ( 18696733, 18601237, 18411764, 18550026, 18696418, 18695737, 18283931, 18696515, 18696456, 18696716, 18696604, 18335147, 18321898, 18695597, 18695744, 18287995, 18672708, 18696628, 18695876, 18549768, 18696616, 18695762, 18696675, 18696709, 18696392, 18695826, 18408959, 18695669, 18696527, 18695617, 18522664, 18674782, 18695630, 18695496, 18569118, 18695698, 18618679, 18470872, 18695848, 18696499, 18516901, 18601277, 18695410, 18380055, 18696614, 18696492, 18587623, 18695586, 18695682, 18696454, 18696501, 18371364, 18376818, 18696674, 18695855, 18696668, 18695649, 18568870, 18637121, 18618467 )
+
+
+
+ALTER TABLE `erp_products_data` ADD `suggestPurchase` INT( 8 ) NOT NULL DEFAULT '0' COMMENT '建议采购量' AFTER `profitRate_15`;
+ALTER TABLE `erp_products_data` ADD `sold_30` INT( 8 ) NOT NULL DEFAULT '0' COMMENT '30天销量' AFTER `sold_60` ;
+ALTER TABLE `erp_products_data` ADD `sold_14` INT( 8 ) NOT NULL DEFAULT '0' COMMENT '14天销量' AFTER `sold_30` ;
+ALTER TABLE `erp_products_data` ADD `sold_7` INT( 8 ) NOT NULL DEFAULT '0' COMMENT '7天销量' AFTER `sold_14` ;
+
+
+
+
+
+
+采购建议值修改
+E:\htdocs\erp\src\getTotals.class.php   434行  建议采购值系数修改
+E:\htdocs\erp\src\getTotals.class.php   397 趋势系数修改
+E:\htdocs\erp\includes\function.php   1850行 7天销量sql优化
+
+E:\htdocs\erp\includes\function.php  1920 退款数量统计修改为按照sku数量
+E:\htdocs\erp\gettotals.php   707   30天的退款 修改为 统计60天的
+E:\htdocs\erp\src\getTotals.class.php   730行  sku最近30天订单的平均利润率
+
+
+
+
+查看拣货单中的已经打印的订单列表   也可以测试新空间打印
+http://v2.erp.moonarstore.com/admin/order/pick_manage/show_has_printed_list?pick_id=139693&warehouse=1000
+再次打印单个订单
+http://v2.erp.moonarstore.com/admin/print/order_print/orderPrint?id=19563682
+扫描拣货单
+http://v2.erp.moonarstore.com/admin/order/pick_manage2/scan_list?pick_id=139693
+拣货单中待扫描的sku
+http://v2.erp.moonarstore.com/admin/order/pick_manage/printPickOrder?status=1&pick_id=139693
+
+
+
+导出2015年的销售额
+
+SELECT orders_type ,SUM( round(orders_total/currency_value,3) ) as sales_total
+FROM  `erp_orders`
+USE  INDEX ( IDX_EXPORTTIME )
+WHERE orders_export_time >=  '2015-12-01'
+AND orders_export_time <  '2016-01-01'
+AND orders_status =5 
+group by  orders_type 
+
+
+
+
+
+
+
