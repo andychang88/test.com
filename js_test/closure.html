@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var z=11;
+    function makeAdder(x, y) {
+        var adder = function() {
+            return x + y + z;
+        };
+        return adder;
+    }
+
+    var f = makeAdder(2, 3);
+    var result = f();
+    console.log("Result is: " + result);
+</script>
+</body>
+</html>
