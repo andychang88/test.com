@@ -1,10 +1,14 @@
 
-
-
+112.74.130.227
+administrator
+Slme#!123
+终端连接密码 397918
 32751959
 32751762
 32717853
 32742034
+32751330
+32746506
 
 
 
@@ -79,9 +83,14 @@ explain select count(p.id) as num from erp_wish_product p left join erp_wish_pro
 
 https://my.bluehost.com/web-hosting/cplogin?lil=1
 
+
+
+https://portal.hostgator.com/login
 账单登陆信息
 fangzheng2010@gmail.com
 fzgh1985
+
+
 
 图片服务器moonarstore.com (SH-1083405)  Your Control Panel: https://gator3227.hostgator.com/cpanel
 Username:           moonar  密码：Av4g6gC9hOkm
@@ -329,7 +338,9 @@ mongodb 配置文件
 -----------------------
 mongodb相关
 1.88上面ssh登陆后，输入shell命令 mongo 进入mongodb,use admin进入数据库，使用下面的认证
-db.auth('root','s9mHt3PJ')   适用有深圳图片服务器和美国图片服务器
+use admin;
+db.auth('root','s9mHt3PJ');
+适用有深圳图片服务器和美国图片服务器
 
 2.上传图片界面  http://192.168.1.6:3000/view
 
