@@ -606,8 +606,12 @@ E:\htdocs\mongodbtest\getSkuImageInfo\
 --------------------------------------
 
 
+拣货单常用sql:
+select count(*) from erp_pick_product where pick_id='171445' and product_sku='HW1124A' limit 1;
 
 
+查看单个拣货单
+http://v2.erp.moonarstore.com/admin/order/pick_manage/printPickOrder?pick_id=171445
 
 查看拣货单中的已经打印的订单列表   也可以测试新空间打印
 http://v2.erp.moonarstore.com/admin/order/pick_manage/show_has_printed_list?pick_id=139693&warehouse=1000
