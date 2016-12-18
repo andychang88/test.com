@@ -18,6 +18,37 @@ IP：106.14.16.253
 
 
 ----------------钮门快递服务器
+
+	
+
+203.88.164.155
+
+紧急bug或任务开发;
+服务器维护;
+组员人员任务分配；
+需求确认整理；
+组员人员工作指导、培训；
+新技术研究；
+
+
+
+
+
+
+
+
+
+
+
+------------
+设置item在线数量
+E:\htdocs\erp\includes\exportOrders.class.php 1232行
+
+
+----------------
+How Linux Works
+http://www.cin.ufpe.br/~pjs/How_Linux_Works_(2004)%5BBrianWard%5D.pdf
+
 112.74.130.227
 administrator
 Slme#!123
@@ -339,9 +370,9 @@ admin
 slm345
 
 -----
-godaddy 
+
 30807658 
-Salamoer123
+Slm4455%%
 
 ----------
 wish代理服务器默认密码
@@ -594,8 +625,12 @@ E:\htdocs\mongodbtest\getSkuImageInfo\
 --------------------------------------
 
 
+拣货单常用sql:
+select count(*) from erp_pick_product where pick_id='171445' and product_sku='HW1124A' limit 1;
 
 
+查看单个拣货单
+http://v2.erp.moonarstore.com/admin/order/pick_manage/printPickOrder?pick_id=171445
 
 查看拣货单中的已经打印的订单列表   也可以测试新空间打印
 http://v2.erp.moonarstore.com/admin/order/pick_manage/show_has_printed_list?pick_id=139693&warehouse=1000

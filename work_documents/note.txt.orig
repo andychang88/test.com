@@ -1,0 +1,673 @@
+
+<<<<<<< HEAD
+------------华侨
+IP：106.14.16.253
+用户名：chen
+密码：6057a-`12Jiang=345+*
+端口：20000
+
+商城域名：mall.15ls.com
+商家域名：fx.15ls.com
+管理员域名：admin.15ls.com
+    用户名：fenxiaoadmin
+    密码：123456
+图片域名：img.15ls.com
+接口域名：api.15ls.com
+
+用户名：13997826149，
+登陆密码：8459737
+
+
+----------------钮门快递服务器
+=======
+
+	
+
+203.88.164.155
+
+紧急bug或任务开发;
+服务器维护;
+组员人员任务分配；
+需求确认整理；
+组员人员工作指导、培训；
+新技术研究；
+
+
+
+
+
+
+
+
+
+
+
+------------
+设置item在线数量
+E:\htdocs\erp\includes\exportOrders.class.php 1232行
+
+
+----------------
+How Linux Works
+http://www.cin.ufpe.br/~pjs/How_Linux_Works_(2004)%5BBrianWard%5D.pdf
+
+>>>>>>> 433e1488b7e5442eccaeb36c0d8a1705c6d305b6
+112.74.130.227
+administrator
+Slme#!123
+终端连接密码 397918
+
+
+
+32751959
+32751762
+32717853
+32742034
+32751330
+32746506
+
+
+
+
+
+
+
+
+
+
+Item Not Received (INR) and Return/SNAD (Significantly Not as Described) cases
+----------
+13544028207 
+建议采购值排除双11影响
+E:\htdocs\erp\src\getTotals.class.php   515
+E:\htdocs\erp\includes\function.php  2001
+
+
+待优化模块：
+E:\htdocs\erp\src\statisticsManage.class.php   170行
+E:\htdocs\v2.erp.moonarstore.com\default\models\smt_message\smt_msg_list_model.php     65行
+E:\htdocs\erp\all_orders_manage.php   845行
+
+
+-----------------导出汇总--
+速卖通单个账号昨日sku销量
+ SELECT p.orders_sku,sum(p.item_count) as number,o.orders_warehouse_id as warehouse_id 
+ FROM `erp_orders` as o  
+ left join erp_orders_products as p on o.`erp_orders_id`=p.`erp_orders_id` where o.orders_is_join=0 and orders_export_time>='2016-10-16' and orders_export_time<'2016-10-17' and sales_account='Coolcoola04@126.com' and o.orders_type=6 group by p.orders_sku
+ ----------------
+
+
+
+
+
+
+
+
+创建索引
+select * from erp_wish_import_data where account='yuffalyp@126.com' and   auditingTime = '2016-03-05 13:50:00' AND auditing_status =2 and is_upload=1 and (erp_main_image is null or erp_main_image='') limit 0,100
+
+SELECT *
+FROM (`erp_ebay_product`)
+WHERE `site` =  '0'
+AND `account_id` =  '45'
+AND `erp_sku` =  'HJ4020'
+AND `status` =  2
+LIMIT 1
+
+
+
+explain select count(p.id) as num from erp_wish_product p left join erp_wish_product_detail pd on p.productID=pd.productID  where p.id>0 and p.product_type_status =0 and p.productID !='' and pd.sellerID IN (2,331) and pd.sku like 'XZ%';
+
+
+
+---------------------------------------------------------------------------------------------------
+4392260806184170
+
+[方正]
+
+05/21
+
+[方正]
+
+056
+
+
+1.包裹中的sku的申报价值从哪里取;
+2.面单上收货人是  firstname + lastname ?
+3.保存跟踪号方法优化？
+
+
+https://my.bluehost.com/web-hosting/cplogin?lil=1
+
+
+
+https://portal.hostgator.com/login
+账单登陆信息
+fangzheng2010@gmail.com
+fzgh1985
+
+
+
+图片服务器moonarstore.com (SH-1083405)  Your Control Panel: https://gator3227.hostgator.com/cpanel
+Username:           moonar  密码：Av4g6gC9hOkm
+1st Nameserver:  ns6453.hostgator.com
+2nd Nameserver:  ns6454.hostgator.com
+Server IP Address:          192.254.233.229
+Mail/FTP Server: gator3227.hostgator.com
+
+Please note that your previously configured nameservers will continue to work:
+
+1st:  ns3655.hostgator.com
+2nd:  ns3656.hostgator.com
+---------------------------------------------------------------------------------------------------
+
+
+
+
+explain SELECT count( * ) AS num, sum( `wight` ) AS weight  FROM `erp_orders_recheck` r  FORCE INDEX ( IDX_STATUS_TYPE_EXPORTIME ) WHERE recheckTime > '2016-06-01 00:00:00' AND recheckTime <= '2016-07-01 00:00:00' GROUP BY shipping, `warehouse` 
+explain SELECT count( * ) AS num  FROM `erp_orders_recheck` r  WHERE recheckTime > '2016-06-01 00:00:00' AND recheckTime <= '2016-07-01 00:00:00' GROUP BY shipping, `warehouse` ;
+
+
+explain SELECT count( * ) AS num, sum( `wight` ) AS weight  
+FROM `erp_orders_recheck` r, erp_shipment s WHERE recheckTime > '2016-06-01 00:00:00' AND recheckTime <= '2016-07-01 00:00:00' AND r.`shipping` = s.shipmentID 
+GROUP BY shipping, `warehouse` ORDER BY shipmentCategoryID, `warehouse` , num DESC
+
+
+
+
+explain SELECT count( * ) AS num, sum( `wight` ) AS weight, recheckUser, shipping, `warehouse` 
+FROM `erp_orders_recheck` r, erp_shipment s WHERE recheckTime > '2016-06-01 00:00:00' AND recheckTime <= '2016-07-01 00:00:00' AND r.`shipping` = s.shipmentID 
+GROUP BY shipping, `warehouse` ORDER BY shipmentCategoryID, `warehouse` , num DESC
+
+
+
+
+
+
+
+
+
+
+
+user.email=andy@chang.com
+user.name=andy
+
+
+
+
+1.D:\phpStudy\WWW\local.kuaiyue.com\app\Models\Channel\AccountModel.php   
+修改方法 getApiConfigAttribute， 以及  $fillable属性
+
+
+D:\phpStudy\WWW\local.kuaiyue.com\app\Modules\Channel\ChannelModule.php
+添加use, 
+添加方法 public function createLazadaDriver($config)
+
+D:\phpStudy\WWW\local.kuaiyue.com\app\Modules\Channel\Adapter\LazadaAdapter.php
+创建该文件，修改其中的相应方法；
+
+
+D:\phpStudy\WWW\local.kuaiyue.com\app\Http\routes.php
+添加route访问
+
+
+
+D:\phpStudy\WWW\local.kuaiyue.com\config\channel.php    修改第14行
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/smtAccountSaleStatistics.php?year_form=2016&amp;month_from=5&amp;u
+/wishQuantityCheck.php?tokenID=&amp;productStatus=&amp;WishProductS
+
+
+POST /admin/export_data/export_order_data/deal_data HTTP/1.1
+
+1.产品管理
+	1.1 sku仓位、申报资料、采购人
+	1.2 sku和采购人没有对应？
+
+
+ 	深圳市龙岗区坂田五和南路41号和磡工业B区3栋4楼
+	深圳市龙华新区油松路146号梦丽园工业园6栋2楼
+
+在点击按钮完成拣货单的时候，如果拣货单中有sku不是发货状态，就会把该sku对应
+
+
+http://120.24.100.157:60/server-status?refresh=3
+120.24.252.226
+
+已经发货
+20762266
+
+
+跟踪进程
+strace -T -tt -e trace=all -p 29831 
+
+
+/usr/bin/php -f /root/slme_auto_cron/autoSellerShipmentNewThread.sh
+
+
+107287
+
+---------------------------
+采购单到货表
+erp_procurement_arrivel
+-----
+采购单表erp_procurement
+字段po_parent_id表示父采购单号
+-----
+采购单产品表
+erp_procurement_products
+--------
+erp_printing_template 面单模板表
+-----
+新旧sku对照表
+erp_old_sku_new_sku
+----------------------------------------
+
+-------svn----------------
+旧ERP：svn://120.24.100.157/erp
+新ERP：svn://120.24.100.157/slme
+海外仓：svn://120.24.100.157/hwc
+andy
+E8PLMp2P 
+---------------
+imo
+changandi@67331664
+slme99
+----------------------
+新老ERP：账号：changandi  密码：123456 
+
+旧erp:
+http://erp.moonarstore.com/My_erp_system.php
+new erp:
+http://v2.erp.moonarstore.com/My_erp_system.php
+
+海外仓
+http://120.24.100.157:71/index.php
+d91e618b1047fa02d569403f308fef21
+admin
+Slm8#234
+
+
+深圳仓扫货使用的地址
+http://120.24.100.157:72/index.php
+
+-----生产环境的测试环境------------
+120.24.100.157  v2-test.moonarstore.com
+
+http://v2-test.moonarstore.com:60  /var/www/html/v2-erp-uat
+http://120.24.100.157:60/My_erp_system.php   /var/www/html/erp-uat
+
+-----------------
+测试环境sql
+192.168.1.88
+slme
+salamoer
+--------------
+shell
+192.168.1.88
+andy
+slm1243
+
+
+----------------
+邮箱
+changandi@moonarstore.com
+Slme99
+------
+tower登录
+changandi@moonarstore.com
+chang@11
+-----------
+https://www.processon.com/apps/5680fa8fe4b055b8633305e0
+changandi@moonarstore.com
+chang123
+
+
+
+---------------
+bugzilla
+http://192.168.1.3/index.cgi
+管理员
+zhangyaoxing@moonarstore.com
+wrenpass1019
+
+changandi@moonarstore.com
+123456
+
+
+---------------------
+phpmyadmin
+changandi
+87LCXvj8
+
+-----------------
+生产环境ssh 访问端口 60
+120.24.100.157
+changandi
+8pKGWgcU
+/var/www/html/erp-uat
+
+---------------
+keepass db password
+slm14256
+th27q6Fd
+
+------------
+公司局域网
+http://192.168.1.1/
+admin
+slm345
+
+-----
+
+30807658 
+Slm4455%%
+
+----------
+wish代理服务器默认密码
+Slm123456
+
+---------------
+192.168.1.6
+root
+chang@11
+
+mongodb 配置文件
+/var/www/image-server/config/default.json
+
+打开这个文件可以看到图片上传系统 (http://192.168.1.6:3000) 的用户名和密码
+
+-----------------------
+mongodb相关
+1.88上面ssh登陆后，输入shell命令 mongo 进入mongodb,use admin进入数据库，使用下面的认证
+use admin;
+db.auth('root','s9mHt3PJ');
+适用有深圳图片服务器和美国图片服务器
+
+2.上传图片界面  http://192.168.1.6:3000/view
+
+M组使用图片服务器  http://120.24.100.157:3000/view 
+美国图片服务器
+http://imgurl.moonarstore.com/
+
+
+-----------------
+ service httpd restart
+ vi /etc/httpd/conf/httpd.conf
+
+---------------------
+一个深圳仓订单，部分sku缺货，也会拆单比如sku 73264421157573
+
+
+
+zip -r v2-erp.zip ./ -x ./default/logs/\* ./attachments/\*
+rsync -ravt --progress --log-file=/home/imgsync/imgsync.log /mnt/moonar/html/erp/imgServer/upload/SMT/DA0110 imgsync@198.11.183.226:/mnt/data/html/imgurl/upload/wish
+
+
+-------------------
+批量杀死sql特征进程
+mysqladmin  --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSBSg2un processlist|awk -F "|" '{if($9 ~ /operateTime,products_status_2/) print $2}'|xargs -n 1 mysqladmin   --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSBSg2un  kill
+
+
+mysql -N --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSBSg2un --database="information_schema" -e "SELECT ID FROM information_schema.PROCESSLIST where not isnull(INFO) and INFO not like '%information_schema.PROCESSLIST%' and INFO like '%erp_wish_product%' order by TIME desc" |xargs -n 1 mysqladmin   --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uslme -pCs5YPazbrPBNCtHE  kill;
+
+mysql -N --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uslme -pCs5YPazbrPBNCtHE --database erp_database_newest
+mysql -N --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -usalamoer -pmoonar__532087 --database erp_database_newest
+mysqladmin   --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -usalamoer -pmoonar__532087  kill 67304116;
+
+
+
+mysql  --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSBSg2un --database="information_schema" -e "SELECT ID FROM information_schema.PROCESSLIST where not isnull(INFO) and INFO not like '%information_schema.PROCESSLIST%' and INFO like '%sellertool_api_info%' order by TIME desc" ;
+
+
+
+
+
+
+显示mysql活动进程
+mysqladmin  --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSBSg2un processlist|awk -F "|" 'BEGIN{print "\n\n";}{if($6 !~ /Sleep/ && $3 ~ /[a-z]/) print $2, $3, $6, $7, $9, $10, $11}END{print "\n\n";}'
+mysqladmin  --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSBSg2un processlist|awk -F "|" 'BEGIN{print "\n\n";}{if($6 !~ /Sleep/ && $3 ~ /[a-z]/) print $2, $3, $6, $7, $9, $10, $11}END{print "\n\n";}'
+
+根据指定的关键字查询
+sql_key_words="from";mysql --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSBSg2un --database="information_schema" -e "SELECT * FROM information_schema.PROCESSLIST where not isnull(INFO) and INFO not like '%information_schema.PROCESSLIST%' and INFO like '%""$sql_key_words""%' order by TIME desc"
+
+mysqladmin  --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSBSg2un processlist|awk -F "|" '{if($9 ~ /operateTime,products_status_2/) print $2}'|xargs -n 1 mysqladmin   --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSBSg2un  kill
+
+mysqladmin  --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSBSg2un processlist|awk -F "|" 'BEGIN{print "\n\n";print "ID", "User","	Time","	Info","	Rows_sent","	Rows_examined";}{if($9 ~ /[\w]/) print $2, $3, $7, $9, $10, $11}'
+mysqladmin  --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSBSg2un processlist|awk -F "|" 'BEGIN{print "ID", "User","	Time","	Info","	Rows_sent","	Rows_examined";}'
+mysql  --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSBSg2un -e "show processlist"|awk -F "|" 'BEGIN{print "ID", "User","	Time","	Info","	Rows_sent","	Rows_examined";}{if($9 ~ /[\w]/) print $2, $3, $7, $9, $10, $11}'
+
+
+
+查找时间段内的文件删除
+find /mnt/moonar/html/erp/imgServer/upload/SMT/autoWish/ -name '*.jpg'  -newermt '2016-02-04 00:00:00' ! -newermt '2016-02-04 23:59:00' | xargs rm -f
+-----------------------
+磁盘空间满了删除目录下的文件
+/var/log/slme
+
+待删除的目录
+\erp\upload\question_img
+\erp\upload\product_attachme
+
+
+
+
+ CREATE TABLE `erp_orders_auto_canceled` (
+  `id` int(12) NOT NULL AUTO_INCREMENT,
+  `erp_orders_id` int(12) NOT NULL,
+  `orders_export_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `add_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8
+
+
+
+-------------
+orders_is_backorder 欠货订单：0表示不欠货，1表示欠货
+orders_ship_fee  运费
+orders_is_split=1， 订单拆分
+orders_is_join = 8   1.该订单是拆分订单的主订单 , 等于0表示普通订单
+isMixed    订单是否是混合订单（订单中sku类数大于1）
+orders_type 订单类型   1表示ebay订单
+orders_total   订单总金额
+ebayStatusIsMarked=1  速卖通或者ebay订单是否标记发货
+orders_shipping_code  订单追踪号
+cnz_code       自动生成跟踪号中的虚拟跟踪号  平邮查询网站挂号码
+case_result   订单添加case是否成功 参考 E:\htdocs\erp\addDisputeSingle.php 168行
+old_erp_orders_id  子订单信息中，拆分订单的主订单号
+orders_is_split     该订单是否是拆分出来的订单
+orders_warehouse_id  订单仓库id
+matching_warehouse_time 订单匹配仓库时间
+ShippingServiceSelected  客户选择的物流
+sales_account   销售账号
+orders_export_time 订单导入时间	
+orders_shipping_time 扫描发货的时间
+
+
+
+
+shipmentScanLocal 1-ERP扫描，2-海外仓扫描
+
+--------------erp_products_data
+products_status_2  销售状态 selling：在售，sellingWait 待售
+productsIsActive   产品停用
+
+
+----------------
+订单状态 
+1新录入 
+2不通过 
+3已通过 
+
+4.已打印 
+
+5已发货 
+
+6已撤单 
+7未付款 
+8已发货[FBA] 
+9预打印  
+
+仓库类型
+深圳仓 1000
+义乌仓 1025
+
+-------
+订单类型 
+1eBay 
+2B2C商城 
+3线下交易 
+4阿里巴巴 
+5补货 
+6速卖通 
+7AMZ订单 
+8FBA头程 
+9淘宝仓订单 
+10海外仓头程 
+11新蛋网订单 
+12德国共享仓 
+13wish 
+15 lazada
+17 cD 
+18 joom
+
+---------
+采购单状态(E:\htdocs\erp\includes\procurement.class.php 2400行)
+po_status
+所有状态 -1
+普通 0
+不通过 1
+待收货  5 或者  ($arrival_is_end == 0 && $status >= 2 && $status <> 6 && $status <> 11)
+已完成  $arrival_is_end == 1 && $status >= 2 && $mustFollowing == 0 && $has_new_arrival == 0
+已核销 6
+二次审核 11
+特采 14
+补货 15
+不良品 10
+0-新录入，1-不通过，2-已通过，3-已付款，4-已到货，5-已质检,6-退回,9-已完成
+
+采购单
+has_new_arrival 判断是否全部质检  0 全部质检了；1 还有没质检的。
+mustFollowing  有次品，需要跟踪
+
+----------
+
+DUKE.NS.CLOUDFLARE.COM
+ROXY.NS.CLOUDFLARE.COM
+
+
+
+1.空运运费预测值：为空，该值自动更新
+
+添加一个cd api账号
+insert `erp_cdiscount_token`(`sales_account`,`pw`,`token_id`,`responsible`,`currency_type`,`currency_type_cn`,`account`,`create_time`,`modify_time`,`expires_in`) values('sellmore-api','sellmore2016*','0',0,'EUR','欧元','sellmore','2016-02-01 10:18:16','2016-02-01 10:18:25',0);
+
+
+update erp_orders set orders_status=3,orders_shipping_code='' where  erp_orders_id IN ( 18696733, 18601237, 18411764, 18550026, 18696418, 18695737, 18283931, 18696515, 18696456, 18696716, 18696604, 18335147, 18321898, 18695597, 18695744, 18287995, 18672708, 18696628, 18695876, 18549768, 18696616, 18695762, 18696675, 18696709, 18696392, 18695826, 18408959, 18695669, 18696527, 18695617, 18522664, 18674782, 18695630, 18695496, 18569118, 18695698, 18618679, 18470872, 18695848, 18696499, 18516901, 18601277, 18695410, 18380055, 18696614, 18696492, 18587623, 18695586, 18695682, 18696454, 18696501, 18371364, 18376818, 18696674, 18695855, 18696668, 18695649, 18568870, 18637121, 18618467 )
+
+
+
+ALTER TABLE `erp_products_data` ADD `suggestPurchase` INT( 8 ) NOT NULL DEFAULT '0' COMMENT '建议采购量' AFTER `profitRate_15`;
+ALTER TABLE `erp_products_data` ADD `sold_30` INT( 8 ) NOT NULL DEFAULT '0' COMMENT '30天销量' AFTER `sold_60` ;
+ALTER TABLE `erp_products_data` ADD `sold_14` INT( 8 ) NOT NULL DEFAULT '0' COMMENT '14天销量' AFTER `sold_30` ;
+ALTER TABLE `erp_products_data` ADD `sold_7` INT( 8 ) NOT NULL DEFAULT '0' COMMENT '7天销量' AFTER `sold_14` ;
+
+
+
+
+
+
+采购建议值修改
+E:\htdocs\erp\src\getTotals.class.php   434行  建议采购值系数修改
+E:\htdocs\erp\src\getTotals.class.php   397 趋势系数修改
+E:\htdocs\erp\includes\function.php   1850行 7天销量sql优化
+
+E:\htdocs\erp\includes\function.php  1920 退款数量统计修改为按照sku数量
+E:\htdocs\erp\gettotals.php   707   30天的退款 修改为 统计60天的
+E:\htdocs\erp\src\getTotals.class.php   730行  sku最近30天订单的平均利润率
+
+
+--------------------------------------图片服务器
+根据sku显示其全部图片信息
+http://192.168.1.6:3007/getSkuImageInfo/getSkuImageInfo.php?distinct=true&include_sub=true&sku=HW3184
+http://erp.moonarstore.com/getSkuImageInfo/getSkuImageInfo.php?distinct=true&include_sub=true&sku=HW3184
+
+返回格式：
+[{"_id":{"$id":"5711b07c32cbabf4bfd5f752"},"fileId":{"$id":"5711b07c3bc22d13579477da"},"filename":"SS4301-5711b07c3bc22d13579477da.jpg","tags":["link","color"],"lastUpdated":{"sec":1460777084,"usec":211000}},{"_id":{"$id":"5711b07c32cbabf4bfd5f753"},"fileId":{"$id":"5711b07c3bc22d13579477db"},"filename":"SS4301-5711b07c3bc22d13579477db.jpg","tags":["link","logo"],"lastUpdated":{"sec":1460777084,"usec":211000}},{"_id":{"$id":"5711b07c32cbabf4bfd5f754"},"fileId":{"$id":"5711b07c3bc22d13579477dc"},"filename":"SS4301-5711b07c3bc22d13579477dc.jpg","tags":["link","logo"],"lastUpdated":{"sec":1460777084,"usec":212000}},{"_id":{"$id":"5711b08a32cbabf4bfd5f755"},"fileId":{"$id":"5711b08a3bc22d13579477f2"},"filename":"SS4301A-5711b08a3bc22d13579477f2.jpg","tags":["link","shape","front"],"lastUpdated":{"sec":1460777098,"usec":880000}},{"_id":{"$id":"5711b08a32cbabf4bfd5f756"},"fileId":{"$id":"5711b08a3bc22d13579477f3"},"filename":"SS4301A-5711b08a3bc22d13579477f3.jpg","tags":["link","shape"],"lastUpdated":{"sec":1460777098,"usec":881000}},{"_id":{"$id":"5711b09732cbabf4bfd5f757"},"fileId":{"$id":"5711b0973bc22d1357947805"},"filename":"SS4301B-5711b0973bc22d1357947805.jpg","tags":["link","shape","front"],"lastUpdated":{"sec":1460777111,"usec":612000}},{"_id":{"$id":"5711b09732cbabf4bfd5f758"},"fileId":{"$id":"5711b0973bc22d1357947806"},"filename":"SS4301B-5711b0973bc22d1357947806.jpg","tags":["link","shape"],"lastUpdated":{"sec":1460777111,"usec":614000}},{"_id":{"$id":"5711b09732cbabf4bfd5f759"},"fileId":{"$id":"5711b0973bc22d1357947807"},"filename":"SS4301B-5711b0973bc22d1357947807.jpg","tags":["link","shape"],"lastUpdated":{"sec":1460777111,"usec":618000}}]
+
+根据sku的id显示图片
+不需要rewrite http://192.168.1.6:3007/getSkuImageInfo/getSkuImage.php?id=570b37f5ff9666441d7fcf6f   或者
+不需要rewrite http://120.24.100.157:70/getSkuImageInfo/getSkuImage.php?id=SS4301-5711b07c3bc22d13579477da.jpg
+需要rewrite http://192.168.1.6:3007/getSkuImageInfo/sku/SS4301-5711b07c3bc22d13579477da   或者
+需要rewrite http://192.168.1.6:3007/getSkuImageInfo/sku/5711b07c3bc22d13579477da   或者
+
+
+
+本地路径
+E:\htdocs\mongodbtest\getSkuImageInfo\
+15服务器路径
+/var/www/html/getSkuImageInfo/
+国内阿里云路径
+/mnt/moonar/html/erp/getSkuImageInfo/
+美国阿里云路径
+/mnt/data/html/imgurl/getSkuImageInfo
+--------------------------------------
+
+
+拣货单常用sql:
+select count(*) from erp_pick_product where pick_id='171445' and product_sku='HW1124A' limit 1;
+
+
+查看单个拣货单
+http://v2.erp.moonarstore.com/admin/order/pick_manage/printPickOrder?pick_id=171445
+
+查看拣货单中的已经打印的订单列表   也可以测试新空间打印
+http://v2.erp.moonarstore.com/admin/order/pick_manage/show_has_printed_list?pick_id=139693&warehouse=1000
+再次打印单个订单
+http://v2.erp.moonarstore.com/admin/print/order_print/orderPrint?id=19563682
+扫描拣货单中的sku开始发货
+http://v2.erp.moonarstore.com/admin/order/pick_manage2/scan_list?pick_id=139693
+拣货单中待扫描的sku
+http://v2.erp.moonarstore.com/admin/order/pick_manage/printPickOrder?status=1&pick_id=139693
+
+扫描测试地址：
+http://v2.erp.moonarstore.com/admin/order/pick_manage_monitor/scan_list?pick_id=165062
+
+
+页面逻辑
+E:\htdocs\v2.erp.moonarstore.com\default\controllers\admin\order\pick_manage.php
+scan_list   扫描sku
+endPicking  结束本次拣货单扫描
+
+
+
+
+19559475  
+19562046
+19571501
+19559911
+19562061
+
+
+19578389
+
+
+
+
+
+
+
