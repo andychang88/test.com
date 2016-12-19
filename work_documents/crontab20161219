@@ -1,0 +1,1667 @@
+#AUTO PICK_COMPLETE
+#0 0 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_pick_complete
+
+#eleven active
+*/5 * * * * /usr/bin/php -f /var/www/html/erp/auto_orders_enter.php pageSize=1200
+*/5 * * * * /usr/bin/php -f /var/www/html/erp/auto_orders_enter.php page=2 pageSize=1200
+*/5 * * * * /usr/bin/php -f /var/www/html/erp/auto_orders_enter.php page=3 pageSize=1200
+*/5 * * * * /usr/bin/php -f /var/www/html/erp/auto_orders_enter.php page=4 pageSize=1200
+*/5 * * * * /usr/bin/php -f /var/www/html/erp/auto_orders_enter.php page=5 pageSize=1200
+
+#DOMAIN
+#*/2 * * * * /usr/local/bin/pipclient -w /mnt/pipclient
+#*/10 * * * * killall pipclient > /dev/null 2>&1
+#10 */1 * * * find /mnt/pipclient -name "*.log" -exec rm -f {} +
+#*/9 * * * * killall sendmail > /dev/null 2>&1
+#55 05 * * 0 /sbin/reboot
+
+#DELETE LOG FILE
+33 12 * * 3 find /data/ApiCallLog -name "*.xml" -mtime +20 -exec rm -f {} +
+22 12 * * * find /data/autodate -name "*.txt" -mtime +2 -exec rm -f {} +
+
+45 20 * * * /bin/kill -s 9 `ps aux | grep [a]mz | awk '{print $2}'`
+
+#RESTART SERVICE
+10 06 * * * /sbin/service httpd restart
+
+03 03 * * * /usr/bin/php -f /var/www/html/erp/update_order_status.php
+
+#*/2 * * * * /usr/bin/php -f /var/www/html/erp/auto_orders_new_old_sku.php action=old
+*/4 * * * * /usr/bin/php -f /var/www/html/erp/orders_setting.php action=auto_orders_export_service
+*/11 * * * * /usr/bin/php -f /var/www/html/erp/orders_setting.php action=auto_mark_orders
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/priceCheck.php action=autoExportItem
+*/3 * * * * /usr/bin/php -f /var/www/html/erp/disputeManage.php action=autoAddDispute
+
+
+#backorder
+07 0 * * * /usr/bin/php -f /var/www/html/erp/backorder.php page=7
+06 0 * * * /usr/bin/php -f /var/www/html/erp/backorder.php page=6
+06 0 * * * /usr/bin/php -f /var/www/html/erp/backorder.php page=5
+06 0 * * * /usr/bin/php -f /var/www/html/erp/backorder.php page=4
+05 0 * * * /usr/bin/php -f /var/www/html/erp/backorder.php page=3
+05 0 * * * /usr/bin/php -f /var/www/html/erp/backorder.php page=2
+05 0 * * * /usr/bin/php -f /var/www/html/erp/backorder.php page=1
+
+#09 12,14,16,18 * * * /usr/bin/php -f /var/www/html/erp/backorderByArrivalSku.php >>/var/log/slme/backorderByArrivalSku.log
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/backorderByArrivalSku.php >>/var/log/slme/backorderByArrivalSku.log
+
+#wedo
+30 * * * * /usr/bin/php -f /var/www/html/erp/auto_wedo_shipment.php page=1
+12 10 * * * /usr/bin/php -f /var/www/html/erp/procurement_count.php method=get_e_i_15
+
+#product_num
+0 5 * * * /usr/bin/php -f /var/www/html/erp/auto_ProductSort_Count.php
+
+#blacklist
+0 3 * * 0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_orders_blacklist
+0 6 * * 0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_blacklist_refresh
+0 2 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_may_blacklist
+
+#Picker
+0 */2 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_pick_count
+0 */2 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_pick_count pick_error_month
+20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_pick_count today_num
+0 2 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_pick_count Late_last_month_picking
+0 2 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_pick_count Late_last_month_errpick
+
+#unpaid case
+*/13 * * * * /usr/bin/php -f /var/www/html/erp/addDisputeSingle.php caseType=auto_unpaid
+
+#special_management
+0 1 * * * /usr/bin/php -f /var/www/html/erp/procurement_special_management.php
+
+#send message
+0 6 * * * /usr/bin/php -f /var/www/html/erp/send_message_blacklistinfo.php
+
+#update products unreal
+50 4 1 * * /usr/bin/php -f /var/www/html/erp/cron.php act=save_record
+50 3 1 * * /usr/bin/php -f /var/www/html/erp/productBargainRecord.php act=save_record
+
+*/5 * * * * /usr/bin/php -f /var/www/html/erp/priceCheck.php action=autoExportItemDetail
+*/13 * * * * /usr/bin/php -f /var/www/html/erp/priceCheck.php action=autoExportItemDetailDesc200
+*/6 * * * * /usr/bin/php -f /var/www/html/erp/priceCheck.php action=autoExportItemDetailDesc500
+*/9 * * * * /usr/bin/php -f /var/www/html/erp/priceCheck.php action=autoExportItemDetailDesc800
+*/7 * * * * /usr/bin/php -f /var/www/html/erp/priceCheck.php action=autoExportItemDetailDesc900
+*/1 * * * * /usr/bin/php -f /var/www/html/erp/autoExportMessageContentRun.php action=autoExportMessageContent
+*/5 * * * * /usr/bin/php -f /var/www/html/erp/autoExportMessageRun.php action=autoExportMessage
+#25 */6 * * * /usr/bin/php -f /var/www/html/erp/update_storage_on_shipping_for_ajax.php action=run
+*/4 * * * * /usr/bin/php -f /var/www/html/erp/autoMarkMessageLang.php
+*/2 * * * * /usr/bin/php -f /var/www/html/erp/autoCalculateBargainStep.php
+*/13 * * * * /usr/bin/php -f /var/www/html/erp/calc/refresh_alert.php
+05 01 * * * /usr/bin/php -f /var/www/html/erp/calc/tasks_query.php
+14 */2 * * * /usr/bin/php -f /var/www/html/erp/autoGetFeedbackRun.php
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/autoMatchOrdersPaypal.php
+15 6 * * 1 /usr/bin/php -f /var/www/html/erp/autoSkuForSaler.php
+20 6 * * * /usr/bin/php -f /var/www/html/erp/autoSkuSalesIncreased.php
+25 06 * * * /usr/bin/php -f /var/www/html/erp/autoSkuStorageUnrealZero.php
+40 06 * * * /usr/bin/php -f /var/www/html/erp/autoSendSkuIsStopedAndNum.php
+##55 08 * * * /usr/bin/php -f /var/www/html/erp/autoSendSkuIsBackOrder.php
+50 06 * * 1 /usr/bin/php -f /var/www/html/erp/autoSendNewProductSales.php
+#0 17,19,21,23 * * * /usr/bin/php -f /var/www/html/erp/autoSendMailToBuyer.php
+#57 06 * * * /usr/bin/php -f /var/www/html/erp/autoSendMailForEbayMail.php
+
+#SpeSkuSendMail
+18 23 * * * /usr/bin/php -f /var/www/html/erp/autoSendSkuArrivalMail.php action=tecai
+22 23 * * * /usr/bin/php -f /var/www/html/erp/autoSendSkuArrivalMail.php action=jiya
+
+#task
+#45 05 * * * /bin/kill -s 9 `ps aux | grep [c]url | awk '{print $2}'`
+*/5 * * * * /usr/bin/php -f /var/www/html/erp/curl/startTask.php
+*/5 * * * * /usr/bin/php -f /var/www/html/erp/curl/startCycleTask.php
+*/10 * * * * /usr/bin/python /data/ebayspider/ebayspider.py
+
+
+#AMZ
+19 01 * * * /usr/bin/php -f /var/www/html/erp/amzupdate.php
+*/2 * * * * /usr/bin/php -f /var/www/html/erp/amzListOrders.php >>/var/log/slme/amzListOrders.log
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/amzListOrdersTest.php >> /var/log/slme/amzListOrdersTest.log
+#15 */3 * * * /usr/bin/php -f /var/www/html/erp/amzListOrdersTest.php FulfillmentChannel=AFN > /var/log/slme/amzListOrdersTest-AFN.log
+*/2 * * * * /usr/bin/php -f /var/www/html/erp/amzListOrderItems.php
+#13 * * * * /usr/bin/php -f /var/www/html/erp/amzSubmitFeed.php
+#40 17 * * * /usr/bin/php -f /var/www/html/erp/amzSubmitFeed.php
+#*/30 * * * * /usr/bin/php -f /var/www/html/erp/amzSubmitFeed.php action=update
+13 * * * * /usr/bin/php -f /var/www/html/erp/amzSubmitFeedNew.php >>/var/log/slme/amzSubmitFeedNew.log
+33 */4 * * * /usr/bin/php -f /var/www/html/erp/amzSubmitFeedNewForSentOrders.php
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/autoCheckAmzOrderStatus.php
+#* * * * * /usr/bin/php -f /var/www/html/erp/amzSubmitFeed_twoDay.php
+#*/10 * * * * /usr/bin/php -f /var/www/html/erp/amzSubmitFeed_twoDay_update.php
+#0 09,12,15,18,21 * * * /usr/bin/php -f /var/www/html/erp/amzListInventorySupply.php
+45 06,12,15 * * * /usr/bin/php -f /var/www/html/erp/autoGetAmzFBAStock.php
+0 20 * * * /usr/bin/php -f /var/www/html/erp/autoGetAmzFBASellerSKU.php
+*/10 08-20 * * * /usr/bin/php -f /var/www/html/erp/autoRequestOnlineItemsDetail.php
+*/10 08-20 * * * /usr/bin/php -f /var/www/html/erp/autoGetOnlineItemsDetailReportList.php
+*/10 08-20 * * * /usr/bin/php -f /var/www/html/erp/autoGetOnlineItemsDetailReport.php
+
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/amzstockchange.php act=updatestock
+
+#SMT ....
+
+#....
+04 06,15,18,22 * * * /root/slme_auto_cron/exportSmtOrders.sh >> /var/log/slme/exportSmtOrders.log
+08 07,15,19,23 * * * /root/slme_auto_cron/exportSmtOrders_big.sh >> /var/log/slme/exportSmtOrders.log
+
+08 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=93
+08 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=94
+08 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=95
+08 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=96
+08 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=97
+20 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=98
+20 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=99
+20 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=100
+20 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=101
+20 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=102
+20 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=103
+20 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=104
+30 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=105
+30 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=106
+30 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=107
+30 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=108
+30 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=109
+30 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=110
+40 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=111
+40 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=112
+40 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=113
+40 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=114
+40 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=115
+40 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=116
+40 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=117
+40 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=118
+40 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=119
+40 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=120
+40 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=121
+40 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=122
+40 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=123
+40 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=124
+50 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=125
+50 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=126
+50 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=127
+52 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=128
+52 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=129
+52 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=130
+52 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=131
+52 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=132
+52 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=133
+52 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=134
+55 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=135
+55 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=136
+55 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=137
+55 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=138
+55 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=139
+55 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=140
+55 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=141
+55 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=142
+55 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=143
+55 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=144
+55 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=145
+55 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=146
+55 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=147
+55 07,15,19,23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtOrders.php  token=148
+
+
+
+20 */2 * * * /usr/bin/php -f /root/slme_auto_cron/autoSellerShipmentNewThread.sh
+
+02 */3 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSellerShipmentNewThread.php page=1
+02 */3 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSellerShipmentNewThread.php page=2
+02 */3 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSellerShipmentNewThread.php page=3
+02 */3 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSellerShipmentNewThread.php page=4
+02 */3 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSellerShipmentNewThread.php page=5
+02 */3 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSellerShipmentNewThread.php page=6
+02 */3 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSellerShipmentNewThread.php page=7
+#0 02 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuByCountry.php
+0 01 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSellerShipmentKillOrder.php
+
+#SMT ISSUE ORDER
+#30 06 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtIssueOrders.php
+50 06,15 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoCloseSmtIssueOrders.php
+
+#..
+06 03 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoFitterSellerShipMent.php >> /var/log/slme/autoFitterSellerShipMent.log
+#20 04 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoFitterSellerShipMentLess.php >> /var/log/slme/autoFitterSellerShipMentLess.log
+15 08 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSellerShipmentNew.php >> /var/log/slme/autoSellerShipmentNew.log
+07 21 * * * /usr/bin/php -f /var/www/html/erp/auto_set_refunded.php
+
+#....
+10 22 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSellerSmtShipMent.php
+
+10 18,20 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoEvaluateSmtOrder.php
+#0,15,30,45 * * * * /usr/bin/php -f /var/www/html/erp/autoSendMailToSMTBuyer.php
+#01 12 24 12 * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php type=1
+#01 13 24 12 * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php type=2
+#01 14 24 12 * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php type=3
+#01 15 24 12 * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php type=4
+#01 16 24 12 * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php type=5
+#01 23 24 12 * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php type=100
+#10 */2 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockZero.php page=6
+
+05 02 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockZero.php
+05 02 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockZero.php page=2
+05 02 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockZero.php page=3
+05 02 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockZero.php page=4
+05 02 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockZero.php page=5
+05 02 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockZero.php page=6
+
+
+05 01 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockZerobak.php page=9
+05 01 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockZerobak.php page=8
+05 01 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockZerobak.php page=7
+05 01 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockZerobak.php page=6
+05 01 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockZerobak.php page=5
+05 01 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockZerobak.php page=4
+05 01 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockZerobak.php page=3
+05 01 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockZerobak.php page=2
+05 01 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockZerobak.php
+
+#35 */2 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockZerobak.php page=2  token_id=1
+#50 */2 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockZerobak.php token_id=1
+
+#09 1 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockUp.php page=7
+#09 1 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockUp.php page=6
+#09 1 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockUp.php page=5
+#09 1 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockUp.php page=4
+#09 1 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockUp.php page=3
+#09 1 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockUp.php page=2
+#09 1 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSkuStockUp.php
+
+#.......
+55 03 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoMarkShipmentByDate.php
+
+#.....
+#48 06,15 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportMessage.php
+
+# auto message after shipping
+0 22 * * * /usr/bin/php -f /var/www/html/erp/autoSaveShipingMessageOrder.php
+0 23 * * * /usr/bin/php -f /var/www/html/erp/automaticMessageAfterShipments.php pageSize=2000 page=18
+0 23 * * * /usr/bin/php -f /var/www/html/erp/automaticMessageAfterShipments.php pageSize=2000 page=19
+0 23 * * * /usr/bin/php -f /var/www/html/erp/automaticMessageAfterShipments.php pageSize=2000 page=20
+0 23 * * * /usr/bin/php -f /var/www/html/erp/automaticMessageAfterShipments.php pageSize=2000 page=21
+0 23 * * * /usr/bin/php -f /var/www/html/erp/automaticMessageAfterShipments.php pageSize=2000 page=22
+0 23 * * * /usr/bin/php -f /var/www/html/erp/automaticMessageAfterShipments.php pageSize=2000 page=23
+0 23 * * * /usr/bin/php -f /var/www/html/erp/automaticMessageAfterShipments.php pageSize=2000 page=24
+0 23 * * * /usr/bin/php -f /var/www/html/erp/automaticMessageAfterShipments.php pageSize=2000 page=25
+0 23 * * * /usr/bin/php -f /var/www/html/erp/automaticMessageAfterShipments.php pageSize=2000 page=26
+0 23 * * * /usr/bin/php -f /var/www/html/erp/automaticMessageAfterShipments.php pageSize=2000 page=27
+0 23 * * * /usr/bin/php -f /var/www/html/erp/automaticMessageAfterShipments.php pageSize=2000 page=28
+0 23 * * * /usr/bin/php -f /var/www/html/erp/automaticMessageAfterShipments.php pageSize=2000 page=29
+0 23 * * * /usr/bin/php -f /var/www/html/erp/automaticMessageAfterShipments.php pageSize=2000 page=30
+
+#smt on line shipping
+0,20,40 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_smt_online.php
+#0,20,40 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_smt_online.php warehouse=1025 shipping_id=369
+10,30,50 * * * * /usr/bin/php -f /var/www/html/erp/auto_get_trackno_for_smt_online.php
+#10,30,50 * * * * /usr/bin/php -f /var/www/html/erp/auto_get_trackno_for_smt_online.php warehouse=1025 shipping_id=369
+#0,20,40 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_smt_online.php warehouse=1000 shipping_id=379
+#10,30,50 * * * * /usr/bin/php -f /var/www/html/erp/auto_get_trackno_for_smt_online.php warehouse=1000 shipping_id=379
+
+#0,20,40 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_smt_online.php warehouse=1000 shipping_id=517
+#10,30,50 * * * * /usr/bin/php -f /var/www/html/erp/auto_get_trackno_for_smt_online.php warehouse=1000 shipping_id=517
+#0,20,40 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_smt_online.php warehouse=1025 shipping_id=518
+#10,30,50 * * * * /usr/bin/php -f /var/www/html/erp/auto_get_trackno_for_smt_online.php warehouse=1025 shipping_id=518
+
+#SMT ....
+
+
+
+#updateEbayOnlineQuantity
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoSetHwcItemQuantity.php
+#*/18 * * * * /usr/bin/php -f /var/www/html/erp/autoSetItemQuantityZero.php
+18 7,15,19 * * * /usr/bin/php -f /var/www/html/erp/autoSetItemQuantityZero-test.php page=1
+18 7,15,19 * * * /usr/bin/php -f /var/www/html/erp/autoSetItemQuantityZero-test.php page=2
+18 7,15,19 * * * /usr/bin/php -f /var/www/html/erp/autoSetItemQuantityZero-test.php page=3
+25 7,15,19 * * * /usr/bin/php -f /var/www/html/erp/autoSetItemQuantityZero-test.php page=4
+25 7,15,19 * * * /usr/bin/php -f /var/www/html/erp/autoSetItemQuantityZero-test.php page=5
+25 7,15,19 * * * /usr/bin/php -f /var/www/html/erp/autoSetItemQuantityZero-test.php page=6
+25 7,15,19 * * * /usr/bin/php -f /var/www/html/erp/autoSetItemQuantityZero-test.php page=7
+30 7,15,19 * * * /usr/bin/php -f /var/www/html/erp/autoSetItemQuantityZero-test.php page=8
+30 7,15,19 * * * /usr/bin/php -f /var/www/html/erp/autoSetItemQuantityZero-test.php page=9
+30 7,15,19 * * * /usr/bin/php -f /var/www/html/erp/autoSetItemQuantityZero-test.php page=10
+
+35 22 * * * /usr/bin/php -f /var/www/html/erp/autoExcuteBargainRecord.php
+*/9 * * * * /usr/bin/php -f /var/www/html/erp/autoMarkFeedbackFORorders.php
+
+#autoSetLocalItemQuantityZero
+36 07,12,18,23 * * * /usr/bin/php -f /var/www/html/erp/autoSetLocalItemQuantityZero.php page=10 >>/var/www/html/erp/logs/autoSetLocalItemQuantityZero10.log
+36 07,12,18,23 * * * /usr/bin/php -f /var/www/html/erp/autoSetLocalItemQuantityZero.php page=9 >>/var/www/html/erp/logs/autoSetLocalItemQuantityZero9.log
+36 07,12,18,23 * * * /usr/bin/php -f /var/www/html/erp/autoSetLocalItemQuantityZero.php page=8 >>/var/www/html/erp/logs/autoSetLocalItemQuantityZero8.log
+36 07,12,18,23 * * * /usr/bin/php -f /var/www/html/erp/autoSetLocalItemQuantityZero.php page=7 >>/var/www/html/erp/logs/autoSetLocalItemQuantityZero7.log
+36 07,12,18,23 * * * /usr/bin/php -f /var/www/html/erp/autoSetLocalItemQuantityZero.php page=6 >>/var/www/html/erp/logs/autoSetLocalItemQuantityZero6.log
+36 07,12,18,23 * * * /usr/bin/php -f /var/www/html/erp/autoSetLocalItemQuantityZero.php page=5 >>/var/www/html/erp/logs/autoSetLocalItemQuantityZero5.log
+36 07,12,18,23 * * * /usr/bin/php -f /var/www/html/erp/autoSetLocalItemQuantityZero.php page=4 >>/var/www/html/erp/logs/autoSetLocalItemQuantityZero4.log
+25 07,12,18,23 * * * /usr/bin/php -f /var/www/html/erp/autoSetLocalItemQuantityZero.php page=3 >>/var/www/html/erp/logs/autoSetLocalItemQuantityZero3.log
+33 07,12,18,23 * * * /usr/bin/php -f /var/www/html/erp/autoSetLocalItemQuantityZero.php page=2 >>/var/www/html/erp/logs/autoSetLocalItemQuantityZero2.log
+30 07,12,18,23 * * * /usr/bin/php -f /var/www/html/erp/autoSetLocalItemQuantityZero.php >>/var/www/html/erp/logs/autoSetLocalItemQuantityZero1.log
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/autoSetLocalItemQuantityZeroOnSelling.php
+20 */2 * * * /usr/bin/php -f /var/www/html/erp/autoSetLocalItemQuantityUpOnSelling.php
+25 18 * * * /usr/bin/php -f /var/www/html/erp/autoSetLocalItemQuantityZeroUnSellTemp.php
+
+#getItem day
+#0 10,13 * * * /usr/bin/php -f /var/www/html/erp/autoGetItem.php token_id=7
+#25 10,13 * * * /usr/bin/php -f /var/www/html/erp/autoGetItem.php token_id=6
+#20 11,14 * * * /usr/bin/php -f /var/www/html/erp/autoGetItem.php token_id=16
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoGetUserCases.php
+10 0 * * * /usr/bin/php -f /var/www/html/erp/autoGetEBPCaseDetail.php
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/autoGetEBPCaseDetail_NC.php
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoGetUserReturns.php
+
+#check ebay item status
+30 11,16 * * * /usr/bin/php -f /var/www/html/erp/autoCheckEbayListingStatus.php
+
+#ebay end item less sold
+10 16 * * 0 /usr/bin/php -f /var/www/html/erp/autoEndEbayItemWithoutSold.php
+
+#main page
+40 8 * * * /usr/bin/php -f /var/www/html/erp/autoStatisticsForMainPage.php
+
+#amzstock
+*/5 * * * * /usr/bin/php -f /var/www/html/erp/stockSetting.php
+*/1 * * * * /usr/bin/php -f /var/www/html/erp/autoGetOnlineItemsReport.php
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/autoGetOnlineItemsReportList.php
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/autoRequestOnlineItems.php
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/stockUpdate.php
+
+
+#ebay auto send message
+*/38 * * * * /usr/bin/php -f /var/www/html/erp/autoSendMessageRun.php type=save_order >>sendMessage.log
+*/18 * * * * /usr/bin/php -f /var/www/html/erp/autoSendMessageRun.php
+0 7 * * *    /usr/bin/php -f /var/www/html/erp/SendMessageToeBay.php act=send >>sendEBay_log.txt
+
+#haiwaicang
+#*/3 * * * * /usr/bin/php -f /var/www/html/hwc/auto/AutoMatchingWarehouse_change.php
+0 * * * * /usr/bin/php -f /var/www/html/hwc/auto/AutoMatchingWarehouse1.php
+15 06 * * * /usr/bin/php -f /var/www/html/hwc/auto/CountBackRate.php
+50 06 * * * /usr/bin/php -f /var/www/html/hwc/auto/CountDynamicSalesRate.php
+34 07 * * * /usr/bin/php -f /var/www/html/hwc/auto/CountFiveAverageMargin1001.php
+#20 07 * * * /usr/bin/php -f /var/www/html/hwc/auto/CountFiveAverageMargin1004.php
+#11 06 * * * /usr/bin/php -f /var/www/html/hwc/auto/CountFiveAverageMargin1004UKLF.php
+50 07 * * * /usr/bin/php -f /var/www/html/hwc/auto/CountFiveAverageMargin.php
+40 07 * * * /usr/bin/php -f /var/www/html/hwc/auto/CountFiveAverageMargin1013.php
+#15 06 * * * /usr/bin/php -f /var/www/html/hwc/auto/CountFiveAverageMargin1014.php
+10 05,06,12 * * * /usr/bin/php -f /var/www/html/hwc/auto/CountHwcFourteenDaySales.php
+40 06,12 * * * /usr/bin/php -f /var/www/html/hwc/auto/CountHwcSevenDaySales.php
+10 * * * * /usr/bin/php -f /var/www/html/hwc/auto/CountMargin.php
+15 06 * * * /usr/bin/php -f /var/www/html/hwc/auto/CheckAllocation.php
+05 07 * * * /usr/bin/php -f /var/www/html/hwc/auto/AutoSendMailWithSales.php
+30 06 * * * /usr/bin/php -f /var/www/html/hwc/auto/AutoSendMailSkuUnchecked.php
+20 15 * * 0 /usr/bin/php -f /var/www/html/hwc/auto/AutoMarkProductsWithNoReplenishment.php
+
+#script: orders shortage intercept skip
+#5 8,14 * * * /usr/bin/php -f /var/www/html/erp/autoSkipNoShortage.script.php
+#30 12 * * * /usr/bin/php -f /var/www/html/erp/autoSkipNoShortage.script.php
+
+#script: auto split orders
+#5 9,11,13,15 * * * /usr/bin/php -f /var/www/html/erp/autoSplitOrders.script.php
+
+#auto matching warehouse shipment
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_warehosue.php tof_back=1
+
+#13 09 * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=1
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=1
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=2
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=3
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=4
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=5
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=6
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=7
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=8
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=9
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=10
+#*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=11
+#*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=12
+#*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=13
+#*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=14
+#*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=15
+#*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=16
+#*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=17
+#*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=18
+#*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=19
+#*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=20
+#*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=21
+#*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=22
+#*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=23
+#*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=24
+#*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=25
+#*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=26
+#*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=27
+#*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=28
+#*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_matching_shipment.php page=29
+
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/auto_pass.php page=1
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/auto_pass.php page=2
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/auto_pass.php page=3
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/auto_pass.php page=4
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/auto_pass.php page=5
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/auto_pass.php page=6
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/auto_pass.php page=7
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/auto_pass.php page=8
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/auto_pass.php page=9
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/auto_pass.php page=10
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/auto_pass.php page=11
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/auto_pass.php page=12
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/auto_pass.php page=13
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/auto_pass.php page=14
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/auto_pass.php page=15
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/auto_pass.php page=16
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/auto_pass.php page=17
+#*/40 * * * * /usr/bin/php -f /var/www/html/erp/auto_pass_joom.php
+#procurement_draft
+20 12 * * * /usr/bin/php -f /var/www/html/erp/autoCreateProcurementDraft.php
+
+
+#joom down
+0 */2 * * * /usr/bin/php -f /var/www/html/erp/joom_download_order.php token_id=1
+0 */2 * * * /usr/bin/php -f /var/www/html/erp/joom_download_order.php token_id=2
+0 */2 * * * /usr/bin/php -f /var/www/html/erp/joom_download_order.php token_id=3
+0 */2 * * * /usr/bin/php -f /var/www/html/erp/joom_download_order.php token_id=4
+0 */2 * * * /usr/bin/php -f /var/www/html/erp/joom_download_order.php token_id=5
+0 */2 * * * /usr/bin/php -f /var/www/html/erp/joom_download_order.php token_id=6
+0 */2 * * * /usr/bin/php -f /var/www/html/erp/joom_download_order.php token_id=7
+0 */2 * * * /usr/bin/php -f /var/www/html/erp/joom_download_order.php token_id=8
+0 */2 * * * /usr/bin/php -f /var/www/html/erp/joom_download_order.php token_id=9
+
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_joom_ToShipping.php
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_joom_actualShipping.php
+0 */4 * * * /usr/bin/php -f /var/www/html/erp/joom_refresh_token.php
+
+#joom get_advertising
+30 11,22 * * * /usr/bin/php -f /var/www/html/erp/auto_joom_get_advertising.php token_id=1
+30 11,22 * * * /usr/bin/php -f /var/www/html/erp/auto_joom_get_advertising.php token_id=2
+30 11,22 * * * /usr/bin/php -f /var/www/html/erp/auto_joom_get_advertising.php token_id=3
+30 11,22 * * * /usr/bin/php -f /var/www/html/erp/auto_joom_get_advertising.php token_id=4
+30 11,22 * * * /usr/bin/php -f /var/www/html/erp/auto_joom_get_advertising.php token_id=5
+30 11,22 * * * /usr/bin/php -f /var/www/html/erp/auto_joom_get_advertising.php token_id=6
+30 11,22 * * * /usr/bin/php -f /var/www/html/erp/auto_joom_get_advertising.php token_id=7
+30 11,22 * * * /usr/bin/php -f /var/www/html/erp/auto_joom_get_advertising.php token_id=8
+30 11,22 * * * /usr/bin/php -f /var/www/html/erp/auto_joom_get_advertising.php token_id=9
+
+#joom disable
+25 16,23 * * * /usr/bin/php -f /var/www/html/erp/auto_joom_ordersshelves.php page=1
+25 16,23 * * * /usr/bin/php -f /var/www/html/erp/auto_joom_ordersshelves.php page=2
+25 16,23 * * * /usr/bin/php -f /var/www/html/erp/auto_joom_ordersshelves.php page=3
+25 16,23 * * * /usr/bin/php -f /var/www/html/erp/auto_joom_ordersshelves.php page=4
+25 16,23 * * * /usr/bin/php -f /var/www/html/erp/auto_joom_ordersshelves.php page=5
+25 16,23 * * * /usr/bin/php -f /var/www/html/erp/auto_joom_ordersshelves.php page=6
+25 16,23 * * * /usr/bin/php -f /var/www/html/erp/auto_joom_ordersshelves.php page=7
+25 16,23 * * * /usr/bin/php -f /var/www/html/erp/auto_joom_ordersshelves.php page=8
+25 16,23 * * * /usr/bin/php -f /var/www/html/erp/auto_joom_ordersshelves.php page=9
+25 16,23 * * * /usr/bin/php -f /var/www/html/erp/auto_joom_ordersshelves.php page=10
+25 16,23 * * * /usr/bin/php -f /var/www/html/erp/auto_joom_ordersshelves.php page=none
+
+#Wish
+4 */7 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_get_tokens/auto_refresh_access_token >> /var/log/slme/auto_wish_get_tokens.log
+
+# wish cancel exception orders
+0 */15 * * * /usr/bin/php -f /var/www/html/erp/wish_error_cancle_order.php >> /var/log/slme/wish_error_cancle_order.log
+
+0 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=fangzheng@moonarstore.com
+05 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=artisan
+05 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=ciranxiaomy01@163.com
+05 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=zcheshenggs@126.com
+05 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=jingweigs@126.com
+05 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=zhenhtcd@163.com
+05 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=huantongdada@163.com
+05 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=yuantmy@163.com
+05 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=xgyuhuan@126.com
+05 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=lixunwuyun@163.com
+05 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=ciranxiaomy@163.com
+05 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=Proven
+10 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=milyonline
+15 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=salamoer1108@126.com
+20 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=salamoer1107@126.com
+25 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=xinwish
+30 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=luckydeerstore
+35 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=rokstore
+45 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=onlyfory
+50 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=topde
+52 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=rebeauty
+54 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=lovesport
+54 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=misscat
+54 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=miss2015
+54 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=menfandky@163.com
+58 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=sunshop
+58 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=yuffalyp@126.com
+58 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=gbstore@126.com
+58 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=wishwdf@126.com
+58 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=ychw2016@126.com
+58 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=hkdajin@126.com
+58 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=hkfenghua@126.com
+58 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=Lancefr
+58 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=BBMIKJ@163.com
+58 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=dingyuan2016
+58 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=ZTWSTORE
+58 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=weinanmaoyi@126.com
+58 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_order.php account=JDBLtd
+
+
+
+
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message salamoer1108@126.com
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message salamoer1107@126.com
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message xinwish
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message luckydeerstore
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message rokstore
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message onlyfory
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message topde
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message rebeauty
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message lovesport
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message misscat
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message miss2015
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message menfandky@163.com
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message sunshop
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message fangzheng@moonarstore.com
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message artisan
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message ciranxiaomy01@163.com
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message zcheshenggs@126.com
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message jingweigs@126.com 
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message zhenhtcd@163.com
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message huantongdada@163.com
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message yuantmy@163.com
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message xgyuhuan@126.com
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message lixunwuyun@163.com
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message ciranxiaomy@163.com
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message Proven
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message milyonline
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message yuffalyp@126.com
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message gbstore@126.com
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message wishwdf@126.com
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message ychw2016@126.com
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message hkdajin@126.com
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message hkfenghua@126.com
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message Lancefr
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message BBMIKJ@163.com
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message dingyuan2016
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message BBMIKJ@163.com
+30 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message dingyuan2016
+32 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message ZTWSTORE
+32 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message weinanmaoyi@126.com
+32 */1 * * 6 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message JDBLtd
+
+
+05 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message salamoer1108@126.com
+05 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message salamoer1107@126.com
+05 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message xinwish
+05 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message luckydeerstore
+10 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message rokstore
+10 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message onlyfory
+10 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message topde
+10 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message rebeauty
+10 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message lovesport
+15 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message misscat
+15 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message miss2015
+15 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message menfandky@163.com
+15 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message sunshop
+15 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message fangzheng@moonarstore.com
+15 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message artisan
+15 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message ciranxiaomy01@163.com
+15 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message zcheshenggs@126.com
+15 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message jingweigs@126.com 
+15 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message zhenhtcd@163.com
+22 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message huantongdada@163.com
+22 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message yuantmy@163.com
+22 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message xgyuhuan@126.com
+22 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message lixunwuyun@163.com
+22 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message ciranxiaomy@163.com
+22 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message Proven
+22 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message milyonline
+22 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message yuffalyp@126.com
+30 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message gbstore@126.com
+30 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message wishwdf@126.com
+30 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message ychw2016@126.com
+30 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message hkdajin@126.com
+30 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message hkfenghua@126.com
+30 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message Lancefr
+30 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message BBMIKJ@163.com
+30 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message dingyuan2016
+30 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message ZTWSTORE
+30 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message weinanmaoyi@126.com
+30 */1 * * 1,2,3,4,5,0 /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_get_wish_message all_get_message JDBLtd
+
+
+
+
+#*/10 * * * * /usr/bin/php -f /var/www/html/erp/autoMarkWishOrdersToShipping.script.php
+
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkShippingData.php
+
+#*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=fangzheng@moonarstore.com
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=artisan
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=ciranxiaomy01@163.com
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=zcheshenggs@126.com
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=jingweigs@126.com 
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=zhenhtcd@163.com
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=huantongdada@163.com
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=yuantmy@163.com
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=xgyuhuan@126.com
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=lixunwuyun@163.com
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=ciranxiaomy@163.com
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=Proven
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=milyonline
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=salamoer1108@126.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=salamoer1107@126.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=xinwish
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=luckydeerstore
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=rokstore
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=onlyfory
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=topde
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=rebeauty
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=lovesport
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=misscat
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=miss2015
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=menfandky@163.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=sunshop
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=yuffalyp@126.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=gbstore@126.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=wishwdf@126.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=ychw2016@126.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=hkdajin@126.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=hkfenghua@126.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=Lancefr
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=BBMIKJ@163.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=dingyuan2016
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=ZTWSTORE
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=weinanmaoyi@126.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishMarkToShip.script.php account=JDBLtd
+
+
+
+#*/35 * * * * /usr/bin/php -f /var/www/html/erp/wish_mark_to_ship_new.script.php account=fangzheng@moonarstore.com
+#*/35 * * * * /usr/bin/php -f /var/www/html/erp/wish_mark_to_ship_new.script.php account=artisan
+#*/35 * * * * /usr/bin/php -f /var/www/html/erp/wish_mark_to_ship_new.script.php account=milyonline
+#*/20 * * * * /usr/bin/php -f /var/www/html/erp/wish_mark_to_ship_new.script.php account=salamoer1108@126.com
+#*/20 * * * * /usr/bin/php -f /var/www/html/erp/wish_mark_to_ship_new.script.php account=salamoer1107@126.com
+#*/20 * * * * /usr/bin/php -f /var/www/html/erp/wish_mark_to_ship_new.script.php account=xinwish
+#*/20 * * * * /usr/bin/php -f /var/www/html/erp/wish_mark_to_ship_new.script.php account=luckydeerstore
+#*/20 * * * * /usr/bin/php -f /var/www/html/erp/wish_mark_to_ship_new.script.php account=rokstore
+#*/20 * * * * /usr/bin/php -f /var/www/html/erp/wish_mark_to_ship_new.script.php account=onlyfory
+#*/20 * * * * /usr/bin/php -f /var/www/html/erp/wish_mark_to_ship_new.script.php account=topde
+#*/20 * * * * /usr/bin/php -f /var/www/html/erp/wish_mark_to_ship_new.script.php account=rebeauty
+#*/20 * * * * /usr/bin/php -f /var/www/html/erp/wish_mark_to_ship_new.script.php account=lovesport
+#*/20 * * * * /usr/bin/php -f /var/www/html/erp/wish_mark_to_ship_new.script.php account=misscat
+#*/20 * * * * /usr/bin/php -f /var/www/html/erp/wish_mark_to_ship_new.script.php account=miss2015
+#*/20 * * * * /usr/bin/php -f /var/www/html/erp/wish_mark_to_ship_new.script.php account=sunshop
+
+
+#*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php
+
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=fangzheng@moonarstore.com
+
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=artisan
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=ciranxiaomy01@163.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=zcheshenggs@126.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=jingweigs@126.com 
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=zhenhtcd@163.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=huantongdada@163.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=yuantmy@163.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=xgyuhuan@126.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=lixunwuyun@163.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=ciranxiaomy@163.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=Proven
+
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=milyonline
+
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=salamoer1108@126.com
+
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=salamoer1107@126.com
+
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=xinwish
+
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=luckydeerstore
+
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=rokstore
+
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=onlyfory
+
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=topde
+
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=rebeauty
+
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=lovesport
+
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=misscat
+
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=miss2015
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=menfandky@163.com
+
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=sunshop
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=yuffalyp@126.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=gbstore@126.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=wishwdf@126.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=ychw2016@126.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=hkdajin@126.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=hkfenghua@126.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=Lancefr
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=BBMIKJ@163.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=dingyuan2016
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=ZTWSTORE
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=weinanmaoyi@126.com
+*/20 * * * * /usr/bin/php -f /var/www/html/erp/wishModifyTrackNumber.php account=JDBLtd
+
+
+
+
+
+5 02 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=fangzheng@moonarstore.com >> /var/log/slme/wishGetAdvertising-1.log
+5 02 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=artisan >> /var/log/slme/wishGetAdvertising-2.log
+5 02 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=ciranxiaomy01@163.com >> /var/log/slme/wishGetAdvertising-ciranxiaomy01@163.com.log
+5 02 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=zcheshenggs@126.com >> /var/log/slme/wishGetAdvertising-zcheshenggs@126.com.log
+5 02 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=jingweigs@126.com >> /var/log/slme/wishGetAdvertising-jingweigs@126.com.log
+5 02 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=zhenhtcd@163.com >> /var/log/slme/wishGetAdvertising-zhenhtcd@163.com.log
+5 02 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=huantongdada@163.com >> /var/log/slme/wishGetAdvertising-huantongdada@163.com.log
+5 02 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=yuantmy@163.com >> /var/log/slme/wishGetAdvertising-yuantmy@163.com.log
+5 02 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=xgyuhuan@126.com >> /var/log/slme/wishGetAdvertising-xgyuhuan@126.com.log
+5 02 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=lixunwuyun@163.com >> /var/log/slme/wishGetAdvertising-lixunwuyun@163.com.log
+5 02 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=ciranxiaomy@163.com >> /var/log/slme/wishGetAdvertising-2.log
+5 02 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=Proven >> /var/log/slme/wishGetAdvertising-211.log
+5 02 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=milyonline >> /var/log/slme/wishGetAdvertising-3.log
+5 02 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=salamoer1108@126.com >> /var/log/slme/wishGetAdvertising-4.log
+5 02 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=salamoer1107@126.com >> /var/log/slme/wishGetAdvertising-5.log
+5 03 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=xinwish >> /var/log/slme/wishGetAdvertising-6.log
+5 03 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=luckydeerstore >> /var/log/slme/wishGetAdvertising-7.log
+5 03 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=rokstore >> /var/log/slme/wishGetAdvertising-8.log
+5 03 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=onlyfory >> /var/log/slme/wishGetAdvertising-9.log
+5 03 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=topde >> /var/log/slme/wishGetAdvertising-10.log
+5 04 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=rebeauty >> /var/log/slme/wishGetAdvertising-11.log
+5 04 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=lovesport >> /var/log/slme/wishGetAdvertising-12.log
+5 04 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=misscat >> /var/log/slme/wishGetAdvertising-13.log
+5 04 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=miss2015 >> /var/log/slme/wishGetAdvertising-14.log
+5 04 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=menfandky@163.com >> /var/log/slme/wishGetAdvertising-14.log
+5 04 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=sunshop >> /var/log/slme/wishGetAdvertising-15.log
+5 04 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=yuffalyp@126.com >> /var/log/slme/wishGetAdvertising-16.log
+5 05 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=gbstore@126.com >> /var/log/slme/wishGetAdvertising-17.log
+5 05 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=wishwdf@126.com >> /var/log/slme/wishGetAdvertising-18.log
+5 05 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=ychw2016@126.com >> /var/log/slme/wishGetAdvertising-19.log
+5 05 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=hkdajin@126.com >> /var/log/slme/wishGetAdvertising-20.log
+5 05 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=hkfenghua@126.com >> /var/log/slme/wishGetAdvertising-21.log
+5 06 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=Lancefr
+5 06 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=BBMIKJ@163.com
+5 06 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=dingyuan2016
+5 06 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=ZTWSTORE
+5 06 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=weinanmaoyi@126.com
+5 06 * * * /usr/bin/php -f /var/www/html/erp/wishGetAdvertising.script.php account=JDBLtd
+
+*/45 * * * * /usr/bin/php -f /var/www/html/erp/joomReturnBack.php
+
+
+#5 07 * * * /usr/bin/php -f /var/www/html/erp/wish_get_sale_data.php
+
+*/45 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=fangzheng@moonarstore.com
+
+*/45 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=artisan
+*/45 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=ciranxiaomy01@163.com
+*/45 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=zcheshenggs@126.com
+*/45 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=jingweigs@126.com 
+*/45 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=zhenhtcd@163.com
+*/45 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=huantongdada@163.com
+*/45 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=yuantmy@163.com
+*/45 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=xgyuhuan@126.com
+*/45 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=lixunwuyun@163.com
+*/45 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=ciranxiaomy@163.com
+*/45 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=Proven
+
+*/45 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=milyonline
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=salamoer1108@126.com
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=salamoer1107@126.com
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=xinwish
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=luckydeerstore
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=rokstore
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=onlyfory
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=topde
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=rebeauty
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=lovesport
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=misscat
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=miss2015
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=menfandky@163.com
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=sunshop
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=yuffalyp@126.com
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=gbstore@126.com
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=wishwdf@126.com
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=ychw2016@126.com
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=hkdajin@126.com
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=hkfenghua@126.com
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=Lancefr
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=BBMIKJ@163.com
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=dingyuan2016
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=ZTWSTORE
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=weinanmaoyi@126.com
+
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=JDBLtd
+
+
+# auto cancle wish orders
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=fangzheng@moonarstore.com
+
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=artisan
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=ciranxiaomy01@163.com
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=zcheshenggs@126.com
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=jingweigs@126.com 
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=zhenhtcd@163.com
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=huantongdada@163.com
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=yuantmy@163.com
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=xgyuhuan@126.com
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=lixunwuyun@163.com
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=ciranxiaomy@163.com
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=Proven
+
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=milyonline
+
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=salamoer1108@126.com
+
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=salamoer1107@126.com
+
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=xinwish
+
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=luckydeerstore
+
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=rokstore
+
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=onlyfory
+
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=topde
+
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=rebeauty
+
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=lovesport
+
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=misscat
+
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=miss2015
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=menfandky@163.com
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=sunshop
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=yuffalyp@126.com
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=gbstore@126.com
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=wishwdf@126.com
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=ychw2016@126.com
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=hkdajin@126.com
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=hkfenghua@126.com
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=Lancefr
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=BBMIKJ@163.com
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=dingyuan2016
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=ZTWSTORE
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=weinanmaoyi@126.com
+5 */2 * * * /usr/bin/php -f /var/www/html/erp/wish_get_cancle_order.php account=JDBLtd
+
+
+#auto wish ad
+#5 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php
+#45 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_auto_publish.php
+
+#05 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_auto_publish.php page=1 account=gbstore@126.com
+#05 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_auto_publish.php page=3 account=gbstore@126.com
+#05 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_auto_publish.php page=5 account=gbstore@126.com
+#05 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_auto_publish.php page=7 account=gbstore@126.com
+
+#15 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_auto_publish.php page=1 account=hkdajin@126.com
+#15 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_auto_publish.php page=3 account=hkdajin@126.com
+#15 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_auto_publish.php page=5 account=hkdajin@126.com
+#15 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_auto_publish.php page=7 account=hkdajin@126.com
+
+
+#25 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_auto_publish.php page=1 account=wishwdf@126.com
+#25 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_auto_publish.php page=3 account=wishwdf@126.com
+#25 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_auto_publish.php page=5 account=wishwdf@126.com
+#25 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_auto_publish.php page=7 account=wishwdf@126.com
+
+
+#35 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_auto_publish.php page=1 account=ychw2016@126.com
+#35 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_auto_publish.php page=3 account=ychw2016@126.com
+#35 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_auto_publish.php page=5 account=ychw2016@126.com
+#35 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_auto_publish.php page=7 account=ychw2016@126.com
+
+
+#45 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_auto_publish.php page=1 account=yuffalyp@126.com
+#45 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_auto_publish.php page=3 account=yuffalyp@126.com
+#45 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_auto_publish.php page=5 account=yuffalyp@126.com
+#45 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_auto_publish.php page=7 account=yuffalyp@126.com
+
+
+
+#*/50 * * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=1 account=wishwdf@126.com
+
+
+#01 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=1 account=gbstore@126.com
+#01 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=2 account=gbstore@126.com
+#01 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=3 account=gbstore@126.com
+#01 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=4 account=gbstore@126.com
+#01 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=6 account=gbstore@126.com
+
+
+#11 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=1 account=hkdajin@126.com
+#11 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=2 account=hkdajin@126.com
+#11 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=3 account=hkdajin@126.com
+#11 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=4 account=hkdajin@126.com
+#11 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=6 account=hkdajin@126.com
+
+
+#22 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=1 account=wishwdf@126.com
+#22 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=2 account=wishwdf@126.com
+#22 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=3 account=wishwdf@126.com
+#22 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=4 account=wishwdf@126.com
+#22 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=6 account=wishwdf@126.com
+
+
+#33 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=1 account=ychw2016@126.com
+#33 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=2 account=ychw2016@126.com
+#33 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=3 account=ychw2016@126.com
+#33 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=4 account=ychw2016@126.com
+#33 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=5 account=ychw2016@126.com
+
+#44 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=1 account=yuffalyp@126.com
+#44 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=2 account=yuffalyp@126.com
+#44 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=3 account=yuffalyp@126.com
+#44 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=4 account=yuffalyp@126.com
+#44 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=6 account=yuffalyp@126.com
+
+
+*/50 */1 * * * /usr/bin/php -f /var/www/html/erp/wish_download_image.php page=1 account=yuffalyp@126.com
+
+
+#Wish end
+
+#*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_smt_product_skus.php
+
+# prom
+15 04 * * *  /usr/bin/php -f /var/www/html/erp/NoPutInStorage.php
+
+#91track
+20 01 */3 * * /usr/bin/php -f /var/www/html/erp/autoSellertoolDataReady.script.php
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoSellertoolApiReturn.script.php start=-6 end=-3
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoSellertoolApiReturn.script.php start=-9 end=-6
+#*/15 0-07 * * * /usr/bin/php -f /var/www/html/erp/autoSellertoolApiReturn.script.php start=-12 end=-9
+#*/15 0-07 * * * /usr/bin/php -f /var/www/html/erp/autoSellertoolApiReturn.script.php start=-15 end=-12
+#*/15 0-07 * * * /usr/bin/php -f /var/www/html/erp/autoSellertoolApiReturn.script.php start=-18 end=-15
+#*/15 0-07 * * * /usr/bin/php -f /var/www/html/erp/autoSellertoolApiReturn.script.php start=-21 end=-18
+#*/15 0-07 * * * /usr/bin/php -f /var/www/html/erp/autoSellertoolApiReturn.script.php start=-24 end=-21
+#*/15 0-07 * * * /usr/bin/php -f /var/www/html/erp/autoSellertoolApiReturn.script.php start=-27 end=-24
+#*/15 0-07 * * * /usr/bin/php -f /var/www/html/erp/autoSellertoolApiReturn.script.php start=-30 end=-27
+#*/15 0-07 * * * /usr/bin/php -f /var/www/html/erp/autoSellertoolApiReturn.script.php start=-33 end=-30
+#*/15 0-07 * * * /usr/bin/php -f /var/www/html/erp/autoSellertoolApiReturn.script.php start=-36 end=-33
+#*/15 0-07 * * * /usr/bin/php -f /var/www/html/erp/autoSellertoolApiReturn.script.php start=-39 end=-36
+#*/15 0-07 * * * /usr/bin/php -f /var/www/html/erp/autoSellertoolApiReturn.script.php start=-42 end=-39
+#*/15 0-07 * * * /usr/bin/php -f /var/www/html/erp/autoSellertoolApiReturn.script.php start=-45 end=-42
+15 5 * * * wget http://120.24.100.157:70/procurement_no_delivered.php > /var/log/slme/procurement_no_delivered.log
+
+#newEgg
+#01 09 * * * /usr/bin/php -f /var/www/html/erp/autoSyncNeweggOrders.script.php
+#01 18 * * * /usr/bin/php -f /var/www/html/erp/autoMarkNeweggOrdersToShipping.script.php
+
+#FBA
+#FBA create order
+*/2 * * * *  /usr/bin/php -f /var/www/html/hwc/auto/auto_fba.php method=action
+
+#FBA get shipping code
+*/3 * * * * /usr/bin/php -f /var/www/html/hwc/auto/auto_fba.php method=GetFulfillmentOrder
+
+#procurement report
+10 01 * * * /usr/bin/php -f /var/www/html/erp/procurement_count.php method=get_sku_all
+05 01 * * * /usr/bin/php -f /var/www/html/erp/procurement_count.php method=get_sku_num
+40 05 * * * /usr/bin/php -f /var/www/html/erp/procurement_count.php method=get_e_i
+45 05 * * * /usr/bin/php -f /var/www/html/erp/procurement_count.php method=over_day_num
+45 05 * * * /usr/bin/php -f /var/www/html/erp/procurement_count.php method=get_month_num
+50 05 * * * /usr/bin/php -f /var/www/html/erp/procurement_count.php method=get_e_i_15
+
+
+# yanwen auto upload order get shipping_code
+*/30 19-23 * * * /usr/bin/php -f /var/www/html/erp/autoUploadYwGetCode.php shipping_id=182 num=1000
+*/30 02-08 * * * /usr/bin/php -f /var/www/html/erp/autoUploadYwGetCode.php shipping_id=182 num=1000
+*/20 09-18 * * * /usr/bin/php -f /var/www/html/erp/autoUploadYwGetCode.php shipping_id=182 num=500
+*/30 19-23 * * * /usr/bin/php -f /var/www/html/erp/autoUploadYwGetCode.php shipping_id=365 num=1000
+*/30 02-08 * * * /usr/bin/php -f /var/www/html/erp/autoUploadYwGetCode.php shipping_id=365 num=1000
+*/20 09-18 * * * /usr/bin/php -f /var/www/html/erp/autoUploadYwGetCode.php shipping_id=365 num=500
+*/30 19-23 * * * /usr/bin/php -f /var/www/html/erp/autoUploadYwGetCode.php shipping_id=204 num=1000
+*/30 02-08 * * * /usr/bin/php -f /var/www/html/erp/autoUploadYwGetCode.php shipping_id=204 num=1000
+*/20 09-18 * * * /usr/bin/php -f /var/www/html/erp/autoUploadYwGetCode.php shipping_id=204 num=500
+*/20 09-18 * * * /usr/bin/php -f /var/www/html/erp/autoUploadYwGetCode.php shipping_id=208 num=100
+*/30 19-23 * * * /usr/bin/php -f /var/www/html/erp/autoUploadYwGetCode.php shipping_id=220 num=1000
+*/30 02-08 * * * /usr/bin/php -f /var/www/html/erp/autoUploadYwGetCode.php shipping_id=220 num=1000
+*/20 09-18 * * * /usr/bin/php -f /var/www/html/erp/autoUploadYwGetCode.php shipping_id=220 num=500
+
+
+#ci amz productImageUpload
+*/30 * * * * /usr/bin/php -f /var/www/html/slme/index.php cron uploadAmzProductImage
+
+#auto upload order to eub
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_eub.php shipping_id=272
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_eub.php shipping_id=271
+
+#auto upload order to eub_offline
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_eub_offline.php id=326
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_eub_offline.php id=297
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_eub_offline.php id=270
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_eub_offline.php id=269
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_eub_offline.php id=366
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_eub_offline.php id=445
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_eub_offline.php id=475
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_eub_offline.php id=564
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_eub_offline.php id=565
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_eub_offline.php id=550
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_eub_offline.php id=535
+
+#auto upload order to 4px
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_4px.php shipping_id=273 warehouse=1000
+
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_4px.php shipping_id=305 warehouse=1000
+
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_4px.php shipping_id=291 warehouse=1000
+
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_4px.php shipping_id=329 warehouse=1000
+
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_4px.php shipping_id=303 warehouse=1025
+
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_4px.php shipping_id=296 warehouse=1025
+
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_4px.php shipping_id=178 warehouse=1000
+
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_4px.php shipping_id=490 warehouse=1025
+
+#auto upload order to shunfeng ru
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_shunfeng_ru.php id=214 warehouse=1000
+
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_shunfeng_ru.php id=267 warehouse=1025
+
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_shunfeng_ru.php id=364 warehouse=1000
+
+#auto upload order to coe
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_coe.php shipmentId=510 >>/var/log/slme/auto_upload_order_to_coe510.log
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_coe.php shipmentId=511 >>/var/log/slme/auto_upload_order_to_coe_511.log
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_coe.php shipmentId=514 >>/var/log/slme/auto_upload_order_to_coe_514.log
+
+
+#auto_assigned_tracking_number
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "299"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "194"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "341"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "323"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "345"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "202"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "300"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "302"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "327"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "354"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "383"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "372"
+#*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "373"
+#*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "382"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "405"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "406"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "403"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "407"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "408"
+#*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "413"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "415"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "416"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "419"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "421"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "422"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "428"
+*/10 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "424"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "430"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "431"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "454"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "456"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "466"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "475"
+#*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "476"
+#*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "478"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "479"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "480"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "482"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "483"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "484"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "545"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "546"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "547"
+*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "548"
+#*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "510"
+#*/25 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_assigned_tracking_number index "511"
+
+# auto upload order to wish you
+
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/wish_you_auto_get_tracknumber.php shipmentID=347 number=300
+*/12 * * * * /usr/bin/php -f /var/www/html/erp/wish_you_auto_get_tracknumber.php shipmentID=549 number=300
+
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/wish_you_auto_get_tracknumber.php shipmentID=512 number=300
+
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/wish_you_auto_get_tracknumber.php shipmentID=370 number=300
+
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/wish_you_auto_get_tracknumber.php shipmentID=469 number=300
+
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/wish_you_auto_get_tracknumber.php shipmentID=470 number=300
+
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/wish_you_auto_get_tracknumber.php shipmentID=481 number=300
+
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/wish_you_auto_get_tracknumber.php shipmentID=486 number=300
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/wish_you_auto_get_tracknumber.php shipmentID=487 number=300
+
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/wish_you_auto_get_tracknumber.php shipmentID=515 number=300
+*/10 * * * * /usr/bin/php -f /var/www/html/erp/wish_you_auto_get_tracknumber.php shipmentID=516 number=300
+
+
+#AUTO upload order to china post
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_chinaPost.php shipmentID=415 number=1000
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_chinaPost.php shipmentID=476 number=1000
+
+
+# auto get lazada order
+01 */3 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada index 1
+05 */3 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada index 2
+09 */3 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada index 3
+13 */3 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada index 4
+18 */3 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada index 5
+18 */3 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada index 6
+18 */3 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada index 7
+25 */3 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada index 8
+25 */3 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada index 9
+30 */3 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada index 11
+30 */3 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada index 12
+
+13 */6 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada auto_cancel_orders
+*/50 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada autoUpLoadShippingCode
+#*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada_shippingcode/auto_get_shippingcode
+
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada_shippingcode auto_get_shippingcode 1
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada_shippingcode auto_get_shippingcode 2
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada_shippingcode auto_get_shippingcode 3
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada_shippingcode auto_get_shippingcode 4
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada_shippingcode auto_get_shippingcode 5
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada_shippingcode auto_get_shippingcode 6
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada_shippingcode auto_get_shippingcode 7
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada_shippingcode auto_get_shippingcode 8
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada_shippingcode auto_get_shippingcode 9
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada_shippingcode auto_get_shippingcode 11
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada_shippingcode auto_get_shippingcode 12
+
+
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_lazada_pagenumber/auto_get_pagenumber
+
+#countProductData
+#30 1 * * * /usr/bin/php -f /var/www/html/erp/autoCountProductsData.php page=1 pageSize=9000
+#45 1 * * * /usr/bin/php -f /var/www/html/erp/autoCountProductsData.php page=2 pageSize=9000
+#00 2 * * * /usr/bin/php -f /var/www/html/erp/autoCountProductsData.php page=3 pageSize=9000
+#15 2 * * * /usr/bin/php -f /var/www/html/erp/autoCountProductsData.php page=4 pageSize=9000
+
+15 1 * * * /usr/bin/php -f /var/www/html/erp/autoCountProductsData.php page=1 pageSize=10000 >>/mnt/moonar/html/erp/logs/autoCountProductsData/page1
+35 1 * * * /usr/bin/php -f /var/www/html/erp/autoCountProductsData.php page=2 pageSize=10000 >>/mnt/moonar/html/erp/logs/autoCountProductsData/page2
+45 1 * * * /usr/bin/php -f /var/www/html/erp/autoCountProductsData.php page=3 pageSize=10000 >>/mnt/moonar/html/erp/logs/autoCountProductsData/page3
+15 2 * * * /usr/bin/php -f /var/www/html/erp/autoCountProductsData.php page=4 pageSize=10000 >>/mnt/moonar/html/erp/logs/autoCountProductsData/page4
+35 2 * * * /usr/bin/php -f /var/www/html/erp/autoCountProductsData.php page=5 pageSize=10000 >>/mnt/moonar/html/erp/logs/autoCountProductsData/page5
+55 2 * * * /usr/bin/php -f /var/www/html/erp/autoCountProductsData.php page=6 pageSize=10000 >>/mnt/moonar/html/erp/logs/autoCountProductsData/page6
+15 3 * * * /usr/bin/php -f /var/www/html/erp/autoCountProductsData.php page=7 pageSize=10000 >>/mnt/moonar/html/erp/logs/autoCountProductsData/page7
+15 3 * * * /usr/bin/php -f /var/www/html/erp/autoCountProductsData.php page=8 pageSize=10000 >>/mnt/moonar/html/erp/logs/autoCountProductsData/page8
+15 3 * * * /usr/bin/php -f /var/www/html/erp/autoCountProductsData.php page=9 pageSize=10000 >>/mnt/moonar/html/erp/logs/autoCountProductsData/page9
+
+0 1 * * * /usr/bin/php -f /var/www/html/erp/autoSendCleaningSkuToEmail.php
+# lazada ad
+0 12,0 * * * /usr/bin/php -f /var/www/html/erp/auto_lazada_inactive.php
+0 22 * * * /usr/bin/php -f /var/www/html/erp/auto_lazada_cleaning_inactive.php
+30 2 * * * /usr/bin/php -f /var/www/html/erp/lazadaGetProducts.php token_id=1
+20 2 * * * /usr/bin/php -f /var/www/html/erp/lazadaGetProducts.php token_id=2
+10 2 * * * /usr/bin/php -f /var/www/html/erp/lazadaGetProducts.php token_id=3
+40 2 * * * /usr/bin/php -f /var/www/html/erp/lazadaGetProducts.php token_id=4
+50 2 * * * /usr/bin/php -f /var/www/html/erp/lazadaGetProducts.php token_id=5
+50 2 * * * /usr/bin/php -f /var/www/html/erp/lazadaGetProducts.php token_id=6
+50 2 * * * /usr/bin/php -f /var/www/html/erp/lazadaGetProducts.php token_id=7
+10 3 * * * /usr/bin/php -f /var/www/html/erp/lazadaGetProducts.php token_id=8
+15 3 * * * /usr/bin/php -f /var/www/html/erp/lazadaGetProducts.php token_id=9
+20 3 * * * /usr/bin/php -f /var/www/html/erp/lazadaGetProducts.php token_id=11
+20 3 * * * /usr/bin/php -f /var/www/html/erp/lazadaGetProducts.php token_id=12
+#DH ad
+30 2,3 * * * /usr/bin/php -f /var/www/html/erp/dhAPI/dhAutoGetSkuList.php
+
+# replace sku
+*/15 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_replace_sku replace_sku
+
+#selltool api tracking num
+*/5 0-5 * * *  slme_auto_cron/auto_selltool_tracking_num.sh
+15 8,21 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_selltool_tracking checkAPICount
+
+#kuai you
+*/30 2-5 * * * /usr/bin/php -f /var/www/html/erp/kuaiyou_auto_upload.php page=1 pageSize=800
+
+*/30 2-5 * * * /usr/bin/php -f /var/www/html/erp/kuaiyou_auto_upload.php page=2 pageSize=800
+
+*/30 2-5 * * * /usr/bin/php -f /var/www/html/erp/kuaiyou_auto_upload.php page=3 pageSize=800
+
+*/30 2-5 * * * /usr/bin/php -f /var/www/html/erp/kuaiyou_auto_upload.php page=4 pageSize=800
+
+*/30 2-5 * * * /usr/bin/php -f /var/www/html/erp/kuaiyou_auto_upload.php page=5 pageSize=800
+
+#DH Buyer confirmation receipt time
+#30 23 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/autoUpdateBuyersReceivingTime autoGetOrderListWithBuyersReceivingTime
+
+# shun you upload order for get shipping code
+*/30 * * * * /root/slme_auto_cron/shun_you_tracking_number.sh
+
+#count user day shipped
+05 1 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_month_list index
+
+#count sku day stock
+05 2 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/sku_date_stock getSkuStockNum
+
+#auto upload order to get shipping code yuntu
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_yuntu.php shipmentAutoMatched=348 pageSize=220 page=1
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_yuntu.php shipmentAutoMatched=348 pageSize=220 page=2
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_yuntu.php shipmentAutoMatched=348 pageSize=220 page=3
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_yuntu.php shipmentAutoMatched=348 pageSize=220 page=4
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_yuntu.php shipmentAutoMatched=401 pageSize=220 page=1
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_yuntu.php shipmentAutoMatched=401 pageSize=220 page=2
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_yuntu.php shipmentAutoMatched=401 pageSize=220 page=3
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_yuntu.php shipmentAutoMatched=401 pageSize=220 page=4
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_yuntu.php shipmentAutoMatched=401 pageSize=220 page=5
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_yuntu.php shipmentAutoMatched=401 pageSize=220 page=6
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_yuntu.php shipmentAutoMatched=401 pageSize=220 page=7
+
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_yuntu.php shipmentAutoMatched=427 pageSize=220 page=1
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_yuntu.php shipmentAutoMatched=417 pageSize=220 page=1
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_yuntu.php shipmentAutoMatched=346 pageSize=220 page=1
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_yuntu.php shipmentAutoMatched=418 pageSize=220 page=1
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_yuntu.php shipmentAutoMatched=397 pageSize=220 page=1
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_yuntu.php shipmentAutoMatched=257 pageSize=220 page=1
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_yuntu.php shipmentAutoMatched=442 pageSize=220 page=1
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_yuntu.php shipmentAutoMatched=461 pageSize=220 page=1
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_order_to_yuntu.php shipmentAutoMatched=509 pageSize=220 page=1
+
+#auto update wish ad price
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "1"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "2"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "3"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "4"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "5"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "6"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "7"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "8"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "9"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "10"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "11"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "12"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "13"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "14"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "15"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "16"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "17"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "18"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "19"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "20"
+
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "21"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "22"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "23"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "24"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "25"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "26"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "27"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "28"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "29"
+*/20 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_task_list wish_auto_price_data "30"
+
+#test
+#*/4 * * * * /usr/bin/php -f /var/www/html/erp/for_auto_matching_shipment.php
+
+# Ebay ad
+02 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "1"
+02 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "2"
+02 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "3"
+02 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "4"
+02 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "5"
+02 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "6"
+02 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "7"
+02 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "8"
+02 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "9"
+02 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "10"
+
+
+30 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  synListting 
+
+
+
+
+#02 03 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "11"
+#02 03 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "12"
+#02 03 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "13"
+#02 03 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "14"
+#02 03 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "15"
+#02 03 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "16"
+#02 03 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "17"
+#02 03 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "18"
+#02 03 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "19"
+#02 03 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "20"
+#02 03 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "21"
+#02 03 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting  getEbayListting "22"
+
+
+05 4 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_ebay_outofstock auto_outofstock
+*/10 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_task/do_ebay_task
+
+
+#replace order sku
+*/30 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_replace_car_sku replace_sku
+
+5 0,8,11,17 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_refresh_access_token/auto_refresh_access_token >> /var/log/slme/auto_refresh.log
+40 8,15,19,23 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_exportMsg autoExportMsg "1" "1"
+40 8,15,19,23 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_exportMsg autoExportMsg "1" "2"
+40 8,15,19,23 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_exportMsg autoExportMsg "1" "3"
+40 8,15,19,23 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_exportMsg autoExportMsg "1" "4"
+40 8,15,19,23 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_exportMsg autoExportMsg "1" "5"
+40 8,15,19,23 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_exportMsg autoExportMsg "1" "6"
+40 8,15,19,23 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_exportMsg autoExportMsg "1" "7"
+40 8,15,19,23 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_exportMsg autoExportMsg "1" "8"
+40 8,15,19,23 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_exportMsg autoExportMsg "1" "9"
+40 8,15,19,23 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_exportMsg autoExportMsg "1" "10"
+40 8,15,19,23 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_exportMsg autoExportMsg "1" "11"
+40 8,15,19,23 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_exportMsg autoExportMsg "1" "12"
+40 8,15,19,23 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_exportMsg autoExportMsg "1" "13"
+40 8,15,19,23 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_exportMsg autoExportMsg "1" "14"
+40 8,15,19,23 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_exportMsg autoExportMsg "1" "15"
+0 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_dhgate/autoUpdateAccessTokenToGetOrders
+11 */2 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_dhgate/autoUpdateAccessTokenToUpLoadShippingCode
+0 * * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_cdiscount/getOrdersList
+0 */3 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_cdiscount/autoSubmitShippingCode
+
+# taobao order track
+20 12 * * * /usr/bin/php -f /var/www/html/erp/aliAPI/Index.php
+30 18 * * * /usr/bin/php -f /var/www/html/erp/aliAPI/Index.php
+00 01 * * * /usr/bin/php -f /var/www/html/erp/aliAPI/Index.php
+
+# winit
+05 */3 * * * /usr/bin/php -f /var/www/html/erp/autoWinit.php id=471
+05 */3 * * * /usr/bin/php -f /var/www/html/erp/autoWinit.php id=524
+05 20 * *  * /usr/bin/php -f /var/www/html/erp/autoWinit.php shipment=471
+05 20 * *  * /usr/bin/php -f /var/www/html/erp/autoWinit.php shipment=524
+
+#ebaychangetime
+#05 */2 * * * /usr/bin/php -f /var/www/html/erp/autoChangeDispatchTime.php page=1
+#ebay UPC
+#*/20 * * * * /usr/bin/php -f /var/www/html/erp/autoAddEbayUpc.php page=1
+#ebay UPC single
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoAddEbayUpcSingle.php page=1
+
+#getSkuMonthCostdown
+15 13 * * 0 /usr/bin/php -f /var/www/html/erp/getSkuMonthCostdown.php
+
+#wish_split_order
+05 */6 * * * /usr/bin/php -f /var/www/html/erp/auto_split_wish_order.php
+
+
+#utoExportSmtProduct
+#01 14 24 12 * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php type=3
+35 23 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=1
+35 23 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=2
+35 23 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=3
+35 23 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=4
+35 23 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=5
+55 23 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=6
+55 23 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=7
+55 23 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=8
+55 23 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=9
+55 23 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=10
+15 00 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=11
+15 00 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=12
+15 00 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=13
+15 00 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=14
+15 00 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=15
+30 00 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=16
+30 00 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=17
+30 00 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=18
+30 00 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=21
+30 00 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=22
+45 00 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=23
+45 00 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=24
+45 00 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=27
+45 00 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=28
+45 00 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=31
+01 01 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=33
+01 01 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=34
+01 01 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=35
+01 01 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=36
+01 01 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=43
+16 01 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=45
+16 01 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=47
+16 01 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=49
+16 01 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=55
+16 01 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=56
+31 01 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=57
+46 02 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=61
+31 01 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=68
+31 01 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=70
+31 01 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=74
+31 01 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=76
+46 01 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=79
+46 01 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=83
+46 01 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=85
+46 01 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=86
+46 01 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=90
+46 01 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=91
+46 02 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=92
+46 02 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=93
+46 02 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=94
+46 02 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=95
+46 02 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=96
+46 02 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=97
+46 02 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=98
+46 02 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=98
+46 02 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=99
+46 02 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=100
+
+55 02 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=101
+55 02 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=102
+55 02 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=103
+55 02 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=104
+55 02 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=105
+
+05 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=106
+05 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=107
+05 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=108
+05 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=109
+05 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=110
+
+15 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=111
+15 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=112
+15 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=113
+15 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=114
+15 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=115
+
+25 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=116
+25 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=117
+25 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=118
+25 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=119
+25 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=120
+
+35 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=121
+35 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=122
+35 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=123
+35 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=124
+35 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=125
+
+46 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=126
+46 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=127
+46 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=128
+46 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=129
+45 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=130
+
+56 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=131
+56 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=132
+56 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=133
+56 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=134
+56 03 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=135
+
+06 04 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=136
+06 04 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=137
+06 04 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=138
+06 04 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=139
+06 04 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=140
+
+09 04 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=141
+09 04 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=142
+
+
+#46 02 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=100
+#46 02 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=100
+#46 02 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=100
+#46 02 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=100
+#46 02 */2 * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoExportSmtProduct.php token_id=100
+
+
+# update smt category
+05 06 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/smt/category/getCategoryListNew
+# ebay enditem lis
+05 */4 * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_enditem_mark.php token_id=all
+# auto count wish saledata
+05 23 * * * /usr/bin/php -f /var/www/html/erp/wish_get_sale_data.php type=2
+15 23 * * * /usr/bin/php -f /var/www/html/erp/wish_get_sale_data.php type=3
+25 23 * * * /usr/bin/php -f /var/www/html/erp/wish_get_sale_data.php type=4
+25 23 * * * /usr/bin/php -f /var/www/html/erp/wish_get_sale_data.php type=5
+
+#wish auto disable
+05 12 * * * /usr/bin/php -f /var/www/html/erp/auto_wish_ad_disable.php page=1
+05 12 * * * /usr/bin/php -f /var/www/html/erp/auto_wish_ad_disable.php page=2
+05 12 * * * /usr/bin/php -f /var/www/html/erp/auto_wish_ad_disable.php page=3
+05 12 * * * /usr/bin/php -f /var/www/html/erp/auto_wish_ad_disable.php page=4
+05 12 * * * /usr/bin/php -f /var/www/html/erp/auto_wish_ad_disable.php page=5
+05 12 * * * /usr/bin/php -f /var/www/html/erp/auto_wish_ad_disable.php page=6
+05 12 * * * /usr/bin/php -f /var/www/html/erp/auto_wish_ad_disable.php page=7
+05 12 * * * /usr/bin/php -f /var/www/html/erp/auto_wish_ad_disable.php page=8
+05 12 * * * /usr/bin/php -f /var/www/html/erp/auto_wish_ad_disable.php page=9
+05 12 * * * /usr/bin/php -f /var/www/html/erp/auto_wish_ad_disable.php page=10
+05 12 * * * /usr/bin/php -f /var/www/html/erp/auto_wish_ad_disable.php page=11
+05 12 * * * /usr/bin/php -f /var/www/html/erp/auto_wish_ad_disable.php page=12
+05 12 * * * /usr/bin/php -f /var/www/html/erp/auto_wish_ad_disable.php page=13
+02 */2 * * * /usr/bin/php -f /var/www/html/erp/auto_wish_hwcsku_disable.php
+
+#ebay auto buhuo test
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=46
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=58
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=59
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=13
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=18
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=19
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=49
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=45
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=5
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=9
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=47
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=7
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=6
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=8
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=11
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=12
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=14
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=15
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=17
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=20
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=21
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=22
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=24
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=25
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=43
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=46
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=16
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=56
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=57
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=51
+*/15 * * * * /usr/bin/php -f /var/www/html/erp/auto_ebay_replenishment.php token_id=10
+#ebay sku sell count
+04 01 * * * /usr/bin/php -f /var/www/html/erp/autoCountEbayProductSales.php
+
+#change smt attr
+#30 17 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_changeAttribute  change "9"
+#30 17 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_changeAttribute  change "75"
+#30 17 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_changeAttribute  change "83"
+#30 17 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_changeAttribute  change "85"
+#30 17 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_changeAttribute  change "97"
+#30 17 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_changeAttribute  change "98"
+#30 17 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_changeAttribute  change "101"
+#30 17 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_changeAttribute  change "111"
+#30 17 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_changeAttribute  change "116"
+#30 17 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_changeAttribute  change "123"
+#30 17 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_changeAttribute  change "124"
+#30 17 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_changeAttribute  change "127"
+#30 17 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_changeAttribute  change "130"
+#30 17 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_changeAttribute  change "134"
+#30 17 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_changeAttribute  change "138"
+#30 17 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_changeAttribute  change "147"
+
+
+
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoCountOrdersAndPublish.php orders_type=6
+
+00 09 * * * /usr/bin/php -f /var/www/html/hwc/auto/AutoSendMailWithFBA.php
+05 12 * * * /usr/bin/php -f /var/www/html/erp/autoCountSmtProductSales.php
+00 05 * * * /usr/bin/php -f /var/www/html/erp/smtAccountStatisticsNew.php
+00 04 15 * * /usr/bin/php -f /var/www/html/erp/smtAccountStatisticsNew.php before_month=1
+#ebay sku xiaoliangbaobiao
+05 03 * * * /usr/bin/php -f /var/www/html/erp/ebaySkuSaleCount.php
+
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoModifyEbayPaypal.php key=20161130 page=0
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoModifyEbayPaypal.php key=20161130 page=1
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoModifyEbayPaypal.php key=20161130 page=2
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoModifyEbayPaypal.php key=20161130 page=3
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoModifyEbayPaypal.php key=20161130 page=4
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoModifyEbayPaypal.php key=20161130 page=5
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoModifyEbayPaypal.php key=20161130 page=6
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoModifyEbayPaypal.php key=20161130 page=7
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoModifyEbayPaypal.php key=20161130 page=8
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoModifyEbayPaypal.php key=20161130 page=9
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoModifyEbayPaypal.php key=20161130 page=10
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoModifyEbayPaypal.php key=20161130 page=11
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoModifyEbayPaypal.php key=20161130 page=12
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoModifyEbayPaypal.php key=20161130 page=13
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoModifyEbayPaypal.php key=20161130 page=14
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoModifyEbayPaypal.php key=20161130 page=15
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoModifyEbayPaypal.php key=20161130 page=16
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoModifyEbayPaypal.php key=20161130 page=17
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoModifyEbayPaypal.php key=20161130 page=18
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoModifyEbayPaypal.php key=20161130 page=19
+#*/15 * * * * /usr/bin/php -f /var/www/html/erp/autoModifyEbayPaypal.php key=20161130 page=20
+
+#30 14 17 * * /usr/bin/php -f /var/www/html/erp/orders_setting.php action=auto_mark_orders_li
+
+
+*/20 * * * * /root/slme_auto_cron/check_service_status.sh >> /var/log/slme/check_service_status.log
+5 23 * * * /root/slme_auto_cron/backup_products_data.sh >> /var/log/slme/backup_products_data.log
+20 08 * * 1,4,6 /root/slme_auto_cron/rmlogs.sh >> /var/log/slme/rmlogs.log
+*/20 * * * * find /var/spool/postfix/maildrop/ -mtime +1 -name "*" -exec rm -rf {} \;
+#02 06 * * * /usr/bin/php -f /var/www/html/erp/smtAccountSaleStatistics.php >>/var/log/slme/smtAccountSaleStatistics.log
+#02 05 15 * * /usr/bin/php -f /var/www/html/erp/smtAccountSaleStatistics.php lastmonth=1 >>/var/log/slme/smtAccountSaleStatistics_lastmonth.log
+02 */2 * * * /usr/bin/php -f /var/www/html/erp/update_passed_orders_days.php >>/var/log/update_passed_orders_days.log
+
+05 03 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSetSmtCancelOrdersStatus.php >>/var/log/slme/autoSetSmtCancelOrdersStatus.log
+10,30,50 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_szPostxb.php 
+0,20,40 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_szPostxb_getTrank.php
+*/30 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_dhl.php
+0 16,17,18 * * * /usr/bin/php -f /var/www/html/erp/auto_sureOrder_dhl.php
+10 6 * * * /usr/bin/php -f /var/www/html/erp/autoSendSlipNoPrintOrder.php
+10 7,12,20 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoUpdateTrackingNoToSmtPlat.php
+10 8 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoDownloadAndEmailTrackingInfo.php
+10 23 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoGetShippingCode.php
+10 0 * * * /usr/bin/php -f /var/www/html/erp/smtAPI/autoSellerShipmentQH.php
+10 08 * * * /usr/bin/php -f /var/www/html/erp/autoSendProcurementToEmail.php
+
+
+05 0 1,15 * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_wish_you_refresh_tokens auto_refresh_access_token
+10 08 * * * /usr/bin/php -f /var/www/html/slme/index.php admin/auto/auto_smt_exportIssue auto_newExportIssue
+40 * * * * /usr/bin/php -f /var/www/html/erp/auto_upload_jhd.php
