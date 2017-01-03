@@ -1,5 +1,32 @@
 
 <<<<<<< HEAD
+----------/procurementArrivalAndCheck.php
+=======
+Cpu(s): 11.9%us, 20.4%sy,  0.0%ni,  2.2%id, 64.7%wa,  0.5%hi,  0.4%si,  0.0%st
+
+/var/www/html/erp/autoCreateProcurementDraft.php 
+/var/www/html/erp/autoSetLocalItemQuantityZero.php
+
+
+多个，cpu高，内存优化
+ /var/www/html/erp/wishReturnBack.php account=munster 
+
+内存太多
+  1102 root      20   0  452m 135m 8564 S  8.9  0.8   0:05.17 /usr/bin/php -f /var/www/html/erp/autoSendMessageRun.php type=save_order 
+内存优化
+   0  493m 166m 4172 S  1.7  1.0   0:31.57 /usr/bin/php -f /var/www/html/erp/autoSetLocalItemQuantityZero.php page=8      
+
+这个账号不能及时退出
+/usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=gbstore@126.com
+
+
+
+---
+
+>>>>>>> fcbdf553b7b4fc95b2a29dfbec394a162c29231a
+MOONARSPREAD.COM
+184.168.221.50
+
 ------------华侨
 IP：106.14.16.253
 用户名：chen
@@ -13,12 +40,19 @@ IP：106.14.16.253
     密码：123456
 图片域名：img.15ls.com
 接口域名：api.15ls.com
+-----
+用户名：13997826149，
+登陆密码：8459737
 
-用户名：13997826149，登陆密码：8459737
-
+-----
+http://mp.wxfenxiao.com
+账号：18970830436    
+密码：dsf674z
+这个是最高版本的体验后台 
+前端服务号是 聚销宝
+可以结合体验的
 
 ----------------钮门快递服务器
-=======
 
 	
 
@@ -50,7 +84,6 @@ E:\htdocs\erp\includes\exportOrders.class.php 1232行
 How Linux Works
 http://www.cin.ufpe.br/~pjs/How_Linux_Works_(2004)%5BBrianWard%5D.pdf
 
->>>>>>> 433e1488b7e5442eccaeb36c0d8a1705c6d305b6
 112.74.130.227
 administrator
 Slme#!123
@@ -626,6 +659,9 @@ E:\htdocs\mongodbtest\getSkuImageInfo\
 /mnt/data/html/imgurl/getSkuImageInfo
 --------------------------------------
 
+
+拣货单常用sql:
+select count(*) from erp_pick_product where pick_id='171445' and product_sku='HW1124A' limit 1;
 
 
 查看单个拣货单

@@ -1,6 +1,28 @@
 
 ----------/procurementArrivalAndCheck.php
 MOONARSPREAD.COM
+Cpu(s): 11.9%us, 20.4%sy,  0.0%ni,  2.2%id, 64.7%wa,  0.5%hi,  0.4%si,  0.0%st
+
+/var/www/html/erp/autoCreateProcurementDraft.php 
+/var/www/html/erp/autoSetLocalItemQuantityZero.php
+
+
+多个，cpu高，内存优化
+ /var/www/html/erp/wishReturnBack.php account=munster 
+
+内存太多
+  1102 root      20   0  452m 135m 8564 S  8.9  0.8   0:05.17 /usr/bin/php -f /var/www/html/erp/autoSendMessageRun.php type=save_order 
+内存优化
+   0  493m 166m 4172 S  1.7  1.0   0:31.57 /usr/bin/php -f /var/www/html/erp/autoSetLocalItemQuantityZero.php page=8      
+
+这个账号不能及时退出
+/usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=gbstore@126.com
+
+
+
+---
+
+MOONARSPREAD.COM
 184.168.221.50
 
 ------------华侨
