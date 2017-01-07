@@ -1,23 +1,67 @@
+问题目录：
+du -h --max-depth=1 /var
+
+安全目录
+/usr
+
+
+     0.00 B/s 1983.98 B/s  0.00 %  0.00 % php -f /var/www/html/erp/autoSetLocalItemQuantityZero.php page=5
+
+
+php -f /var/www/html/erp/priceCheck.php action=autoExportItemDetailDesc500
+var/www/html/erp/auto_lazada_inactive.php token_id=5 page=2
+
+ 2876 be/4 root        3.76 K/s    7.52 K/s  0.00 %  1.33 % php -f /var/www/html/erp/auto_upload_order_to_coe.php shipmentId=510
+ 2370 be/4 root        3.76 K/s   15.04 K/s  0.00 %  0.16 % php -f /var/www/html/erp/priceCheck.php action=autoExportItemDetailDesc500
+23247 be/4 root        0.00 B/s    7.52 K/s  0.00 %  0.00 % postdrop -r
+16784 be/4 root        0.00 B/s    3.76 K/s  0.00 %  0.00 % postdrop -r
+21031 be/4 root        0.00 B/s   45.13 K/s  0.00 %  0.00 % php -f /var/www/html/erp/autoSetLocalItemQuantityZero.php page=3
+ 1251 be/4 root        0.00 B/s    3.76 K/s  0.00 %  0.00 % postdrop -r
+17692 be/4 root        0.00 B/s    3.76 K/s  0.00 %  0.00 % php -f /var/www/html/erp/auto_lazada_inactive.php token_id=4 page=1
+ 1421 be/4 root        0.00 B/s    3.76 K/s  0.00 %  0.00 % postdrop -r
+
+
+
+ 1551 be/3 root        0.00 B/s   17.45 K/s  0.00 %  0.51 % [jbd2/xvdc-8]
+30887 be/4 root        0.00 B/s 1985.54 B/s  0.00 %  0.00 % postdrop -r
+ 4421 be/4 root        0.00 B/s    7.76 K/s  0.00 %  0.00 % php -f /var/www/html/erp/priceCheck.php action=autoExportItemDetailDesc500
+ 4454 be/4 root        0.00 B/s    3.88 K/s  0.00 %  0.00 % postdrop -r
+14772 be/4 root        0.00 B/s 1985.54 B/s  0.00 %  0.00 % php -f /var/www/html/erp/auto_lazada_inactive.php token_id=1 page=1
+ 4633 be/4 root        0.00 B/s 1985.54 B/s  0.00 %  0.00 % php -f /var/www/html/erp/orders_setting.php action=auto_mark_orders
+31400 be/4 root        0.00 B/s    3.88 K/s  0.00 %  0.00 % postdrop -r
+12406 be/4 root        0.00 B/s    3.88 K/s  0.00 %  0.00 % postdrop -r
+23247 be/4 root        0.00 B/s 1985.54 B/s  0.00 %  0.00 % postdrop -r
+21170 be/4 nginx       0.00 B/s 1985.54 B/s  0.00 %  0.00 % nginx: worker process
+ 7428 be/4 apache      0.00 B/s 1985.54 B/s  0.00 %  0.00 % httpd
+
+
+
+
+kswapd0
+
+disk read is high
+ 8657 be/4 root        3.70 K/s   14.81 K/s  0.00 %  0.19 % php -f /var/www/html/erp/priceCheck.php action=autoExportItemDetailDesc800
 
 ----------/procurementArrivalAndCheck.php
 Cpu(s): 11.9%us, 20.4%sy,  0.0%ni,  2.2%id, 64.7%wa,  0.5%hi,  0.4%si,  0.0%st
 
+优化内存
 /var/www/html/erp/autoCreateProcurementDraft.php 
 /var/www/html/erp/autoSetLocalItemQuantityZero.php
 
 
-多个，cpu高，内存优化
+多个，cpu高，内存优化(got it)
  /var/www/html/erp/wishReturnBack.php account=munster 
 
-内存太多
+内存太多(got it)
   1102 root      20   0  452m 135m 8564 S  8.9  0.8   0:05.17 /usr/bin/php -f /var/www/html/erp/autoSendMessageRun.php type=save_order 
 内存优化
    0  493m 166m 4172 S  1.7  1.0   0:31.57 /usr/bin/php -f /var/www/html/erp/autoSetLocalItemQuantityZero.php page=8      
 
-这个账号不能及时退出
+这个账号不能及时退出(got it)
 /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=gbstore@126.com
 
-cpu 高
+cpu 高(got it)
  448m 131m 8564 S  8.6  0.8   0:04.78 /usr/bin/php -f /var/www/html/erp/autoSendMessageRun.php type=save_order 
 
 
