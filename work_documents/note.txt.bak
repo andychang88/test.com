@@ -1,4 +1,85 @@
 
+
+
+SELECT `erp_orders_id` as '内单号' ,COUNT( * ) AS num,ot.name '平台',s.shipmentTitle '物流方式',orders_shipping_code '追踪号', buyer_id '买家id',buyer_name '买家姓名',buyer_phone '电话',buyer_email 'email',buyer_address_1,buyer_address_2,buyer_city,buyer_state
+,buyer_zip,buyer_country 
+FROM `erp_orders` o FORCE INDEX ( IDX_ORDERS_TYPE_ORDERS_EXPORT_TIME )
+left join erp_shipment s on s.shipmentID=o.shipmentAutoMatched 
+left join erp_order_type ot on ot.id=o.orders_type 
+
+WHERE `orders_type` =13
+AND `orders_export_time` > '2017-01-19'
+AND `orders_is_join` =0
+AND orders_status !=6
+AND orders_is_split =0
+GROUP BY buyer_id HAVING num >1
+
+
+
+
+
+/admin/order/pick_manage/show_has_printed_list?pick_id=1935
+/admin/order/pick_manage/show_has_scan_list?pick_id=193529&amp;
+
+/admin/order/pick_manage/ajax_get_pack_method
+/admin/order/pick_manage/scan_list?pick_id=193605 
+
+
+POST /admin/order/pick_manage/do_scan
+/usr/bin/php -f /var/www/html/slme/index.php admin/ebay/ebay_listting getEbayListting 8 
+
+
+.05 /usr/bin/php -f /var/www/html/erp/auto_joom_ordersshelves.php page=1                                                            
+                                                                                                               
+ 173m  10m R  7.6  1.1   0:12.34 /usr/bin/php -f /var/www/html/erp/auto_joom_ordersshelves.php page=1
+
+
+
+UPDATE `erp_wish_message_list` SET `isRead` = 2, `mail_update_time` = '2017-01-19 13:30:07' WHERE `account` =  'hongxiamei@qq.com' AND `isRead` =  1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT `o`.`shipmentAutoMatched`, `o`.`orders_status`, `o`.`orders_shipping_time`, `erp_smt_issue_list`.*
+
+FROM (`erp_smt_issue_list`)
+
+LEFT JOIN `erp_orders` o ON `o`.`buyer_id`=`erp_smt_issue_list`.`order_id`
+
+WHERE `issue_update_time` > '2017-01-13 21:22:21'
+
+AND `num` =  0
+
+AND `is_new` =  1
+
+AND `o`.`orders_is_join` =  0
+
+GROUP BY `order_id_child`
+
+ORDER BY `issue_update_time` ASC
+
+LIMIT 50
+
+
+
+
+
+
+问题目录：
+du -h --max-depth=1 /var
+
 安全目录
 /usr
 
