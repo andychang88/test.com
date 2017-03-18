@@ -1,6 +1,47 @@
 
 
 
+begiin month 1:
+begiin month 2:
+begiin month 3:
+month:3,sku:MPJ829B,remain:10
+month:3,sku:MPJ829C,remain:19
+begiin month 4:
+month:4,sku:E3185B1,remain:1
+month:4,sku:DA3405A,remain:6
+month:4,sku:E3185B2,remain:3
+month:4,sku:E3185B3,remain:6
+begiin month 5:
+month:5,sku:HW3061,remain:2
+month:5,sku:E3185B1,remain:5
+begiin month 6:
+month:6,sku:DA1833F,remain:3
+begiin month 7:
+begiin month 8:
+begiin month 9:
+month:9,sku:MPJ829C,remain:7
+begiin month 10:
+begiin month 11:
+begiin month 12:
+
+
+
+
+
+SELECT `erp_orders_id` as '内单号' ,COUNT( * ) AS num,orders_total,ot.name '平台',s.shipmentTitle '物流方式',orders_shipping_code '追踪号', buyer_id '买家id',buyer_name '买家姓名',buyer_phone '电话',buyer_email 'email',buyer_address_1,buyer_address_2,buyer_city,buyer_state
+,buyer_zip,buyer_country 
+FROM `erp_orders` o FORCE INDEX ( IDX_ORDERS_TYPE_ORDERS_EXPORT_TIME )
+left join erp_shipment s on s.shipmentID=o.shipmentAutoMatched 
+left join erp_order_type ot on ot.id=o.orders_type 
+
+WHERE `orders_type` in (15,17,18)
+AND `orders_export_time` > '2017-01-19'
+AND `orders_is_join` =0
+AND orders_status =5 
+AND orders_is_split =0
+GROUP BY buyer_id HAVING num >1
+
+
 SELECT `erp_orders_id` as '内单号' ,COUNT( * ) AS num,ot.name '平台',s.shipmentTitle '物流方式',orders_shipping_code '追踪号', buyer_id '买家id',buyer_name '买家姓名',buyer_phone '电话',buyer_email 'email',buyer_address_1,buyer_address_2,buyer_city,buyer_state
 ,buyer_zip,buyer_country 
 FROM `erp_orders` o FORCE INDEX ( IDX_ORDERS_TYPE_ORDERS_EXPORT_TIME )

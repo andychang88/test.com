@@ -1,5 +1,112 @@
 
 
+autoSendSkuIsStopedAndNum
+
+select sum(stock_number) from erp_stock_by_month where month=12;
+17872358
+
+
+70494
+472
+
+采购，盘盈 入库数量  70486   （这个数量包括了撤单中的数量）
+
+出库  69595
+69613
+
+计算库存  899
+
+单独的撤单入库数量  472
+
+
+入 70958
+出 68556
+
+入 8
+出 1067
+
+
+出库出多了，
+
+
+
+
+select orders_export_time, o.erp_orders_id as danjuhao, op.orders_sku as recordSku, sum(op.item_count) as recordCount, 
+o.erp_user_id as user_id, o.orders_type as orders_type, 2 as recordStatus, 4 as recordType, orders_remark as remark, 
+o.orders_shipping_time as recordTime, '销售' as recordReason 
+FROM erp_orders_products AS op 
+left join erp_orders AS o  ON o.erp_orders_id= op.erp_orders_id 
+
+where o.orders_is_join = 0 and o.orders_status = 5  and op.orders_sku like 'MPJ685B' 
+ and orders_export_time>'2017-01-20 20:04:37'
+
+
+
+
+
+
+
+select p.id,p.warehouse,pp.orders_id,from_unixtime(p.create_time) as ct from erp_pick_product pp left join erp_pick p on p.id=pp.pick_id where p.create_time>="1487692800" and p.create_time<="1487865600" and p.type=2 and pp.status=4 group by orders_id having count(orders_id)>1 
+order by ct desc
+limit 2000 
+
+
+
+
+select CURRENT_TIME();
+
+采购单导出
+
+XZ804A5
+
+source /var/www/html/erp_finance.moonarstore.com/test_script/db/erp_procurement_arrivel.sql;
+source /var/www/html/erp_finance.moonarstore.com/test_script/db/erp_procurement_products.sql;
+source /var/www/html/erp_finance.moonarstore.com/test_script/db/erp_procurement.sql;
+
+truncate table erp_calculation_sku_sales;   (这个不用删除)
+truncate table erp_modify_procurement_log;
+truncate table erp_stock_by_month;
+
+
+
+./run_task "/var/www/html/erp_finance.moonarstore.com/test_script/calStockSkuSalesNumberUsing.php warehouse_id=1000" 1 10
+
+http://slme.moonarstore.com:60/test_script/check_sku.php?sku=B012_Blue&warehouse_id=1000&month=2&Submit=%E6%8F%90%E4%BA%A4
+
+erp_stock_by_month
+
+select * from erp_generate_purchase_order_log limit 10;
+
+select count(*)/12 from erp_calculation_sku_sales limit 1;
+select count(*)  from erp_calculation_sku_sales where 1;
+select *  from erp_calculation_sku_sales limit 1;
+select *  from erp_calculation_sku_sales where sku='B012_Blue' and warehouse_id=1000 and month=11;
+select *  from erp_calculation_sku_sales where  warehouse_id=1025 and month=11;
+select *  from erp_calculation_sku_sales where  warehouse_id=1000 and month=1 order by count desc limit 10;
+
+
+php check_sku.php submit=1  warehouse_id=1000 month=1 sku=DA3167A
+
+select * from erp_modify_procurement_log limit1;
+select * from erp_modify_procurement_log where sku='E0089' and start_time>='2016-11-01' and end_time<='2016-12-01' limit 2;
+select * from erp_modify_procurement_log where 1 and start_time>='2016-11-01' and end_time<='2016-12-01' order by order_count limit 20;
+
+select op_pro_count_op from erp_procurement_products where po_id=280395 and op_pro_sku='XZ804A5';
+SELECT * FROM `erp_procurement_arrivel` WHERE 1 and `erp_procurement_id`=268775 and `arrival_sku`='XZ804A5'
+
+
+
+
+--------------
+HW3189 yiwu 12
+MPJ007D
+MPJ173
+
+
+
+
+
+
 
 
 
