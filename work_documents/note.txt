@@ -1,67 +1,4 @@
-
-
-
-begiin month 1:
-begiin month 2:
-begiin month 3:
-month:3,sku:MPJ829B,remain:10
-month:3,sku:MPJ829C,remain:19
-begiin month 4:
-month:4,sku:E3185B1,remain:1
-month:4,sku:DA3405A,remain:6
-month:4,sku:E3185B2,remain:3
-month:4,sku:E3185B3,remain:6
-begiin month 5:
-month:5,sku:HW3061,remain:2
-month:5,sku:E3185B1,remain:5
-begiin month 6:
-month:6,sku:DA1833F,remain:3
-begiin month 7:
-begiin month 8:
-begiin month 9:
-month:9,sku:MPJ829C,remain:7
-begiin month 10:
-begiin month 11:
-begiin month 12:
-
-
-
-
-begiin month 1:
-month:1,sku:JJ0866,remain:3
-month:1,sku:B1010W5,remain:30
-month:1,sku:JJ0606,remain:11
-begiin month 2:
-month:2,sku:JJ4082C,remain:3
-month:2,sku:B1010W5,remain:26
-begiin month 3:
-month:3,sku:B1010W5,remain:288
-month:3,sku:JJ0457W5,remain:5
-begiin month 4:
-month:4,sku:B1010W5,remain:154
-month:4,sku:SS0054A,remain:6
-begiin month 5:
-month:5,sku:SS4282B,remain:9
-month:5,sku:B1010W5,remain:325
-begiin month 6:
-month:6,sku:SS4282A,remain:17
-month:6,sku:XZ701A3,remain:2
-begiin month 7:
-month:7,sku:HW1111,remain:6
-begiin month 8:
-month:8,sku:SS4282A,remain:4
-month:8,sku:HW3189,remain:26
-begiin month 9:
-begiin month 10:
-month:10,sku:HW1111,remain:11
-begiin month 11:
-begiin month 12:
-
-
-
-
-
-
+总馆在龙华新区梅林关附近星河盛世花园5楼
 
 
 
@@ -627,8 +564,12 @@ mongodb 配置文件
 -----------------------
 mongodb相关
 1.88上面ssh登陆后，输入shell命令 mongo 进入mongodb,use admin进入数据库，使用下面的认证
+
 use admin;
 db.auth('root','s9mHt3PJ');
+
+mongotop --username root --password s9mHt3PJ --authenticationDatabase admin
+
 适用有深圳图片服务器和美国图片服务器
 
 2.上传图片界面  http://192.168.1.6:3000/view
@@ -848,6 +789,8 @@ http://erp.moonarstore.com/getSkuImageInfo/getSkuImageInfo.php?distinct=true&inc
 需要rewrite http://192.168.1.6:3007/getSkuImageInfo/sku/SS4301-5711b07c3bc22d13579477da   或者
 需要rewrite http://192.168.1.6:3007/getSkuImageInfo/sku/5711b07c3bc22d13579477da   或者
 
+
+https://moonarspread.com/getSkuImageInfo/getSkuImageInfo.php?distinct=true&include_sub=true&sku=HW3184
 
 
 本地路径
