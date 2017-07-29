@@ -1,9 +1,302 @@
-×Ü¹İÔÚÁú»ªĞÂÇøÃ·ÁÖ¹Ø¸½½üĞÇºÓÊ¢ÊÀ»¨Ô°5Â¥
 
 
 
 
-SELECT `erp_orders_id` as 'ÄÚµ¥ºÅ' ,COUNT( * ) AS num,orders_total,ot.name 'Æ½Ì¨',s.shipmentTitle 'ÎïÁ÷·½Ê½',orders_shipping_code '×·×ÙºÅ', buyer_id 'Âò¼Òid',buyer_name 'Âò¼ÒĞÕÃû',buyer_phone 'µç»°',buyer_email 'email',buyer_address_1,buyer_address_2,buyer_city,buyer_state
+
+
+
+
+
+
+
+è½¯ä»¶è‘—ä½œæƒè¯ä¹¦
+
+ç»Ÿè®¡ä¸­å¿ƒç»¼åˆç®¡ç†è½¯ä»¶V1.00002
+ç³»ç»Ÿä¸­å¿ƒç®¡ç†è½¯ä»¶V2.0
+
+æ™ºèƒ½é«˜æ•ˆERPç®¡ç†ç³»ç»Ÿã€ç®€ç§°ï¼šERPã€‘V2.0-ç”µå­å•†åŠ¡å…¬å¸
+ä»“åº“ç®¡ç†è½¯ä»¶V2.00002
+è®¢å•ä¸­å¿ƒç®¡ç†è½¯ä»¶V2.00002
+
+è¨æ‹‰æ‘©å°”å›¾ç‰‡ç®¡ç†ç³»ç»ŸV1.0
+
+å¹¿å‘Šä¸­å¿ƒåå°ç®¡ç†è½¯ä»¶V2.0
+
+äº§å“ä¸­å¿ƒç®¡ç†è½¯ä»¶V2.0ï¼ˆåº“å­˜é”€é‡ï¼‰
+é‡‡è´­ç»¼åˆç®¡ç†è½¯ä»¶V2.0
+
+CRMä¸­å¿ƒMessageç®¡ç†è½¯ä»¶V2.0
+
+
+
+
+
+SELECT po_id,po_times FROM `erp_procurement` WHERE `po_user`=264 and `po_times`>='2017-01-01' 
+
+
+
+1688è´¦å·
+slmeé‡‡è´­103
+Slme99
+
+slme9
+yao1236542002
+
+
+
+SELECT COUNT(*) AS `numrows` FROM (SELECT `erp_wish_product`.`id`
+FROM (`erp_wish_product`)
+INNER JOIN `erp_wish_product_detail` as wd ON `erp_wish_product`.`productID` = `wd`.`productID`
+WHERE `erp_wish_product`.`productID` != ''
+AND `product_type_status` =  0
+GROUP BY `erp_wish_product`.`productID`) COUNTTABLE
+
+
+SELECT * FROM ( 
+                                SELECT erp_orders_id FROM erp_orders o 
+                                WHERE  o.orders_export_time >= '2017-06-15 10:30:03' and o.orders_paid_time < '2017-06-15 15:30:03'  ORDER BY o.orders_export_time ASC,erp_orders_id asc LIMIT 100 ) t 
+                                ORDER BY t.erp_orders_id ASC LIMIT 1
+
+
+
+--------æ’åºä¸limit
+ SELECT orders_export_time,erp_orders_id FROM erp_orders o where erp_orders_id in (46815767,46815762,46815758,46815748,46815742) order by orders_export_time asc;
+ SELECT orders_export_time,erp_orders_id FROM erp_orders o where erp_orders_id in (46815767,46815762,46815758,46815748,46815742) order by orders_export_time asc limit 3;
+----------------
+
+ç°åœ¨ç”³è¯·ç”µè„‘çš„é…ç½®æ˜¯ï¼š
+CPU INTEL Xeon E3 1230v3 
+æŠ€å˜‰/åç¡•/åæ“ B85ä¸»æ¿ï¼ˆå¤§æ¿ï¼‰
+é‡‘å£«é¡¿ DDR3 1600 8G * 2
+å¸Œæ· ST1000DX001 1T ç¡¬ç›˜
+æ™®é€šä¾¿å®œæ˜¾å¡
+é•¿åŸ350W ç”µæº
+æ™®é€šæœºç®±  ä¸Šæ¬¡æˆ‘ç”³è¯·çš„ç”µè„‘ ä½ å¯ä»¥å†åŠ ä¸ª200g çš„ssd
+
+
+æ–°ç³»ç»Ÿ
+http://erp56795.moonarstore.com:5532/ erp 1.2
+
+http://erp56235.moonarstore.com:5532 æµ·å¤–ä»“
+
+http://erp28931.moonarstore.com:5532/ erp 2.0
+
+
+è€ç³»ç»Ÿ
+
+http://erp.moonarstore.com:23411 erp 1.2
+http://v2.erp.moonarstore.com:23422 erp 2.0
+http://120.24.100.157:23433/  æµ·å¤–ä»“
+
+
+
+
+45938437
+http://120.24.100.157:23422/admin/order/pick_manage2/pickView?pick_id=219662
+http://120.24.100.157:23422/admin/order/pick_manage2/scan_list?pick_id=219662-1
+
+
+
+
+
+
+
+
+
+
+
+erp_v1
+åŸæ¥
+120.24.100.157:70
+erp.moonarstore.com
+ä¿®æ”¹æˆ
+
+http://erp.moonarstore.com:23411
+http://120.24.100.157:23411
+
+erp_v2
+120.24.100.157:72
+v2.erp.moonarstore.com
+ä¿®æ”¹æˆ
+http://120.24.100.157:23422/
+http://v2.erp.moonarstore.com:23422
+
+æµ·å¤–ä»“
+120.24.100.157:71
+ä¿®æ”¹æˆ
+http://120.24.100.157:23433/
+
+
+
+E:\htdocs\v2.erp.moonarstore.com\static\system\libraries\Log.php
+
+
+
+
+SELECT * FROM erp_orders WHERE orders_export_time >='2014-09-01' AND orders_is_join=0 AND orders_status=1 AND shipmentAutoMatched >0 AND profitRate>5  AND orders_warehouse_id >0 AND productsCost>0 AND shippingCost>0 and orders_type=13 ORDER BY orders_paid_time ASC LIMIT 20000,
+
+
+
+
+
+
+ELECT sku , token_id , site , user_id , sum( sale_num ) as num , sum( sale_money ) as money
+FROM erp_ebay_sku_sale_by_day
+WHERE 1 GROUP BY sku, token_id, site, user_id order by id desc  limit 0,20 
+
+
+
+
+
+SELECT a.products_sku,a.products_id,a.products_name_cn,a.products_status_2,a.products_value,c.`sum(p.item_count)` as num14 from erp_products_data a  LEFT JOIN erp_products_sale_day14_view c ON a.products_sku=c.orders_sku WHERE productsIsActive = 1 and ((to_days(now()) - to_days(products_create_time)) >= 30)  and (products_father_sku = '' or products_father_sku is NULL) AND c.`sum(p.item_count)` IS NULL order by a.products_id desc 
+
+
+ select sum(p.item_count) as co,p.orders_sku from erp_orders as o,erp_orders_products as p where o.erp_orders_id=p.erp_orders_id and o.orders_print_time >='2014-10-23 10:50:22' and p.orders_sku ='HM375' and (o.orders_status=4 or o.orders_status=5 ) and o.orders_is_join = 0  group by p.orders_sku 
+
+ SELECT COUNT(*) AS num  ,order_id FROM erp_smt_issue_list WHERE is_new = 1  GROUP BY order_id HAVING num>1 
+
+  SELECT *
+FROM (`erp_wish_product`)
+LEFT JOIN `erp_wish_product_detail` as wd ON `erp_wish_product`.`productID` = `wd`.`productID`
+WHERE `erp_wish_product`.`sellerID` =  '1'
+AND `publishedTime` >= '2017-05-01'
+AND `publishedTime` <= '2017-06-02'
+AND `wd`.`soldNum` != 0
+AND `erp_wish_product`.`productID` != ''
+AND `product_type_status` =  0
+GROUP BY `erp_wish_product`.`productID`
+ORDER BY `soldNum` desc
+LIMIT 20  
+
+
+
+
+SELECT wd.*,pd.products_status_2,pd.products_sku
+FROM erp_joom_auto_disable d
+INNER JOIN erp_joom_product_detail wd ON d.productID = wd.productID
+INNER JOIN erp_products_data pd ON wd.sku = pd.products_sku
+WHERE d.is_success =4
+AND wd.enabled =0
+AND d.original_sku = wd.original_sku
+AND pd.products_status_2 = 'selling' limit 9000 , 3000
+
+
+
+
+select count(*) as geshu from (select DISTINCT erp_orders. *  from erp_orders  INNER JOIN erp_orders_products p use index(orders_item_number) ON p.erp_orders_id = erp_orders.erp_orders_id INNER JOIN erp_joom_product_detail d ON d.productID = p.orders_item_number AND d.sellerID not in (0,888) AND d.sku = p.orders_sku    where orders_export_time>='2017-01-01 00:00:00' and   orders_is_join = 0 and orders_status = 1  and shipmentAutoMatched > 0  and orders_type = 18
+
+SELECT COUNT(*) AS `numrows`
+FROM (`erp_ebay_list`)
+WHERE `starttime` > '2017-05-15' 
+
+
+UPDATE `erp_smt_issue_list` SET `is_new` = 0 WHERE `token_id` =  '24' AND `issue_status` =  'wait_seller_confirm_refund'
+
+
+SELECT `p`.`orderlineitemid`, `erp_orders`.`erp_orders_id`, `erp_orders`.`orders_is_backorder`
+FROM (`erp_orders`)
+LEFT JOIN `erp_orders_products` as p ON `p`.`erp_orders_id`=`erp_orders`.`erp_orders_id`
+WHERE `orders_is_join` =  0
+AND `sales_account` =  '99706454@qq.com_ID'
+AND `orders_type` =  15
+AND `buyer_id` =  3496747992
+AND `p`.`orderlineitemid` =  124924892
+AND `orders_status` != 6
+
+
+
+
+FROM
+	(`erp_orders_products`)
+LEFT JOIN `erp_products_data` pd ON trim(`erp_orders_products`.`orders_sku`) = trim(`pd`.`products_sku`)
+LEFT JOIN `erp_category` ec ON `ec`.`category_id` = `pd`.`products_sort`
+LEFT JOIN `erp_category` ecp ON `ecp`.`category_id` = `ec`.`category_parent_id`
+WHERE
+	`erp_orders_products`.`erp_orders_id` = '41892533'
+AND `pd`.`product_warehouse_id` = '1025'
+ORDER BY
+	`erp_orders_products`.`orders_products_id` ASC
+
+
+
+select * from erp_wish_import_data where account='yuffalyp@126.com' and   auditingTime = '2016-03-05 13:50:00' AND auditing_status =2 and is_upload=1 and (erp_main_image is null or erp_main_image='') limit 0,100
+
+
+
+
+
+
+
+
+592b1c09cad153572cee748d
+Marjorie Lienhardt
+1 Avenue du Bois ChenneviÃ¨res sur Marne 94430
+FR France æ³•å›½
+
+
+5929ce53de437a4b9309dcfe
+Lejeria Hale
+1309 Continental Drive Dothan Alabama 36301
+US United States ç¾å›½ 3344469470
+
+
+
+5928e5e9ed57fc663cf91e7g
+Heng Chea
+3203 Korte Ct Falls Church Virginia 22042
+US United States ç¾å›½ 17033886949 
+
+
+
+5928e5e9ed57fc663cf91e72
+Diana garcia morales
+716 nuway circle trlr 6 Lenoir North Carolina 28645
+US United States ç¾å›½ 8286401283 
+
+
+
+
+
+
+
+
+
+
+E:\htdocs\erp\all_orders_manage.php
+changeSqlStr
+ALLOWED_MIN_EXPORT_TIME
+
+
+E:\htdocs\erp\includes\procurement.class.php   989
+E:\htdocs\erp\procurement.php   16è¡Œ
+
+
+
+
+
+
+
+
+æ€»é¦†åœ¨é¾™åæ–°åŒºæ¢…æ—å…³é™„è¿‘æ˜Ÿæ²³ç››ä¸–èŠ±å›­5æ¥¼
+
+æµ·å¤–ä»“é‡æ–°åŒ¹é…ä»“åº“ç‰©æµ
+http://120.24.100.157:71/auto/CountMargin_new.php?erp_orders_id=44054495
+
+
+
+SELECT `o`.`orders_status`, `erp_pick_product`.*
+FROM (`erp_pick_product`)
+INNER JOIN `erp_orders` o ON `o`.`erp_orders_id` = `erp_pick_product`.`orders_id`
+WHERE `scan_time` > 1493001697
+AND `scan_time` < 1493260897
+AND `status` != 4
+AND `o`.`orders_status` =  5
+AND `product_num` = scan_num
+
+
+
+
+SELECT `erp_orders_id` as 'å†…å•å·' ,COUNT( * ) AS num,orders_total,ot.name 'å¹³å°',s.shipmentTitle 'ç‰©æµæ–¹å¼',orders_shipping_code 'è¿½è¸ªå·', buyer_id 'ä¹°å®¶id',buyer_name 'ä¹°å®¶å§“å',buyer_phone 'ç”µè¯',buyer_email 'email',buyer_address_1,buyer_address_2,buyer_city,buyer_state
 ,buyer_zip,buyer_country 
 FROM `erp_orders` o FORCE INDEX ( IDX_ORDERS_TYPE_ORDERS_EXPORT_TIME )
 left join erp_shipment s on s.shipmentID=o.shipmentAutoMatched 
@@ -17,7 +310,7 @@ AND orders_is_split =0
 GROUP BY buyer_id HAVING num >1
 
 
-SELECT `erp_orders_id` as 'ÄÚµ¥ºÅ' ,COUNT( * ) AS num,ot.name 'Æ½Ì¨',s.shipmentTitle 'ÎïÁ÷·½Ê½',orders_shipping_code '×·×ÙºÅ', buyer_id 'Âò¼Òid',buyer_name 'Âò¼ÒĞÕÃû',buyer_phone 'µç»°',buyer_email 'email',buyer_address_1,buyer_address_2,buyer_city,buyer_state
+SELECT `erp_orders_id` as 'å†…å•å·' ,COUNT( * ) AS num,ot.name 'å¹³å°',s.shipmentTitle 'ç‰©æµæ–¹å¼',orders_shipping_code 'è¿½è¸ªå·', buyer_id 'ä¹°å®¶id',buyer_name 'ä¹°å®¶å§“å',buyer_phone 'ç”µè¯',buyer_email 'email',buyer_address_1,buyer_address_2,buyer_city,buyer_state
 ,buyer_zip,buyer_country 
 FROM `erp_orders` o FORCE INDEX ( IDX_ORDERS_TYPE_ORDERS_EXPORT_TIME )
 left join erp_shipment s on s.shipmentID=o.shipmentAutoMatched 
@@ -93,10 +386,10 @@ LIMIT 50
 
 
 
-ÎÊÌâÄ¿Â¼£º
+é—®é¢˜ç›®å½•ï¼š
 du -h --max-depth=1 /var
 
-°²È«Ä¿Â¼
+å®‰å…¨ç›®å½•
 /usr
 
 
@@ -140,23 +433,23 @@ disk read is high
 ----------/procurementArrivalAndCheck.php
 Cpu(s): 11.9%us, 20.4%sy,  0.0%ni,  2.2%id, 64.7%wa,  0.5%hi,  0.4%si,  0.0%st
 
-ÓÅ»¯ÄÚ´æ
+ä¼˜åŒ–å†…å­˜
 /var/www/html/erp/autoCreateProcurementDraft.php 
 /var/www/html/erp/autoSetLocalItemQuantityZero.php
 
 
-¶à¸ö£¬cpu¸ß£¬ÄÚ´æÓÅ»¯(got it)
+å¤šä¸ªï¼Œcpué«˜ï¼Œå†…å­˜ä¼˜åŒ–(got it)
  /var/www/html/erp/wishReturnBack.php account=munster 
 
-ÄÚ´æÌ«¶à(got it)
+å†…å­˜å¤ªå¤š(got it)
   1102 root      20   0  452m 135m 8564 S  8.9  0.8   0:05.17 /usr/bin/php -f /var/www/html/erp/autoSendMessageRun.php type=save_order 
-ÄÚ´æÓÅ»¯
+å†…å­˜ä¼˜åŒ–
    0  493m 166m 4172 S  1.7  1.0   0:31.57 /usr/bin/php -f /var/www/html/erp/autoSetLocalItemQuantityZero.php page=8      
 
-Õâ¸öÕËºÅ²»ÄÜ¼°Ê±ÍË³ö(got it)
+è¿™ä¸ªè´¦å·ä¸èƒ½åŠæ—¶é€€å‡º(got it)
 /usr/bin/php -f /var/www/html/erp/wishReturnBack.php account=gbstore@126.com
 
-cpu ¸ß(got it)
+cpu é«˜(got it)
  448m 131m 8564 S  8.6  0.8   0:04.78 /usr/bin/php -f /var/www/html/erp/autoSendMessageRun.php type=save_order 
 
 
@@ -166,43 +459,43 @@ cpu ¸ß(got it)
 MOONARSPREAD.COM
 184.168.221.50
 
-------------»ªÇÈ
-IP£º106.14.16.253
-ÓÃ»§Ãû£ºchen
-ÃÜÂë£º6057a-`12Jiang=345+*
-¶Ë¿Ú£º20000
+------------åä¾¨
+IPï¼š106.14.16.253
+ç”¨æˆ·åï¼šchen
+å¯†ç ï¼š6057a-`12Jiang=345+*
+ç«¯å£ï¼š20000
 
-ÉÌ³ÇÓòÃû£ºmall.15ls.com
-ÉÌ¼ÒÓòÃû£ºfx.15ls.com
-¹ÜÀíÔ±ÓòÃû£ºadmin.15ls.com
-    ÓÃ»§Ãû£ºfenxiaoadmin
-    ÃÜÂë£º123456
-Í¼Æ¬ÓòÃû£ºimg.15ls.com
-½Ó¿ÚÓòÃû£ºapi.15ls.com
+å•†åŸåŸŸåï¼šmall.15ls.com
+å•†å®¶åŸŸåï¼šfx.15ls.com
+ç®¡ç†å‘˜åŸŸåï¼šadmin.15ls.com
+    ç”¨æˆ·åï¼šfenxiaoadmin
+    å¯†ç ï¼š123456
+å›¾ç‰‡åŸŸåï¼šimg.15ls.com
+æ¥å£åŸŸåï¼šapi.15ls.com
 -----
-ÓÃ»§Ãû£º13997826149£¬
-µÇÂ½ÃÜÂë£º8459737
+ç”¨æˆ·åï¼š13997826149ï¼Œ
+ç™»é™†å¯†ç ï¼š8459737
 
 -----
 http://mp.wxfenxiao.com
-ÕËºÅ£º18970830436    
-ÃÜÂë£ºdsf674z
-Õâ¸öÊÇ×î¸ß°æ±¾µÄÌåÑéºóÌ¨ 
-Ç°¶Ë·şÎñºÅÊÇ ¾ÛÏú±¦
-¿ÉÒÔ½áºÏÌåÑéµÄ
+è´¦å·ï¼š18970830436    
+å¯†ç ï¼šdsf674z
+è¿™ä¸ªæ˜¯æœ€é«˜ç‰ˆæœ¬çš„ä½“éªŒåå° 
+å‰ç«¯æœåŠ¡å·æ˜¯ èšé”€å®
+å¯ä»¥ç»“åˆä½“éªŒçš„
 
-----------------Å¥ÃÅ¿ìµİ·şÎñÆ÷
+----------------é’®é—¨å¿«é€’æœåŠ¡å™¨
 
 	
 
 203.88.164.155
 
-½ô¼±bug»òÈÎÎñ¿ª·¢;
-·şÎñÆ÷Î¬»¤;
-×éÔ±ÈËÔ±ÈÎÎñ·ÖÅä£»
-ĞèÇóÈ·ÈÏÕûÀí£»
-×éÔ±ÈËÔ±¹¤×÷Ö¸µ¼¡¢ÅàÑµ£»
-ĞÂ¼¼ÊõÑĞ¾¿£»
+ç´§æ€¥bugæˆ–ä»»åŠ¡å¼€å‘;
+æœåŠ¡å™¨ç»´æŠ¤;
+ç»„å‘˜äººå‘˜ä»»åŠ¡åˆ†é…ï¼›
+éœ€æ±‚ç¡®è®¤æ•´ç†ï¼›
+ç»„å‘˜äººå‘˜å·¥ä½œæŒ‡å¯¼ã€åŸ¹è®­ï¼›
+æ–°æŠ€æœ¯ç ”ç©¶ï¼›
 
 
 
@@ -215,8 +508,8 @@ http://mp.wxfenxiao.com
 
 
 ------------
-ÉèÖÃitemÔÚÏßÊıÁ¿
-E:\htdocs\erp\includes\exportOrders.class.php 1232ĞĞ
+è®¾ç½®itemåœ¨çº¿æ•°é‡
+E:\htdocs\erp\includes\exportOrders.class.php 1232è¡Œ
 
 
 ----------------
@@ -226,7 +519,7 @@ http://www.cin.ufpe.br/~pjs/How_Linux_Works_(2004)%5BBrianWard%5D.pdf
 112.74.130.227
 administrator
 Slme#!123
-ÖÕ¶ËÁ¬½ÓÃÜÂë 397918
+ç»ˆç«¯è¿æ¥å¯†ç  397918
 
 
 
@@ -249,19 +542,19 @@ Slme#!123
 Item Not Received (INR) and Return/SNAD (Significantly Not as Described) cases
 ----------
 13544028207 
-½¨Òé²É¹ºÖµÅÅ³ıË«11Ó°Ïì
+å»ºè®®é‡‡è´­å€¼æ’é™¤åŒ11å½±å“
 E:\htdocs\erp\src\getTotals.class.php   515
 E:\htdocs\erp\includes\function.php  2001
 
 
-´ıÓÅ»¯Ä£¿é£º
-E:\htdocs\erp\src\statisticsManage.class.php   170ĞĞ
-E:\htdocs\v2.erp.moonarstore.com\default\models\smt_message\smt_msg_list_model.php     65ĞĞ
-E:\htdocs\erp\all_orders_manage.php   845ĞĞ
+å¾…ä¼˜åŒ–æ¨¡å—ï¼š
+E:\htdocs\erp\src\statisticsManage.class.php   170è¡Œ
+E:\htdocs\v2.erp.moonarstore.com\default\models\smt_message\smt_msg_list_model.php     65è¡Œ
+E:\htdocs\erp\all_orders_manage.php   845è¡Œ
 
 
------------------µ¼³ö»ã×Ü--
-ËÙÂôÍ¨µ¥¸öÕËºÅ×òÈÕskuÏúÁ¿
+-----------------å¯¼å‡ºæ±‡æ€»--
+é€Ÿå–é€šå•ä¸ªè´¦å·æ˜¨æ—¥skué”€é‡
  SELECT p.orders_sku,sum(p.item_count) as number,o.orders_warehouse_id as warehouse_id 
  FROM `erp_orders` as o  
  left join erp_orders_products as p on o.`erp_orders_id`=p.`erp_orders_id` where o.orders_is_join=0 and orders_export_time>='2016-10-16' and orders_export_time<'2016-10-17' and sales_account='Coolcoola04@126.com' and o.orders_type=6 group by p.orders_sku
@@ -274,7 +567,7 @@ E:\htdocs\erp\all_orders_manage.php   845ĞĞ
 
 
 
-´´½¨Ë÷Òı
+åˆ›å»ºç´¢å¼•
 select * from erp_wish_import_data where account='yuffalyp@126.com' and   auditingTime = '2016-03-05 13:50:00' AND auditing_status =2 and is_upload=1 and (erp_main_image is null or erp_main_image='') limit 0,100
 
 SELECT *
@@ -294,18 +587,18 @@ explain select count(p.id) as num from erp_wish_product p left join erp_wish_pro
 ---------------------------------------------------------------------------------------------------
 4392260806184170
 
-[·½Õı]
+[æ–¹æ­£]
 
 05/21
 
-[·½Õı]
+[æ–¹æ­£]
 
 056
 
 
-1.°ü¹üÖĞµÄskuµÄÉê±¨¼ÛÖµ´ÓÄÄÀïÈ¡;
-2.Ãæµ¥ÉÏÊÕ»õÈËÊÇ  firstname + lastname ?
-3.±£´æ¸ú×ÙºÅ·½·¨ÓÅ»¯£¿
+1.åŒ…è£¹ä¸­çš„skuçš„ç”³æŠ¥ä»·å€¼ä»å“ªé‡Œå–;
+2.é¢å•ä¸Šæ”¶è´§äººæ˜¯  firstname + lastname ?
+3.ä¿å­˜è·Ÿè¸ªå·æ–¹æ³•ä¼˜åŒ–ï¼Ÿ
 
 
 https://my.bluehost.com/web-hosting/cplogin?lil=1
@@ -313,14 +606,14 @@ https://my.bluehost.com/web-hosting/cplogin?lil=1
 
 
 https://portal.hostgator.com/login
-ÕËµ¥µÇÂ½ĞÅÏ¢
+è´¦å•ç™»é™†ä¿¡æ¯
 fangzheng2010@gmail.com
 fzgh1985
 
 
 
-Í¼Æ¬·şÎñÆ÷moonarstore.com (SH-1083405)  Your Control Panel: https://gator3227.hostgator.com/cpanel
-Username:           moonar  ÃÜÂë£ºAv4g6gC9hOkm
+å›¾ç‰‡æœåŠ¡å™¨moonarstore.com (SH-1083405)  Your Control Panel: https://gator3227.hostgator.com/cpanel
+Username:           moonar  å¯†ç ï¼šAv4g6gC9hOkm
 1st Nameserver:  ns6453.hostgator.com
 2nd Nameserver:  ns6454.hostgator.com
 Server IP Address:          192.254.233.229
@@ -367,23 +660,23 @@ user.name=andy
 
 
 1.D:\phpStudy\WWW\local.kuaiyue.com\app\Models\Channel\AccountModel.php   
-ĞŞ¸Ä·½·¨ getApiConfigAttribute£¬ ÒÔ¼°  $fillableÊôĞÔ
+ä¿®æ”¹æ–¹æ³• getApiConfigAttributeï¼Œ ä»¥åŠ  $fillableå±æ€§
 
 
 D:\phpStudy\WWW\local.kuaiyue.com\app\Modules\Channel\ChannelModule.php
-Ìí¼Óuse, 
-Ìí¼Ó·½·¨ public function createLazadaDriver($config)
+æ·»åŠ use, 
+æ·»åŠ æ–¹æ³• public function createLazadaDriver($config)
 
 D:\phpStudy\WWW\local.kuaiyue.com\app\Modules\Channel\Adapter\LazadaAdapter.php
-´´½¨¸ÃÎÄ¼ş£¬ĞŞ¸ÄÆäÖĞµÄÏàÓ¦·½·¨£»
+åˆ›å»ºè¯¥æ–‡ä»¶ï¼Œä¿®æ”¹å…¶ä¸­çš„ç›¸åº”æ–¹æ³•ï¼›
 
 
 D:\phpStudy\WWW\local.kuaiyue.com\app\Http\routes.php
-Ìí¼Óroute·ÃÎÊ
+æ·»åŠ routeè®¿é—®
 
 
 
-D:\phpStudy\WWW\local.kuaiyue.com\config\channel.php    ĞŞ¸ÄµÚ14ĞĞ
+D:\phpStudy\WWW\local.kuaiyue.com\config\channel.php    ä¿®æ”¹ç¬¬14è¡Œ
 
 
 
@@ -405,25 +698,25 @@ D:\phpStudy\WWW\local.kuaiyue.com\config\channel.php    ĞŞ¸ÄµÚ14ĞĞ
 
 POST /admin/export_data/export_order_data/deal_data HTTP/1.1
 
-1.²úÆ·¹ÜÀí
-	1.1 sku²ÖÎ»¡¢Éê±¨×ÊÁÏ¡¢²É¹ºÈË
-	1.2 skuºÍ²É¹ºÈËÃ»ÓĞ¶ÔÓ¦£¿
+1.äº§å“ç®¡ç†
+	1.1 skuä»“ä½ã€ç”³æŠ¥èµ„æ–™ã€é‡‡è´­äºº
+	1.2 skuå’Œé‡‡è´­äººæ²¡æœ‰å¯¹åº”ï¼Ÿ
 
 
- 	ÉîÛÚÊĞÁú¸ÚÇøÛàÌïÎåºÍÄÏÂ·41ºÅºÍ´|¹¤ÒµBÇø3¶°4Â¥
-	ÉîÛÚÊĞÁú»ªĞÂÇøÓÍËÉÂ·146ºÅÃÎÀöÔ°¹¤ÒµÔ°6¶°2Â¥
+ 	æ·±åœ³å¸‚é¾™å²—åŒºå‚ç”°äº”å’Œå—è·¯41å·å’Œç£¡å·¥ä¸šBåŒº3æ ‹4æ¥¼
+	æ·±åœ³å¸‚é¾™åæ–°åŒºæ²¹æ¾è·¯146å·æ¢¦ä¸½å›­å·¥ä¸šå›­6æ ‹2æ¥¼
 
-ÔÚµã»÷°´Å¥Íê³É¼ğ»õµ¥µÄÊ±ºò£¬Èç¹û¼ğ»õµ¥ÖĞÓĞsku²»ÊÇ·¢»õ×´Ì¬£¬¾Í»á°Ñ¸Ãsku¶ÔÓ¦
+åœ¨ç‚¹å‡»æŒ‰é’®å®Œæˆæ‹£è´§å•çš„æ—¶å€™ï¼Œå¦‚æœæ‹£è´§å•ä¸­æœ‰skuä¸æ˜¯å‘è´§çŠ¶æ€ï¼Œå°±ä¼šæŠŠè¯¥skuå¯¹åº”
 
 
 http://120.24.100.157:60/server-status?refresh=3
 120.24.252.226
 
-ÒÑ¾­·¢»õ
+å·²ç»å‘è´§
 20762266
 
 
-¸ú×Ù½ø³Ì
+è·Ÿè¸ªè¿›ç¨‹
 strace -T -tt -e trace=all -p 29831 
 
 
@@ -433,25 +726,25 @@ strace -T -tt -e trace=all -p 29831
 107287
 
 ---------------------------
-²É¹ºµ¥µ½»õ±í
+é‡‡è´­å•åˆ°è´§è¡¨
 erp_procurement_arrivel
 -----
-²É¹ºµ¥±íerp_procurement
-×Ö¶Îpo_parent_id±íÊ¾¸¸²É¹ºµ¥ºÅ
+é‡‡è´­å•è¡¨erp_procurement
+å­—æ®µpo_parent_idè¡¨ç¤ºçˆ¶é‡‡è´­å•å·
 -----
-²É¹ºµ¥²úÆ·±í
+é‡‡è´­å•äº§å“è¡¨
 erp_procurement_products
 --------
-erp_printing_template Ãæµ¥Ä£°å±í
+erp_printing_template é¢å•æ¨¡æ¿è¡¨
 -----
-ĞÂ¾Ésku¶ÔÕÕ±í
+æ–°æ—§skuå¯¹ç…§è¡¨
 erp_old_sku_new_sku
 ----------------------------------------
 
 -------svn----------------
-¾ÉERP£ºsvn://120.24.100.157/erp
-ĞÂERP£ºsvn://120.24.100.157/slme
-º£Íâ²Ö£ºsvn://120.24.100.157/hwc
+æ—§ERPï¼šsvn://120.24.100.157/erp
+æ–°ERPï¼šsvn://120.24.100.157/slme
+æµ·å¤–ä»“ï¼šsvn://120.24.100.157/hwc
 andy
 E8PLMp2P 
 ---------------
@@ -459,30 +752,30 @@ imo
 changandi@67331664
 slme99
 ----------------------
-ĞÂÀÏERP£ºÕËºÅ£ºchangandi  ÃÜÂë£º123456 
+æ–°è€ERPï¼šè´¦å·ï¼šchangandi  å¯†ç ï¼š123456 
 
-¾Éerp:
+æ—§erp:
 http://erp.moonarstore.com/My_erp_system.php
 new erp:
 http://v2.erp.moonarstore.com/My_erp_system.php
 
-º£Íâ²Ö
+æµ·å¤–ä»“
 http://120.24.100.157:71/index.php
 admin
 Slm8#234
 
 
-ÉîÛÚ²ÖÉ¨»õÊ¹ÓÃµÄµØÖ·
+æ·±åœ³ä»“æ‰«è´§ä½¿ç”¨çš„åœ°å€
 http://120.24.100.157:72/index.php
 
------Éú²ú»·¾³µÄ²âÊÔ»·¾³------------
+-----ç”Ÿäº§ç¯å¢ƒçš„æµ‹è¯•ç¯å¢ƒ------------
 120.24.100.157  v2-test.moonarstore.com
 
 http://v2-test.moonarstore.com:60  /var/www/html/v2-erp-uat
 http://120.24.100.157:60/My_erp_system.php   /var/www/html/erp-uat
 
 -----------------
-²âÊÔ»·¾³sql
+æµ‹è¯•ç¯å¢ƒsql
 192.168.1.88
 slme
 salamoer
@@ -494,11 +787,11 @@ slm1243
 
 
 ----------------
-ÓÊÏä
+é‚®ç®±
 changandi@moonarstore.com
 Slme99
 ------
-towerµÇÂ¼
+towerç™»å½•
 changandi@moonarstore.com
 chang@11
 -----------
@@ -511,7 +804,7 @@ chang123
 ---------------
 bugzilla
 http://192.168.1.3/index.cgi
-¹ÜÀíÔ±
+ç®¡ç†å‘˜
 zhangyaoxing@moonarstore.com
 wrenpass1019
 
@@ -525,7 +818,7 @@ changandi
 87LCXvj8
 
 -----------------
-Éú²ú»·¾³ssh ·ÃÎÊ¶Ë¿Ú 60
+ç”Ÿäº§ç¯å¢ƒssh è®¿é—®ç«¯å£ 60
 120.24.100.157
 changandi
 8pKGWgcU
@@ -537,7 +830,7 @@ slm14256
 th27q6Fd
 
 ------------
-¹«Ë¾¾ÖÓòÍø
+å…¬å¸å±€åŸŸç½‘
 http://192.168.1.1/
 admin
 slm345
@@ -548,34 +841,35 @@ slm345
 Slm4455%%
 
 ----------
-wish´úÀí·şÎñÆ÷Ä¬ÈÏÃÜÂë
+wishä»£ç†æœåŠ¡å™¨é»˜è®¤å¯†ç 
 Slm123456
 
 ---------------
 192.168.1.6
 root
+slme123
 chang@11
 
-mongodb ÅäÖÃÎÄ¼ş
+mongodb é…ç½®æ–‡ä»¶
 /var/www/image-server/config/default.json
 
-´ò¿ªÕâ¸öÎÄ¼ş¿ÉÒÔ¿´µ½Í¼Æ¬ÉÏ´«ÏµÍ³ (http://192.168.1.6:3000) µÄÓÃ»§ÃûºÍÃÜÂë
+æ‰“å¼€è¿™ä¸ªæ–‡ä»¶å¯ä»¥çœ‹åˆ°å›¾ç‰‡ä¸Šä¼ ç³»ç»Ÿ (http://192.168.1.6:3000) çš„ç”¨æˆ·åå’Œå¯†ç 
 
 -----------------------
-mongodbÏà¹Ø
-1.88ÉÏÃæsshµÇÂ½ºó£¬ÊäÈëshellÃüÁî mongo ½øÈëmongodb,use admin½øÈëÊı¾İ¿â£¬Ê¹ÓÃÏÂÃæµÄÈÏÖ¤
+mongodbç›¸å…³
+1.88ä¸Šé¢sshç™»é™†åï¼Œè¾“å…¥shellå‘½ä»¤ mongo è¿›å…¥mongodb,use adminè¿›å…¥æ•°æ®åº“ï¼Œä½¿ç”¨ä¸‹é¢çš„è®¤è¯
 
 use admin;
 db.auth('root','s9mHt3PJ');
 
 mongotop --username root --password s9mHt3PJ --authenticationDatabase admin
 
-ÊÊÓÃÓĞÉîÛÚÍ¼Æ¬·şÎñÆ÷ºÍÃÀ¹úÍ¼Æ¬·şÎñÆ÷
+é€‚ç”¨æœ‰æ·±åœ³å›¾ç‰‡æœåŠ¡å™¨å’Œç¾å›½å›¾ç‰‡æœåŠ¡å™¨
 
-2.ÉÏ´«Í¼Æ¬½çÃæ  http://192.168.1.6:3000/view
+2.ä¸Šä¼ å›¾ç‰‡ç•Œé¢  http://192.168.1.6:3000/view
 
-M×éÊ¹ÓÃÍ¼Æ¬·şÎñÆ÷  http://120.24.100.157:3000/view 
-ÃÀ¹úÍ¼Æ¬·şÎñÆ÷
+Mç»„ä½¿ç”¨å›¾ç‰‡æœåŠ¡å™¨  http://120.24.100.157:3000/view 
+ç¾å›½å›¾ç‰‡æœåŠ¡å™¨
 http://imgurl.moonarstore.com/
 
 
@@ -584,7 +878,7 @@ http://imgurl.moonarstore.com/
  vi /etc/httpd/conf/httpd.conf
 
 ---------------------
-Ò»¸öÉîÛÚ²Ö¶©µ¥£¬²¿·ÖskuÈ±»õ£¬Ò²»á²ğµ¥±ÈÈçsku 73264421157573
+ä¸€ä¸ªæ·±åœ³ä»“è®¢å•ï¼Œéƒ¨åˆ†skuç¼ºè´§ï¼Œä¹Ÿä¼šæ‹†å•æ¯”å¦‚sku 73264421157573
 
 
 
@@ -593,7 +887,7 @@ rsync -ravt --progress --log-file=/home/imgsync/imgsync.log /mnt/moonar/html/erp
 
 
 -------------------
-ÅúÁ¿É±ËÀsqlÌØÕ÷½ø³Ì
+æ‰¹é‡æ€æ­»sqlç‰¹å¾è¿›ç¨‹
 mysqladmin  --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSBSg2un processlist|awk -F "|" '{if($9 ~ /operateTime,products_status_2/) print $2}'|xargs -n 1 mysqladmin   --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSBSg2un  kill
 
 
@@ -612,11 +906,11 @@ mysql  --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSB
 
 
 
-ÏÔÊ¾mysql»î¶¯½ø³Ì
+æ˜¾ç¤ºmysqlæ´»åŠ¨è¿›ç¨‹
 mysqladmin  --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSBSg2un processlist|awk -F "|" 'BEGIN{print "\n\n";}{if($6 !~ /Sleep/ && $3 ~ /[a-z]/) print $2, $3, $6, $7, $9, $10, $11}END{print "\n\n";}'
 mysqladmin  --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSBSg2un processlist|awk -F "|" 'BEGIN{print "\n\n";}{if($6 !~ /Sleep/ && $3 ~ /[a-z]/) print $2, $3, $6, $7, $9, $10, $11}END{print "\n\n";}'
 
-¸ù¾İÖ¸¶¨µÄ¹Ø¼ü×Ö²éÑ¯
+æ ¹æ®æŒ‡å®šçš„å…³é”®å­—æŸ¥è¯¢
 sql_key_words="from";mysql --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSBSg2un --database="information_schema" -e "SELECT * FROM information_schema.PROCESSLIST where not isnull(INFO) and INFO not like '%information_schema.PROCESSLIST%' and INFO like '%""$sql_key_words""%' order by TIME desc"
 
 mysqladmin  --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSBSg2un processlist|awk -F "|" '{if($9 ~ /operateTime,products_status_2/) print $2}'|xargs -n 1 mysqladmin   --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSBSg2un  kill
@@ -627,13 +921,13 @@ mysql  --host="rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com" -uerp -pJN22aV6pJSB
 
 
 
-²éÕÒÊ±¼ä¶ÎÄÚµÄÎÄ¼şÉ¾³ı
+æŸ¥æ‰¾æ—¶é—´æ®µå†…çš„æ–‡ä»¶åˆ é™¤
 find /mnt/moonar/html/erp/imgServer/upload/SMT/autoWish/ -name '*.jpg'  -newermt '2016-02-04 00:00:00' ! -newermt '2016-02-04 23:59:00' | xargs rm -f
 -----------------------
-´ÅÅÌ¿Õ¼äÂúÁËÉ¾³ıÄ¿Â¼ÏÂµÄÎÄ¼ş
+ç£ç›˜ç©ºé—´æ»¡äº†åˆ é™¤ç›®å½•ä¸‹çš„æ–‡ä»¶
 /var/log/slme
 
-´ıÉ¾³ıµÄÄ¿Â¼
+å¾…åˆ é™¤çš„ç›®å½•
 \erp\upload\question_img
 \erp\upload\product_attachme
 
@@ -651,92 +945,92 @@ find /mnt/moonar/html/erp/imgServer/upload/SMT/autoWish/ -name '*.jpg'  -newermt
 
 
 -------------
-orders_is_backorder Ç·»õ¶©µ¥£º0±íÊ¾²»Ç·»õ£¬1±íÊ¾Ç·»õ
-orders_ship_fee  ÔË·Ñ
-orders_is_split=1£¬ ¶©µ¥²ğ·Ö
-orders_is_join = 8   1.¸Ã¶©µ¥ÊÇ²ğ·Ö¶©µ¥µÄÖ÷¶©µ¥ , µÈÓÚ0±íÊ¾ÆÕÍ¨¶©µ¥
-isMixed    ¶©µ¥ÊÇ·ñÊÇ»ìºÏ¶©µ¥£¨¶©µ¥ÖĞskuÀàÊı´óÓÚ1£©
-orders_type ¶©µ¥ÀàĞÍ   1±íÊ¾ebay¶©µ¥
-orders_total   ¶©µ¥×Ü½ğ¶î
-ebayStatusIsMarked=1  ËÙÂôÍ¨»òÕßebay¶©µ¥ÊÇ·ñ±ê¼Ç·¢»õ
-orders_shipping_code  ¶©µ¥×·×ÙºÅ
-cnz_code       ×Ô¶¯Éú³É¸ú×ÙºÅÖĞµÄĞéÄâ¸ú×ÙºÅ  Æ½ÓÊ²éÑ¯ÍøÕ¾¹ÒºÅÂë
-case_result   ¶©µ¥Ìí¼ÓcaseÊÇ·ñ³É¹¦ ²Î¿¼ E:\htdocs\erp\addDisputeSingle.php 168ĞĞ
-old_erp_orders_id  ×Ó¶©µ¥ĞÅÏ¢ÖĞ£¬²ğ·Ö¶©µ¥µÄÖ÷¶©µ¥ºÅ
-orders_is_split     ¸Ã¶©µ¥ÊÇ·ñÊÇ²ğ·Ö³öÀ´µÄ¶©µ¥
-orders_warehouse_id  ¶©µ¥²Ö¿âid
-matching_warehouse_time ¶©µ¥Æ¥Åä²Ö¿âÊ±¼ä
-ShippingServiceSelected  ¿Í»§Ñ¡ÔñµÄÎïÁ÷
-sales_account   ÏúÊÛÕËºÅ
-orders_export_time ¶©µ¥µ¼ÈëÊ±¼ä	
-orders_shipping_time É¨Ãè·¢»õµÄÊ±¼ä
+orders_is_backorder æ¬ è´§è®¢å•ï¼š0è¡¨ç¤ºä¸æ¬ è´§ï¼Œ1è¡¨ç¤ºæ¬ è´§
+orders_ship_fee  è¿è´¹
+orders_is_split=1ï¼Œ è®¢å•æ‹†åˆ†
+orders_is_join = 8   1.è¯¥è®¢å•æ˜¯æ‹†åˆ†è®¢å•çš„ä¸»è®¢å• , ç­‰äº0è¡¨ç¤ºæ™®é€šè®¢å•
+isMixed    è®¢å•æ˜¯å¦æ˜¯æ··åˆè®¢å•ï¼ˆè®¢å•ä¸­skuç±»æ•°å¤§äº1ï¼‰
+orders_type è®¢å•ç±»å‹   1è¡¨ç¤ºebayè®¢å•
+orders_total   è®¢å•æ€»é‡‘é¢
+ebayStatusIsMarked=1  é€Ÿå–é€šæˆ–è€…ebayè®¢å•æ˜¯å¦æ ‡è®°å‘è´§
+orders_shipping_code  è®¢å•è¿½è¸ªå·
+cnz_code       è‡ªåŠ¨ç”Ÿæˆè·Ÿè¸ªå·ä¸­çš„è™šæ‹Ÿè·Ÿè¸ªå·  å¹³é‚®æŸ¥è¯¢ç½‘ç«™æŒ‚å·ç 
+case_result   è®¢å•æ·»åŠ caseæ˜¯å¦æˆåŠŸ å‚è€ƒ E:\htdocs\erp\addDisputeSingle.php 168è¡Œ
+old_erp_orders_id  å­è®¢å•ä¿¡æ¯ä¸­ï¼Œæ‹†åˆ†è®¢å•çš„ä¸»è®¢å•å·
+orders_is_split     è¯¥è®¢å•æ˜¯å¦æ˜¯æ‹†åˆ†å‡ºæ¥çš„è®¢å•
+orders_warehouse_id  è®¢å•ä»“åº“id
+matching_warehouse_time è®¢å•åŒ¹é…ä»“åº“æ—¶é—´
+ShippingServiceSelected  å®¢æˆ·é€‰æ‹©çš„ç‰©æµ
+sales_account   é”€å”®è´¦å·
+orders_export_time è®¢å•å¯¼å…¥æ—¶é—´	
+orders_shipping_time æ‰«æå‘è´§çš„æ—¶é—´
 
 
 
 
-shipmentScanLocal 1-ERPÉ¨Ãè£¬2-º£Íâ²ÖÉ¨Ãè
+shipmentScanLocal 1-ERPæ‰«æï¼Œ2-æµ·å¤–ä»“æ‰«æ
 
 --------------erp_products_data
-products_status_2  ÏúÊÛ×´Ì¬ selling£ºÔÚÊÛ£¬sellingWait ´ıÊÛ
-productsIsActive   ²úÆ·Í£ÓÃ
+products_status_2  é”€å”®çŠ¶æ€ sellingï¼šåœ¨å”®ï¼ŒsellingWait å¾…å”®
+productsIsActive   äº§å“åœç”¨
 
 
 ----------------
-¶©µ¥×´Ì¬ 
-1ĞÂÂ¼Èë 
-2²»Í¨¹ı 
-3ÒÑÍ¨¹ı 
+è®¢å•çŠ¶æ€ 
+1æ–°å½•å…¥ 
+2ä¸é€šè¿‡ 
+3å·²é€šè¿‡ 
 
-4.ÒÑ´òÓ¡ 
+4.å·²æ‰“å° 
 
-5ÒÑ·¢»õ 
+5å·²å‘è´§ 
 
-6ÒÑ³·µ¥ 
-7Î´¸¶¿î 
-8ÒÑ·¢»õ[FBA] 
-9Ô¤´òÓ¡  
+6å·²æ’¤å• 
+7æœªä»˜æ¬¾ 
+8å·²å‘è´§[FBA] 
+9é¢„æ‰“å°  
 
-²Ö¿âÀàĞÍ
-ÉîÛÚ²Ö 1000
-ÒåÎÚ²Ö 1025
+ä»“åº“ç±»å‹
+æ·±åœ³ä»“ 1000
+ä¹‰ä¹Œä»“ 1025
 
 -------
-¶©µ¥ÀàĞÍ 
+è®¢å•ç±»å‹ 
 1eBay 
-2B2CÉÌ³Ç 
-3ÏßÏÂ½»Ò× 
-4°¢Àï°Í°Í 
-5²¹»õ 
-6ËÙÂôÍ¨ 
-7AMZ¶©µ¥ 
-8FBAÍ·³Ì 
-9ÌÔ±¦²Ö¶©µ¥ 
-10º£Íâ²ÖÍ·³Ì 
-11ĞÂµ°Íø¶©µ¥ 
-12µÂ¹ú¹²Ïí²Ö 
+2B2Cå•†åŸ 
+3çº¿ä¸‹äº¤æ˜“ 
+4é˜¿é‡Œå·´å·´ 
+5è¡¥è´§ 
+6é€Ÿå–é€š 
+7AMZè®¢å• 
+8FBAå¤´ç¨‹ 
+9æ·˜å®ä»“è®¢å• 
+10æµ·å¤–ä»“å¤´ç¨‹ 
+11æ–°è›‹ç½‘è®¢å• 
+12å¾·å›½å…±äº«ä»“ 
 13wish 
 15 lazada
 17 cD 
 18 joom
 
 ---------
-²É¹ºµ¥×´Ì¬(E:\htdocs\erp\includes\procurement.class.php 2400ĞĞ)
+é‡‡è´­å•çŠ¶æ€(E:\htdocs\erp\includes\procurement.class.php 2400è¡Œ)
 po_status
-ËùÓĞ×´Ì¬ -1
-ÆÕÍ¨ 0
-²»Í¨¹ı 1
-´ıÊÕ»õ  5 »òÕß  ($arrival_is_end == 0 && $status >= 2 && $status <> 6 && $status <> 11)
-ÒÑÍê³É  $arrival_is_end == 1 && $status >= 2 && $mustFollowing == 0 && $has_new_arrival == 0
-ÒÑºËÏú 6
-¶ş´ÎÉóºË 11
-ÌØ²É 14
-²¹»õ 15
-²»Á¼Æ· 10
-0-ĞÂÂ¼Èë£¬1-²»Í¨¹ı£¬2-ÒÑÍ¨¹ı£¬3-ÒÑ¸¶¿î£¬4-ÒÑµ½»õ£¬5-ÒÑÖÊ¼ì,6-ÍË»Ø,9-ÒÑÍê³É
+æ‰€æœ‰çŠ¶æ€ -1
+æ™®é€š 0
+ä¸é€šè¿‡ 1
+å¾…æ”¶è´§  5 æˆ–è€…  ($arrival_is_end == 0 && $status >= 2 && $status <> 6 && $status <> 11)
+å·²å®Œæˆ  $arrival_is_end == 1 && $status >= 2 && $mustFollowing == 0 && $has_new_arrival == 0
+å·²æ ¸é”€ 6
+äºŒæ¬¡å®¡æ ¸ 11
+ç‰¹é‡‡ 14
+è¡¥è´§ 15
+ä¸è‰¯å“ 10
+0-æ–°å½•å…¥ï¼Œ1-ä¸é€šè¿‡ï¼Œ2-å·²é€šè¿‡ï¼Œ3-å·²ä»˜æ¬¾ï¼Œ4-å·²åˆ°è´§ï¼Œ5-å·²è´¨æ£€,6-é€€å›,9-å·²å®Œæˆ
 
-²É¹ºµ¥
-has_new_arrival ÅĞ¶ÏÊÇ·ñÈ«²¿ÖÊ¼ì  0 È«²¿ÖÊ¼ìÁË£»1 »¹ÓĞÃ»ÖÊ¼ìµÄ¡£
-mustFollowing  ÓĞ´ÎÆ·£¬ĞèÒª¸ú×Ù
+é‡‡è´­å•
+has_new_arrival åˆ¤æ–­æ˜¯å¦å…¨éƒ¨è´¨æ£€  0 å…¨éƒ¨è´¨æ£€äº†ï¼›1 è¿˜æœ‰æ²¡è´¨æ£€çš„ã€‚
+mustFollowing  æœ‰æ¬¡å“ï¼Œéœ€è¦è·Ÿè¸ª
 
 ----------
 
@@ -745,89 +1039,89 @@ ROXY.NS.CLOUDFLARE.COM
 
 
 
-1.¿ÕÔËÔË·ÑÔ¤²âÖµ£ºÎª¿Õ£¬¸ÃÖµ×Ô¶¯¸üĞÂ
+1.ç©ºè¿è¿è´¹é¢„æµ‹å€¼ï¼šä¸ºç©ºï¼Œè¯¥å€¼è‡ªåŠ¨æ›´æ–°
 
-Ìí¼ÓÒ»¸öcd apiÕËºÅ
-insert `erp_cdiscount_token`(`sales_account`,`pw`,`token_id`,`responsible`,`currency_type`,`currency_type_cn`,`account`,`create_time`,`modify_time`,`expires_in`) values('sellmore-api','sellmore2016*','0',0,'EUR','Å·Ôª','sellmore','2016-02-01 10:18:16','2016-02-01 10:18:25',0);
+æ·»åŠ ä¸€ä¸ªcd apiè´¦å·
+insert `erp_cdiscount_token`(`sales_account`,`pw`,`token_id`,`responsible`,`currency_type`,`currency_type_cn`,`account`,`create_time`,`modify_time`,`expires_in`) values('sellmore-api','sellmore2016*','0',0,'EUR','æ¬§å…ƒ','sellmore','2016-02-01 10:18:16','2016-02-01 10:18:25',0);
 
 
 update erp_orders set orders_status=3,orders_shipping_code='' where  erp_orders_id IN ( 18696733, 18601237, 18411764, 18550026, 18696418, 18695737, 18283931, 18696515, 18696456, 18696716, 18696604, 18335147, 18321898, 18695597, 18695744, 18287995, 18672708, 18696628, 18695876, 18549768, 18696616, 18695762, 18696675, 18696709, 18696392, 18695826, 18408959, 18695669, 18696527, 18695617, 18522664, 18674782, 18695630, 18695496, 18569118, 18695698, 18618679, 18470872, 18695848, 18696499, 18516901, 18601277, 18695410, 18380055, 18696614, 18696492, 18587623, 18695586, 18695682, 18696454, 18696501, 18371364, 18376818, 18696674, 18695855, 18696668, 18695649, 18568870, 18637121, 18618467 )
 
 
 
-ALTER TABLE `erp_products_data` ADD `suggestPurchase` INT( 8 ) NOT NULL DEFAULT '0' COMMENT '½¨Òé²É¹ºÁ¿' AFTER `profitRate_15`;
-ALTER TABLE `erp_products_data` ADD `sold_30` INT( 8 ) NOT NULL DEFAULT '0' COMMENT '30ÌìÏúÁ¿' AFTER `sold_60` ;
-ALTER TABLE `erp_products_data` ADD `sold_14` INT( 8 ) NOT NULL DEFAULT '0' COMMENT '14ÌìÏúÁ¿' AFTER `sold_30` ;
-ALTER TABLE `erp_products_data` ADD `sold_7` INT( 8 ) NOT NULL DEFAULT '0' COMMENT '7ÌìÏúÁ¿' AFTER `sold_14` ;
+ALTER TABLE `erp_products_data` ADD `suggestPurchase` INT( 8 ) NOT NULL DEFAULT '0' COMMENT 'å»ºè®®é‡‡è´­é‡' AFTER `profitRate_15`;
+ALTER TABLE `erp_products_data` ADD `sold_30` INT( 8 ) NOT NULL DEFAULT '0' COMMENT '30å¤©é”€é‡' AFTER `sold_60` ;
+ALTER TABLE `erp_products_data` ADD `sold_14` INT( 8 ) NOT NULL DEFAULT '0' COMMENT '14å¤©é”€é‡' AFTER `sold_30` ;
+ALTER TABLE `erp_products_data` ADD `sold_7` INT( 8 ) NOT NULL DEFAULT '0' COMMENT '7å¤©é”€é‡' AFTER `sold_14` ;
 
 
 
 
 
 
-²É¹º½¨ÒéÖµĞŞ¸Ä
-E:\htdocs\erp\src\getTotals.class.php   434ĞĞ  ½¨Òé²É¹ºÖµÏµÊıĞŞ¸Ä
-E:\htdocs\erp\src\getTotals.class.php   397 Ç÷ÊÆÏµÊıĞŞ¸Ä
-E:\htdocs\erp\includes\function.php   1850ĞĞ 7ÌìÏúÁ¿sqlÓÅ»¯
+é‡‡è´­å»ºè®®å€¼ä¿®æ”¹
+E:\htdocs\erp\src\getTotals.class.php   434è¡Œ  å»ºè®®é‡‡è´­å€¼ç³»æ•°ä¿®æ”¹
+E:\htdocs\erp\src\getTotals.class.php   397 è¶‹åŠ¿ç³»æ•°ä¿®æ”¹
+E:\htdocs\erp\includes\function.php   1850è¡Œ 7å¤©é”€é‡sqlä¼˜åŒ–
 
-E:\htdocs\erp\includes\function.php  1920 ÍË¿îÊıÁ¿Í³¼ÆĞŞ¸ÄÎª°´ÕÕskuÊıÁ¿
-E:\htdocs\erp\gettotals.php   707   30ÌìµÄÍË¿î ĞŞ¸ÄÎª Í³¼Æ60ÌìµÄ
-E:\htdocs\erp\src\getTotals.class.php   730ĞĞ  sku×î½ü30Ìì¶©µ¥µÄÆ½¾ùÀûÈóÂÊ
+E:\htdocs\erp\includes\function.php  1920 é€€æ¬¾æ•°é‡ç»Ÿè®¡ä¿®æ”¹ä¸ºæŒ‰ç…§skuæ•°é‡
+E:\htdocs\erp\gettotals.php   707   30å¤©çš„é€€æ¬¾ ä¿®æ”¹ä¸º ç»Ÿè®¡60å¤©çš„
+E:\htdocs\erp\src\getTotals.class.php   730è¡Œ  skuæœ€è¿‘30å¤©è®¢å•çš„å¹³å‡åˆ©æ¶¦ç‡
 
 
---------------------------------------Í¼Æ¬·şÎñÆ÷
-¸ù¾İskuÏÔÊ¾ÆäÈ«²¿Í¼Æ¬ĞÅÏ¢
+--------------------------------------å›¾ç‰‡æœåŠ¡å™¨
+æ ¹æ®skuæ˜¾ç¤ºå…¶å…¨éƒ¨å›¾ç‰‡ä¿¡æ¯
 http://192.168.1.6:3007/getSkuImageInfo/getSkuImageInfo.php?distinct=true&include_sub=true&sku=HW3184
 http://erp.moonarstore.com/getSkuImageInfo/getSkuImageInfo.php?distinct=true&include_sub=true&sku=HW3184
 
-·µ»Ø¸ñÊ½£º
+è¿”å›æ ¼å¼ï¼š
 [{"_id":{"$id":"5711b07c32cbabf4bfd5f752"},"fileId":{"$id":"5711b07c3bc22d13579477da"},"filename":"SS4301-5711b07c3bc22d13579477da.jpg","tags":["link","color"],"lastUpdated":{"sec":1460777084,"usec":211000}},{"_id":{"$id":"5711b07c32cbabf4bfd5f753"},"fileId":{"$id":"5711b07c3bc22d13579477db"},"filename":"SS4301-5711b07c3bc22d13579477db.jpg","tags":["link","logo"],"lastUpdated":{"sec":1460777084,"usec":211000}},{"_id":{"$id":"5711b07c32cbabf4bfd5f754"},"fileId":{"$id":"5711b07c3bc22d13579477dc"},"filename":"SS4301-5711b07c3bc22d13579477dc.jpg","tags":["link","logo"],"lastUpdated":{"sec":1460777084,"usec":212000}},{"_id":{"$id":"5711b08a32cbabf4bfd5f755"},"fileId":{"$id":"5711b08a3bc22d13579477f2"},"filename":"SS4301A-5711b08a3bc22d13579477f2.jpg","tags":["link","shape","front"],"lastUpdated":{"sec":1460777098,"usec":880000}},{"_id":{"$id":"5711b08a32cbabf4bfd5f756"},"fileId":{"$id":"5711b08a3bc22d13579477f3"},"filename":"SS4301A-5711b08a3bc22d13579477f3.jpg","tags":["link","shape"],"lastUpdated":{"sec":1460777098,"usec":881000}},{"_id":{"$id":"5711b09732cbabf4bfd5f757"},"fileId":{"$id":"5711b0973bc22d1357947805"},"filename":"SS4301B-5711b0973bc22d1357947805.jpg","tags":["link","shape","front"],"lastUpdated":{"sec":1460777111,"usec":612000}},{"_id":{"$id":"5711b09732cbabf4bfd5f758"},"fileId":{"$id":"5711b0973bc22d1357947806"},"filename":"SS4301B-5711b0973bc22d1357947806.jpg","tags":["link","shape"],"lastUpdated":{"sec":1460777111,"usec":614000}},{"_id":{"$id":"5711b09732cbabf4bfd5f759"},"fileId":{"$id":"5711b0973bc22d1357947807"},"filename":"SS4301B-5711b0973bc22d1357947807.jpg","tags":["link","shape"],"lastUpdated":{"sec":1460777111,"usec":618000}}]
 
-¸ù¾İskuµÄidÏÔÊ¾Í¼Æ¬
-²»ĞèÒªrewrite http://192.168.1.6:3007/getSkuImageInfo/getSkuImage.php?id=570b37f5ff9666441d7fcf6f   »òÕß
-²»ĞèÒªrewrite http://120.24.100.157:70/getSkuImageInfo/getSkuImage.php?id=SS4301-5711b07c3bc22d13579477da.jpg
-ĞèÒªrewrite http://192.168.1.6:3007/getSkuImageInfo/sku/SS4301-5711b07c3bc22d13579477da   »òÕß
-ĞèÒªrewrite http://192.168.1.6:3007/getSkuImageInfo/sku/5711b07c3bc22d13579477da   »òÕß
+æ ¹æ®skuçš„idæ˜¾ç¤ºå›¾ç‰‡
+ä¸éœ€è¦rewrite http://192.168.1.6:3007/getSkuImageInfo/getSkuImage.php?id=570b37f5ff9666441d7fcf6f   æˆ–è€…
+ä¸éœ€è¦rewrite http://120.24.100.157:70/getSkuImageInfo/getSkuImage.php?id=SS4301-5711b07c3bc22d13579477da.jpg
+éœ€è¦rewrite http://192.168.1.6:3007/getSkuImageInfo/sku/SS4301-5711b07c3bc22d13579477da   æˆ–è€…
+éœ€è¦rewrite http://192.168.1.6:3007/getSkuImageInfo/sku/5711b07c3bc22d13579477da   æˆ–è€…
 
 
 https://moonarspread.com/getSkuImageInfo/getSkuImageInfo.php?distinct=true&include_sub=true&sku=HW3184
 
 
-±¾µØÂ·¾¶
+æœ¬åœ°è·¯å¾„
 E:\htdocs\mongodbtest\getSkuImageInfo\
-15·şÎñÆ÷Â·¾¶
+15æœåŠ¡å™¨è·¯å¾„
 /var/www/html/getSkuImageInfo/
-¹úÄÚ°¢ÀïÔÆÂ·¾¶
+å›½å†…é˜¿é‡Œäº‘è·¯å¾„
 /mnt/moonar/html/erp/getSkuImageInfo/
-ÃÀ¹ú°¢ÀïÔÆÂ·¾¶
+ç¾å›½é˜¿é‡Œäº‘è·¯å¾„
 /mnt/data/html/imgurl/getSkuImageInfo
 --------------------------------------
 
 
-¼ğ»õµ¥³£ÓÃsql:
+æ‹£è´§å•å¸¸ç”¨sql:
 select count(*) from erp_pick_product where pick_id='171445' and product_sku='HW1124A' limit 1;
 
 
-²é¿´µ¥¸ö¼ğ»õµ¥
+æŸ¥çœ‹å•ä¸ªæ‹£è´§å•
 http://v2.erp.moonarstore.com/admin/order/pick_manage/printPickOrder?pick_id=171445
 
-²é¿´¼ğ»õµ¥ÖĞµÄÒÑ¾­´òÓ¡µÄ¶©µ¥ÁĞ±í   Ò²¿ÉÒÔ²âÊÔĞÂ¿Õ¼ä´òÓ¡
+æŸ¥çœ‹æ‹£è´§å•ä¸­çš„å·²ç»æ‰“å°çš„è®¢å•åˆ—è¡¨   ä¹Ÿå¯ä»¥æµ‹è¯•æ–°ç©ºé—´æ‰“å°
 http://v2.erp.moonarstore.com/admin/order/pick_manage/show_has_printed_list?pick_id=139693&warehouse=1000
-ÔÙ´Î´òÓ¡µ¥¸ö¶©µ¥
+å†æ¬¡æ‰“å°å•ä¸ªè®¢å•
 http://v2.erp.moonarstore.com/admin/print/order_print/orderPrint?id=19563682
-É¨Ãè¼ğ»õµ¥ÖĞµÄsku¿ªÊ¼·¢»õ
+æ‰«ææ‹£è´§å•ä¸­çš„skuå¼€å§‹å‘è´§
 http://v2.erp.moonarstore.com/admin/order/pick_manage2/scan_list?pick_id=139693
-¼ğ»õµ¥ÖĞ´ıÉ¨ÃèµÄsku
+æ‹£è´§å•ä¸­å¾…æ‰«æçš„sku
 http://v2.erp.moonarstore.com/admin/order/pick_manage/printPickOrder?status=1&pick_id=139693
 
-É¨Ãè²âÊÔµØÖ·£º
+æ‰«ææµ‹è¯•åœ°å€ï¼š
 http://v2.erp.moonarstore.com/admin/order/pick_manage_monitor/scan_list?pick_id=165062
 
 
-Ò³ÃæÂß¼­
+é¡µé¢é€»è¾‘
 E:\htdocs\v2.erp.moonarstore.com\default\controllers\admin\order\pick_manage.php
-scan_list   É¨Ãèsku
-endPicking  ½áÊø±¾´Î¼ğ»õµ¥É¨Ãè
+scan_list   æ‰«æsku
+endPicking  ç»“æŸæœ¬æ¬¡æ‹£è´§å•æ‰«æ
 
 
 
