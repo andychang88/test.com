@@ -1,4 +1,84 @@
 
+生产环境 db 用户kaifa_user
+密码jlkfdue3jflkdj@@ 地址
+rdshya1yiemresvglnzvp.mysql.rds.aliyuncs.com
+
+Access Key ID
+LTAIdKTjeAS2wUB2
+
+Access Key Secret
+AOyCQOx23yKlU1fr86z2LUsya5Eg9y 
+
+
+指定账号查体系外9月份销售额
+SELECT sum( orders_total / currency_value ) AS total
+FROM erp_orders
+WHERE orders_status =5
+AND orders_is_join =0
+AND orders_shipping_time >= '2016-09-01'
+AND orders_shipping_time < '2016-10-01'
+AND ( sales_account in ('csvstore2011','moonar.store','buyherehappy','au-milyonline','rokstore2011','allidealhere2011','starsmilkstore','snowysummer2012','newcitry2013','happycow2012','happyfish2012','pandaserveyou','moonar.store','pandamotos2012','pandacars2012','deshophere','zxc-slm','xcv-slm','top-de','licn2011','powerup2009','ukbirdfly','elecshopuk','yttechuk','ca-sitton','us-steven2012','happy-store2013','shoppingbuckets','ocbuyer-boutique','ytelectrouk','tiguanship','happywill2013','katchpet','superetiger','cat.here','rabbithere2013123','etigerfang2014','salamoery2015','salamoeri2015','2817241','0630490','salamoerf2015','salamoers2015','cnyiwu201303','cn201304','cnyw2014','Missyou2015','sunshinebubbles15','sunnydays2015','rainydays2015','cloudydays2015','malibuy','wintrade9','kiyumir-4','bestselli-6','homelikeyou','ditanglaqiangwen_8','jr9436754jiba_0','jtv1828350','lintangxiapao3','zhiyebi371859_5','cc7087tt','ming2573','jingtian8625','yunfeng0616','andilele','tianyaya45','yg0053','fjkon89','sashan9421-2','qingpinguo11','qingpingguo22','cherish2017','rainbow109','royalkitc','wilwilc','tmarkco','sandglainf','yulinswa_9','haopenp-2','attractivel','daxiondd_5','xiaoxmac_8','mangsaq9','huazale-5','fst-123_7','fusut_123_4','wltg_123_9','wlt_shop_2','alimoonar@gmail.com','alimoonar2@gmail.com','salamoer05@126.com','alimoonar4@gmail.com','alimoonar5@gmail.com','salamoer01@126.com','salamoer02@126.com','salamoer03@126.com','salamoer04@126.com','yttech01@126.com','yttech002@126.com','yttech4@126.com','yttech005@126.com','alizjp@126.com','alilss@126.com','smtyulili@126.com','moresell01fei@163.com','alilx2@moonarstore.com','smtjiahongming@126.com','moresell01huan@163.com','moresell01chou@163.com','moresell01ru@163.com','matcha1412@126.com','smtcaihaiping@126.com','milkyway13@126.com','cappuccino1411@126.com','captain1001@126.com','captain1004@126.com','captain1008@126.com','smtwangff@126.com','smttangbj@126.com','13878980810@163.com','18907896949@163.com','13878930343@163.com','15899691882@163.com','alimoonar01@126.com','sellmoreali01@126.com','m18378917626@163.com','sellmoreali03@126.com','etigher04@126.com','sellmoreali02@126.com','sellmoreali04@126.com','sellmoreali05@126.com','sellmoreali06@126.com','cuonan89891@163.com','jdbfy3bidfjf@163.com','lixungz01@126.com','lixungz02@126.com','lixungz03@126.com','alimoonar04@126.com','lixungz04@126.com','lixungz05@126.com','lixungz06@126.com','hrbfgi383urb@163.com','curuf5ye5r@163.com','ue7ehdu8@163.com','fengzhongfeng321@163.com','maotouying987@163.com','hdj7326ehf@163.com','sellmoreljh1@126.com','sellmorepl@126.com','sellmoreych15@126.com','sellmorehlph@126.com','slmlqy234@126.com','slmcwpjy@126.com','slmhcl521@126.com','lixuanpenga@126.com','lixuanpengb@126.com','lixuanpengc@126.com','cdafugztw@126.com','sanzhuofanyi02@126.com','sanzhuofanyi03@126.com','lixuanpengd@127.com','mingstyle02@126.com','mingstyle03@126.com','mingstyle44@126.com','mingstyle05@126.com','mingstyle06@126.com','sanzhuofanyi11@126.com','darli01@126.com','darli02@126.com','darli03@126.com','darli04@126.com','darli05@126.com','darli06@126.com','vwjunki01@126.com','junki02@126.com','cnzhongchuanga@126.com','cnzhongchuangb@126.com','cnzhongchuangc@126.com','cnzhongchuangd@126.com','cnzhongchuange@126.com','cnzhongchuangf@126.com','jingweisja@126.com','jingweisjb@126.com','jingweisjc@126.com','jingweisjd@126.com','jingweisje@126.com','jingweisjf@126.com','Phoenix001a@126.com','Phoenix002a@126.com','Phoenix003a@126.com','Phoenix004@126.com','Phoenix005@126.com','Phoenix006a@126.com','ehtongda1001@126.com','ehtongda1002@126.com','ehtongda1003@126.com','ehtongda1004@126.com','ehtongda1005@126.com','ehtongda1006@126.com','Coolcoola01@126.com','Coolcoola02@126.com','Coolcoola03@126.com','Coolcoola04@126.com','Coolcoola05@126.com','Coolcoola06@126.com','Phoenix777a@126.com','Phoenix008a@126.com','Phoenix009a@126.com','Phoenix013a@126.com','Phoenix014a@126.com','Phoenix015a@126.com','manor1joy@126.com','manor2joy@126.com','manor3joy@126.com','manor6joy@126.com','Vic1sunny@126.com','Vic2sunny@126.com','Vic3sunny@126.com','Vic6sunny@126.com','Zanaboo@126.com','CooaGrand@126.com','manor5joy@126.com','CoobGrand@126.com','CoocGrand@126.com','Moo.us','Moo.ca','Moo.es','Moo.it','Moo.de','Moo.uk','Moo.fr','Moo.jp','Yt.us','Yt.ca','Yt.es','Yt.it','Yt.de','Yt.uk','Yt.fr','Atoz.es','Atoz.it','Atoz.de','Atoz.uk','Atoz.fr','Etiger.us','Sun.es','Sun.it','Sun.de','Sun.uk','Sun.fr','Sun.us','Gogo.us','Etiger.jp','Woo.uk','Woo.us','Woo.ca','Woo.de','Woo.fr','Woo.IT','Woo.es','Ib.us','Ib.ca','Ib.uk','Ro.us','Bb.us','Bb.ca','Bb.de','Ea.us','Ea.ca','Bb.uk','Hi.US','Hi.ca','Sell.us','Sell.de','Sell.uk','Bl.us','Bl.uk','Ib.de','lu.ca','lu.us','ss.ca','ss.us','Le.us','fangzheng@moonarstore.com','weinanmaoyi@126.com','JDBLtd','BBMIKJ@163.com','menfandky@163.com','ciranxiaomy@163.com','Proven','lixunwuyun@163.com','xgyuhuan@126.com','yuantmy@163.com','huantongdada@163.com','zhenhtcd@163.com','jingweigs@126.com','zcheshenggs@126.com','ciranxiaomy01@163.com','lolwzry01@163.com','472985273@qq.com','duzhonghuabb@163.com','13018287008@163.com','fengqiufang','happy310','h18990621992@163.com','jiamgfeifeilumin@163.com','munster','18011567670@163.com','laoxiaomi','liangbiyan','15128216911@163.com','luochao2016','lvwangling','m15928895448@163.com','shiwenhaomm@163.com','shulimei','sunyufang','candytang1','tianlin2016','lijuanjuan2016','15099875454@163.com','fzlly78','fzlly13','carol_liu666@163.com','15827613462@163.com','yanglili','m18182365953@163.com','zhangchunlan','15099671663@163.com','zhangtingfen135246@163.com','caojuan12363','WFR','weisumei','qinjiavvv@163.com','hongdounanzhuang','2843976945','a625136124@163.com','zhj40912@163.com','fangqiang','sztiansda@163.com','15871277021@163.com','meimei1992','tjxiaoyingying@163.com','caojuan520','shopping19900508@163.com','luckysofa','kwdznanzhuang@163.com','15928423363@163.com','hongxiamei@qq.com','mingshanchaye','wei1633','13408631274@163.com','fx2467839@163.com','tianjincurtain','tianjinbettycurtain','Happybabycorn','xinyuetonghua','fujingshe','slme131@163.com','dxzxpy16@163.com','15828683376@163.com','susancptworld','xxlinyue','15916191105@163.com','616036089','songjunhao','gfdkly','aa342504421@163.com','gt201314','roulisi','a313417855@163.com','leixia860600','yanqiangshop','xiaolan139','zhizhuan','13429920340@163.com','FENGZHONGQIYUAN1','christmas0757','facai2527@163.com','357','lumingugang','zhangxiuyingzz@163.com','18630623570@163.com','slme138@163.com','Readyahlsen','zchengcheng','SWKKL','aotema','m17726504510@163.com','wochenxi728','heboo520@163.com','18502842523@163.com','wjx8280690@163.com','cvdfer753@163.com','liuxinnijianguo','a390820936@163.com','13608057005@163.com','z15681982693@163.com','flower3691@163.com','niuniusw10@163.com','lxpyoux@163.com','rainhong90@163.com','fenghseio@163.com','wonderfulwishc@163.com','ciweisf@163.com','sdasat@163.com','haibrui@163.com','dragondebai517@163.com','longding531ish@163.com','daddybangood531@163.com','lovechinaflag531@163.com','ranninygaokao67@163.com','bowsunnygood67@163.com','gosipgirl78day@163.com','mousephonegood88@163.com','octrhy@163.com','zhangshuai231212@163.com','moonarstore','salamoer','liufei@moonarstore.com','joom-sellmore','Joom-Kung Fu Panda','Joom-Moon River','joom-No.1 Fashion Store','BestSelling Store ','Superdeals Store','shoes store','Geek Store','baby Store','Pet World','fashionmenstore','spiderman','spiderman2','Swimwear Sore','Watch Wold STORE','Women Fashion Store','Home Decor Store','Makeup & Beauty Store','Hotsale Bag Store','Sex Toys Store','Beauty World','IKAE Home','Electronics World','Outdoor Club','King Pet World','Jewelry World','Love Dress World','Bag World','Garden Seeds Store','Hand Spinner Toys','Top Smartphone Store','SunGlassses Store','better life store','xuanpeng2017','mily2017','only1314','maobolin12@outlook.com','liufangfang56@outlook.com','liushuangyanan@outlook.com','wuyun217@outlook.com','zhangxiaohai66@outlook.com','moonar','eBay','线下交易','newegg@moonarstore.com','B2C商城','Amazon.com','速卖通','jinhuamonaer@126.com','淘宝','DHgate','lazada','xuanpeng','Sell.fr','shoppe','速卖通')  or 
+						   ( orders_type = 1 and sales_account in ('milyonline','luckydeerstore')) )
+
+
+
+SELECT sum( orders_total / currency_value ) AS total
+FROM erp_orders
+WHERE orders_status =5
+AND orders_is_join =0
+AND orders_shipping_time >= '2016-09-01'
+AND orders_shipping_time < '2016-10-01'
+AND sales_account in ('csvstore2011','moonar.store','buyherehappy','au-milyonline','rokstore2011','allidealhere2011','starsmilkstore','snowysummer2012','newcitry2013','happycow2012','happyfish2012','pandaserveyou','moonar.store','pandamotos2012','pandacars2012','deshophere','zxc-slm','xcv-slm','top-de','licn2011','powerup2009','ukbirdfly','elecshopuk','yttechuk','ca-sitton','us-steven2012','happy-store2013','shoppingbuckets','ocbuyer-boutique','ytelectrouk','tiguanship','happywill2013','katchpet','superetiger','cat.here','rabbithere2013123','etigerfang2014','salamoery2015','salamoeri2015','2817241','0630490','salamoerf2015','salamoers2015','cnyiwu201303','cn201304','cnyw2014','Missyou2015','sunshinebubbles15','sunnydays2015','rainydays2015','cloudydays2015','malibuy','wintrade9','kiyumir-4','bestselli-6','homelikeyou','ditanglaqiangwen_8','jr9436754jiba_0','jtv1828350','lintangxiapao3','zhiyebi371859_5','cc7087tt','ming2573','jingtian8625','yunfeng0616','andilele','tianyaya45','yg0053','fjkon89','sashan9421-2','qingpinguo11','qingpingguo22','cherish2017','rainbow109','royalkitc','wilwilc','tmarkco','sandglainf','yulinswa_9','haopenp-2','attractivel','daxiondd_5','xiaoxmac_8','mangsaq9','huazale-5','fst-123_7','fusut_123_4','wltg_123_9','wlt_shop_2','alimoonar@gmail.com','alimoonar2@gmail.com','salamoer05@126.com','alimoonar4@gmail.com','alimoonar5@gmail.com','salamoer01@126.com','salamoer02@126.com','salamoer03@126.com','salamoer04@126.com','yttech01@126.com','yttech002@126.com','yttech4@126.com','yttech005@126.com','alizjp@126.com','alilss@126.com','smtyulili@126.com','moresell01fei@163.com','alilx2@moonarstore.com','smtjiahongming@126.com','moresell01huan@163.com','moresell01chou@163.com','moresell01ru@163.com','matcha1412@126.com','smtcaihaiping@126.com','milkyway13@126.com','cappuccino1411@126.com','captain1001@126.com','captain1004@126.com','captain1008@126.com','smtwangff@126.com','smttangbj@126.com','13878980810@163.com','18907896949@163.com','13878930343@163.com','15899691882@163.com','alimoonar01@126.com','sellmoreali01@126.com','m18378917626@163.com','sellmoreali03@126.com','etigher04@126.com','sellmoreali02@126.com','sellmoreali04@126.com','sellmoreali05@126.com','sellmoreali06@126.com','cuonan89891@163.com','jdbfy3bidfjf@163.com','lixungz01@126.com','lixungz02@126.com','lixungz03@126.com','alimoonar04@126.com','lixungz04@126.com','lixungz05@126.com','lixungz06@126.com','hrbfgi383urb@163.com','curuf5ye5r@163.com','ue7ehdu8@163.com','fengzhongfeng321@163.com','maotouying987@163.com','hdj7326ehf@163.com','sellmoreljh1@126.com','sellmorepl@126.com','sellmoreych15@126.com','sellmorehlph@126.com','slmlqy234@126.com','slmcwpjy@126.com','slmhcl521@126.com','lixuanpenga@126.com','lixuanpengb@126.com','lixuanpengc@126.com','cdafugztw@126.com','sanzhuofanyi02@126.com','sanzhuofanyi03@126.com','lixuanpengd@127.com','mingstyle02@126.com','mingstyle03@126.com','mingstyle44@126.com','mingstyle05@126.com','mingstyle06@126.com','sanzhuofanyi11@126.com','darli01@126.com','darli02@126.com','darli03@126.com','darli04@126.com','darli05@126.com','darli06@126.com','vwjunki01@126.com','junki02@126.com','cnzhongchuanga@126.com','cnzhongchuangb@126.com','cnzhongchuangc@126.com','cnzhongchuangd@126.com','cnzhongchuange@126.com','cnzhongchuangf@126.com','jingweisja@126.com','jingweisjb@126.com','jingweisjc@126.com','jingweisjd@126.com','jingweisje@126.com','jingweisjf@126.com','Phoenix001a@126.com','Phoenix002a@126.com','Phoenix003a@126.com','Phoenix004@126.com','Phoenix005@126.com','Phoenix006a@126.com','ehtongda1001@126.com','ehtongda1002@126.com','ehtongda1003@126.com','ehtongda1004@126.com','ehtongda1005@126.com','ehtongda1006@126.com','Coolcoola01@126.com','Coolcoola02@126.com','Coolcoola03@126.com','Coolcoola04@126.com','Coolcoola05@126.com','Coolcoola06@126.com','Phoenix777a@126.com','Phoenix008a@126.com','Phoenix009a@126.com','Phoenix013a@126.com','Phoenix014a@126.com','Phoenix015a@126.com','manor1joy@126.com','manor2joy@126.com','manor3joy@126.com','manor6joy@126.com','Vic1sunny@126.com','Vic2sunny@126.com','Vic3sunny@126.com','Vic6sunny@126.com','Zanaboo@126.com','CooaGrand@126.com','manor5joy@126.com','CoobGrand@126.com','CoocGrand@126.com','Moo.us','Moo.ca','Moo.es','Moo.it','Moo.de','Moo.uk','Moo.fr','Moo.jp','Yt.us','Yt.ca','Yt.es','Yt.it','Yt.de','Yt.uk','Yt.fr','Atoz.es','Atoz.it','Atoz.de','Atoz.uk','Atoz.fr','Etiger.us','Sun.es','Sun.it','Sun.de','Sun.uk','Sun.fr','Sun.us','Gogo.us','Etiger.jp','Woo.uk','Woo.us','Woo.ca','Woo.de','Woo.fr','Woo.IT','Woo.es','Ib.us','Ib.ca','Ib.uk','Ro.us','Bb.us','Bb.ca','Bb.de','Ea.us','Ea.ca','Bb.uk','Hi.US','Hi.ca','Sell.us','Sell.de','Sell.uk','Bl.us','Bl.uk','Ib.de','lu.ca','lu.us','ss.ca','ss.us','Le.us','fangzheng@moonarstore.com','weinanmaoyi@126.com','JDBLtd','BBMIKJ@163.com','menfandky@163.com','ciranxiaomy@163.com','Proven','lixunwuyun@163.com','xgyuhuan@126.com','yuantmy@163.com','huantongdada@163.com','zhenhtcd@163.com','jingweigs@126.com','zcheshenggs@126.com','ciranxiaomy01@163.com','lolwzry01@163.com','472985273@qq.com','duzhonghuabb@163.com','13018287008@163.com','fengqiufang','happy310','h18990621992@163.com','jiamgfeifeilumin@163.com','munster','18011567670@163.com','laoxiaomi','liangbiyan','15128216911@163.com','luochao2016','lvwangling','m15928895448@163.com','shiwenhaomm@163.com','shulimei','sunyufang','candytang1','tianlin2016','lijuanjuan2016','15099875454@163.com','fzlly78','fzlly13','carol_liu666@163.com','15827613462@163.com','yanglili','m18182365953@163.com','zhangchunlan','15099671663@163.com','zhangtingfen135246@163.com','caojuan12363','WFR','weisumei','qinjiavvv@163.com','hongdounanzhuang','2843976945','a625136124@163.com','zhj40912@163.com','fangqiang','sztiansda@163.com','15871277021@163.com','meimei1992','tjxiaoyingying@163.com','caojuan520','shopping19900508@163.com','luckysofa','kwdznanzhuang@163.com','15928423363@163.com','hongxiamei@qq.com','mingshanchaye','wei1633','13408631274@163.com','fx2467839@163.com','tianjincurtain','tianjinbettycurtain','Happybabycorn','xinyuetonghua','fujingshe','slme131@163.com','dxzxpy16@163.com','15828683376@163.com','susancptworld','xxlinyue','15916191105@163.com','616036089','songjunhao','gfdkly','aa342504421@163.com','gt201314','roulisi','a313417855@163.com','leixia860600','yanqiangshop','xiaolan139','zhizhuan','13429920340@163.com','FENGZHONGQIYUAN1','christmas0757','facai2527@163.com','357','lumingugang','zhangxiuyingzz@163.com','18630623570@163.com','slme138@163.com','Readyahlsen','zchengcheng','SWKKL','aotema','m17726504510@163.com','wochenxi728','heboo520@163.com','18502842523@163.com','wjx8280690@163.com','cvdfer753@163.com','liuxinnijianguo','a390820936@163.com','13608057005@163.com','z15681982693@163.com','flower3691@163.com','niuniusw10@163.com','lxpyoux@163.com','rainhong90@163.com','fenghseio@163.com','wonderfulwishc@163.com','ciweisf@163.com','sdasat@163.com','haibrui@163.com','dragondebai517@163.com','longding531ish@163.com','daddybangood531@163.com','lovechinaflag531@163.com','ranninygaokao67@163.com','bowsunnygood67@163.com','gosipgirl78day@163.com','mousephonegood88@163.com','octrhy@163.com','zhangshuai231212@163.com','moonarstore','salamoer','liufei@moonarstore.com','joom-sellmore','Joom-Kung Fu Panda','Joom-Moon River','joom-No.1 Fashion Store','BestSelling Store ','Superdeals Store','shoes store','Geek Store','baby Store','Pet World','fashionmenstore','spiderman','spiderman2','Swimwear Sore','Watch Wold STORE','Women Fashion Store','Home Decor Store','Makeup & Beauty Store','Hotsale Bag Store','Sex Toys Store','Beauty World','IKAE Home','Electronics World','Outdoor Club','King Pet World','Jewelry World','Love Dress World','Bag World','Garden Seeds Store','Hand Spinner Toys','Top Smartphone Store','SunGlassses Store','better life store','xuanpeng2017','mily2017','only1314','maobolin12@outlook.com','liufangfang56@outlook.com','liushuangyanan@outlook.com','wuyun217@outlook.com','zhangxiaohai66@outlook.com','moonar','eBay','线下交易','newegg@moonarstore.com','B2C商城','Amazon.com','速卖通','jinhuamonaer@126.com','淘宝','DHgate','lazada','xuanpeng','Sell.fr','shoppe','速卖通') 
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT sum( orders_total / currency_value ) AS total
+FROM erp_orders
+WHERE orders_status =5
+AND orders_is_join =0
+AND orders_shipping_time >= '2016-09-01'
+AND orders_shipping_time < '2016-10-01'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+90736  跨月
+
+year:2015
+month:7
+month:7,total:1981812.9842989
+month:8
+month:8,total:2661279.6171674
+month:9
+month:9,total:3382939.7518267
+month:10
+month:10,total:3244853.3524982
+month:11
+month:11,total:5477655.4152174
+month:12
+month:12,total:3702831.1854164
+check total:20451372.306425
 
 
 
@@ -760,9 +840,13 @@ new erp:
 http://v2.erp.moonarstore.com/My_erp_system.php
 
 海外仓
+demo.hwc.moonarstore.com
+uat.hwc.moonarstore.com
 http://120.24.100.157:71/index.php
 admin
 Slm8#234
+
+
 
 
 深圳仓扫货使用的地址

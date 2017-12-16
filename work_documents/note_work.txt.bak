@@ -1,8 +1,30 @@
+SELECT concat( year, "年" ) AS "年份",
+CASE orders_type
+WHEN 1
+THEN "ebay"
+WHEN 6
+THEN "速卖通"
+WHEN 7
+THEN "亚马逊"
+WHEN 13
+THEN "wish"
+WHEN 15
+THEN "lazada"
+WHEN 17
+THEN "cdicount"
+ELSE "其他"
+END AS "平台", round( sum( `purchase_cost` ) , 2 ) AS "总成本", round( sum( `shipping_cost` ) , 2 ) AS "总运费"
+FROM `erp_orders_shipping_cost_and_purchase_cost`
+GROUP BY year, orders_type
+LIMIT 0 , 30
+
+
 
 
 autoSendSkuIsStopedAndNum
 
-
+select sum(stock_number) from erp_stock_by_month where month=12;
+17872358
 
 
 70494
