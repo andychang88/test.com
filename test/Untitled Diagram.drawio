@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2021-04-16T08:20:56.253Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36" etag="uRiviKWODdbnbRSy7bKK" version="14.5.8" type="github">
+<mxfile host="app.diagrams.net" modified="2021-04-16T08:37:26.933Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36" etag="-ARQLU2EUk92KCyQkw7n" version="14.5.8" type="github">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
     <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -20,51 +20,13 @@
           <mxGeometry x="210" y="70" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="gTPqFz_aCFMI_0yL9xZZ-32" value="nginx反向代理服务器&lt;br&gt;47.101.205.28" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="gTPqFz_aCFMI_0yL9xZZ-2">
-          <mxGeometry x="160" width="116" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-14" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="gTPqFz_aCFMI_0yL9xZZ-3" target="gTPqFz_aCFMI_0yL9xZZ-13">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-16" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="gTPqFz_aCFMI_0yL9xZZ-3" target="gTPqFz_aCFMI_0yL9xZZ-15">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="220" y="520" />
-              <mxPoint x="220" y="520" />
-            </Array>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-35" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="gTPqFz_aCFMI_0yL9xZZ-3" target="gTPqFz_aCFMI_0yL9xZZ-34">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-3" value="香港服务器" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="160" y="420" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-10" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="gTPqFz_aCFMI_0yL9xZZ-4" target="gTPqFz_aCFMI_0yL9xZZ-9">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-12" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="gTPqFz_aCFMI_0yL9xZZ-4" target="gTPqFz_aCFMI_0yL9xZZ-11">
-          <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-4" value="美国服务器" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="560" y="420" width="120" height="60" as="geometry" />
+          <mxGeometry width="116" height="30" as="geometry" />
         </mxCell>
         <mxCell id="gTPqFz_aCFMI_0yL9xZZ-5" value="定时任务主机" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="450" y="30" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="gTPqFz_aCFMI_0yL9xZZ-6" value="生产环境服务器" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
           <mxGeometry x="180" y="30" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-9" value="2348端口&lt;br&gt;tcp" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="660" y="570" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-11" value="2347端口&lt;br&gt;tcp" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="510" y="570" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-13" value="2347端口&lt;br&gt;tcp" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="50" y="555" width="120" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-15" value="2346端口&lt;br&gt;http" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="180" y="555" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="gTPqFz_aCFMI_0yL9xZZ-21" value="" style="endArrow=classic;html=1;entryX=0.35;entryY=-0.05;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.75;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="gTPqFz_aCFMI_0yL9xZZ-20" target="gTPqFz_aCFMI_0yL9xZZ-4">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
@@ -121,8 +83,59 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-34" value="2345端口http" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="320" y="560" width="120" height="60" as="geometry" />
+        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-36" value="Amazon" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;shadow=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="370" y="600" width="120" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-38" value="" style="group" vertex="1" connectable="0" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="85" y="430" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-3" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="gTPqFz_aCFMI_0yL9xZZ-38">
+          <mxGeometry width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-13" value="2347端口&lt;br&gt;tcp" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="gTPqFz_aCFMI_0yL9xZZ-38">
+          <mxGeometry x="35" y="40" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-15" value="2346端口&lt;br&gt;http" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="gTPqFz_aCFMI_0yL9xZZ-38">
+          <mxGeometry x="115" y="40" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-34" value="2345端口http" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="gTPqFz_aCFMI_0yL9xZZ-38">
+          <mxGeometry x="205" y="40" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-37" value="香港服务器" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=1;" vertex="1" parent="gTPqFz_aCFMI_0yL9xZZ-38">
+          <mxGeometry y="10" width="70" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-40" value="" style="group" vertex="1" connectable="0" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="500" y="440" width="220" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-4" value="" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="gTPqFz_aCFMI_0yL9xZZ-40">
+          <mxGeometry width="220.00000000000003" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-9" value="2348端口&lt;br&gt;tcp" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="gTPqFz_aCFMI_0yL9xZZ-40">
+          <mxGeometry x="93.08" y="45" width="56.92" height="35" as="geometry" />
+        </mxCell>
+        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-11" value="2347端口&lt;br&gt;tcp" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="gTPqFz_aCFMI_0yL9xZZ-40">
+          <mxGeometry x="8.461538461538462" y="50" width="67.6923076923077" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-39" value="美国服务器" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;shadow=1;" vertex="1" parent="gTPqFz_aCFMI_0yL9xZZ-40">
+          <mxGeometry y="10" width="67.6923076923077" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-41" value="" style="endArrow=classic;html=1;entryX=0.88;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="gTPqFz_aCFMI_0yL9xZZ-36">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="601" y="539" as="sourcePoint" />
+            <mxPoint x="440" y="560" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-42" value="" style="endArrow=classic;html=1;exitX=0.553;exitY=1.02;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.25;entryY=0.25;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="gTPqFz_aCFMI_0yL9xZZ-3" target="gTPqFz_aCFMI_0yL9xZZ-36">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="620" as="sourcePoint" />
+            <mxPoint x="440" y="570" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="gTPqFz_aCFMI_0yL9xZZ-43" value="" style="endArrow=classic;html=1;exitX=0.6;exitY=0.983;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.625;entryY=0.2;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="gTPqFz_aCFMI_0yL9xZZ-27" target="gTPqFz_aCFMI_0yL9xZZ-36">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="420" y="590" as="sourcePoint" />
+            <mxPoint x="470" y="540" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
